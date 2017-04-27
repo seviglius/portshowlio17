@@ -620,7 +620,8 @@ a {
   display: block; }
 
 body {
-  background: red !important; }
+  background: green !important;
+  color: #fff; }
 
 /*--------------------------------------------------------------
 # Infinite scroll

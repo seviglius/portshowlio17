@@ -8,10 +8,16 @@
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
+@import "about";
+
 @import "primary/comments";
 
 
 
 body {
-	background: red !important;
+	background: green !important;
+	color: #fff;
 }
+
+
+
