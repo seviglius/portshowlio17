@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-for real yo!
+this is a new test
 
 
 <?php get_footer(); ?>
