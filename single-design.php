@@ -63,7 +63,7 @@
 											$img_full = $img['sizes']['full'];
 										?>
 										
-										<img src="<?php echo $img_full; ?>" alt="<?php echo $img_alt; ?>" title="<?php echo $img_title; ?>">
+										<img src="<?php echo $img_url; ?>" alt="<?php echo $img_alt; ?>" title="<?php echo $img_title; ?>">
 										
 								 
 									<?php endwhile; ?>								 								
