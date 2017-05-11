@@ -18,3 +18,97 @@
 	clear: both;
 	width: $size__site-main;
 }
+
+.icon-port-logo_black-nockout-ps-full {
+	content: "\e903";
+}
+
+.icon-arrow:before {
+	content: "\e904";
+}
+
+.icon-facebook:before {
+	content: "\e900";
+}
+
+.icon-instagram:before {
+	content: "\e901";
+}
+
+.icon-twitter:before {
+	content: "\e902";
+}
+
+
+.Logo {
+	font-size: 7em;
+	text-align: center;
+	display: block;
+	margin: .2em 0;
+}
+
+.sidebar {
+	left:0;
+	background-color: white;
+	height:100vh;
+	border-color: black;
+	border-style: solid;
+	border-width: thick;
+	width:30vw;
+}
+
+.filterMain {
+	margin-left: 2em;
+	display: block;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 1.3em;
+}
+
+.hr {
+	width: 90%;
+	margin: 1em auto;
+	border-bottom-color: black;
+	border-bottom-style: solid;
+	border-bottom-width: .1em;
+}
+
+/*
+MAKE EVERYTHING FLEXXXXX
+*/
+
+.dates {
+	margin: 2em;
+	margin-left: 2em;
+	.oneNight{
+		margin: .5em 0;
+		.nightType {
+			font-size: 1.3em;
+			font-weight: bold;
+			display: block;
+		}
+		.date {
+			font-size: 1em;
+			font-weight: normal;
+			display: block;
+		}
+		.time {
+			font-size: .8em;
+			font-weight: normal;
+			display: block;
+		}
+	}
+	.eventLink {
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+}
+
+.socialLinks {
+	margin-left: 2em;
+	.socialbox {
+		padding: 1em;
+		background:black;
+		color:white;
+	}
+}
