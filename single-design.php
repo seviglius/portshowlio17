@@ -53,17 +53,10 @@
 								<?php  while( have_rows('images') ) : the_row(); ?>
 								 
 										
-										<?php
-											$img = the_sub_field('image');
-											$img_title = $img['title'];
-											$img_alt = $img['alt'];
-											$img_caption = $img['caption'];
-											$img_desc = $img['description'];
-											$img_url = $img['url'];
-											$img_full = $img['sizes']['full'];
-										?>
-										
-										<img src="<?php echo $img_url; ?>" alt="<?php echo $img_alt; ?>" title="<?php echo $img_title; ?>">
+									   <?php $imageurl = get_sub_field('image'); ?>									
+
+									    <img src="<?php echo $imageurl; ?>" /> 
+
 										
 								 
 									<?php endwhile; ?>								 								
