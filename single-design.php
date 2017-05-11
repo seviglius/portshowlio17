@@ -45,13 +45,16 @@
 					<?php while ( have_rows('project_images') ) : the_row(); ?>
 				        
 				        <?php if( get_row_layout() == 'portrait_3_column' ): ?>
-								<?php if(get_sub_field('images')): ?>
-								 
-									<?php while(has_sub_field('images')): ?>
+								
+
+
+								<?php if( have_rows('images') ): ?>
+
+								<?php  while( have_rows('images') ) : the_row(); ?>
 								 
 										
 										<?php
-											$img = get_sub_field('image');
+											$img = the_sub_field('image');
 											$img_title = $img['title'];
 											$img_alt = $img['alt'];
 											$img_caption = $img['caption'];
