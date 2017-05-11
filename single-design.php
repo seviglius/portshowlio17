@@ -57,10 +57,10 @@
 											$img_caption = $img['caption'];
 											$img_desc = $img['description'];
 											$img_url = $img['url'];
-											$img_thumb = $img['sizes']['medium'];
+											$img_full = $img['sizes']['full'];
 										?>
 										
-										<img src="<?php echo $img_url; ?>" alt="<?php echo $img_alt; ?>" title="<?php echo $img_title; ?>">
+										<img src="<?php echo $img_full; ?>" alt="<?php echo $img_alt; ?>" title="<?php echo $img_title; ?>">
 										
 								 
 									<?php endwhile; ?>								 								
