@@ -3,7 +3,7 @@
 ?>
 
 <?php get_header(); ?>
-
+<div class='homePage'>
 <div class="sidebar">
 
     <div class='Logo'>
@@ -59,11 +59,46 @@
 
 </div>
 
-<div class="container">
+<div class="container mainArea">
+
+    <?php
+        //remove_all_filters('posts_orderby');
+        $args = array(
+            'post_type' => array('design', 'photography'),
+            'posts_per_page' => 100,
+            'orderby'        => 'rand',
+        );
+        $query = new WP_Query($args);
+        $featuredimage = get_field_objects();
+    ?>
+
+
+    <?php if( $query->have_posts() ): ?>
+        <div class='row'>
+        <?php while ($query->have_posts()) : $query->the_post(); ?>
+                <div class="col-sm-4 col-xs-6 scca-homepage-item">
+
+                    <img src='https://placeholdit.imgix.net/~text?txtsize=19&txt=200%C3%97200&w=200&h=200' />
+
+                    <a href="<?php the_permalink(); ?>"><img src="<?php the_field('featured_project_image'); ?>"></a>
+
+                        <div class="scca-caption">
+                           <h5><?php the_field('featured_project_name'); ?></h5>
+                        </div><!--scca-caption closes-->
+                        <p class="scca-labels"><?php the_field('featured_project_type'); ?></p>
+
+                </div><!--scca-homepage-item closes-->
+        <?php wp_reset_query(); ?>
+
+        <?php endwhile; ?>
+        </div>
+    <?php else : ?>
+        Hello
+    <?php endif; ?>
 
 
 
 </div>
-
+</div>
 
 <?php get_footer(); ?>

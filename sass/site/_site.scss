@@ -15,9 +15,17 @@
 
 
 body {
-	background: red !important;
+	background: white;
 	color: #fff;
+	overflow: hidden
 }
 
+.homePage {
+	display:flex;
+	overflow: hidden;
+}
 
-
+.mainArea {
+	height: 100vh;
+	overflow: scroll;
+}
