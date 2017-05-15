@@ -16,7 +16,7 @@
 
 body {
 	background: white;
-	color: #fff;
+	color: black;
 	overflow: hidden
 }
 
@@ -27,5 +27,21 @@ body {
 
 .mainArea {
 	height: 100vh;
-	overflow: scroll;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	flex-grow: 2;
+	display: flex;
+	.scca-homepage-item {
+		display: flex;
+		justify-content: center;
+		margin: 2em 0;
+		.contentCenter {
+			display: flex;
+	    	flex-direction: column;
+			img {
+				max-height: 100%;
+				width:auto;
+			}
+		}
+	}
 }

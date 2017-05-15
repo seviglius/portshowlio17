@@ -74,18 +74,28 @@
 
 
     <?php if( $query->have_posts() ): ?>
+        <?php $i = 0 ?>
         <div class='row'>
         <?php while ($query->have_posts()) : $query->the_post(); ?>
                 <div class="col-sm-4 col-xs-6 scca-homepage-item">
+                    <div class='contentCenter'>
+                        <?php if($i++ % 2): ?>
+                            <img src='https://placeholdit.imgix.net/~text?txtsize=85&txt=1024%C3%97768&w=1024&h=768' />
+                        <?php elseif ($i %3): ?>
+                            <img src='https://placeholdit.imgix.net/~text?txtsize=77&txt=1024%C3%971365&w=1024&h=1365' />
+                        <?php else : ?>
+                            <img src='https://placeholdit.imgix.net/~text?txtsize=77&txt=1024%C3%971536&w=1024&h=1536' />
+                        <?php endif; ?>
+                        <span class='name'>Cooper Sinai-Yunker</span>
+                        <span class='specalties'>UX | MEOW | INTERACTIVE</span>
 
-                    <img src='https://placeholdit.imgix.net/~text?txtsize=19&txt=200%C3%97200&w=200&h=200' />
-
-                    <a href="<?php the_permalink(); ?>"><img src="<?php the_field('featured_project_image'); ?>"></a>
+                        <!--a href="<?php the_permalink(); ?>"><img src="<?php the_field('featured_project_image'); ?>"></a>
 
                         <div class="scca-caption">
                            <h5><?php the_field('featured_project_name'); ?></h5>
-                        </div><!--scca-caption closes-->
-                        <p class="scca-labels"><?php the_field('featured_project_type'); ?></p>
+                       </div--><!--scca-caption closes-->
+                        <!--p class="scca-labels"><?php the_field('featured_project_type'); ?></p-->
+                    </div>
 
                 </div><!--scca-homepage-item closes-->
         <?php wp_reset_query(); ?>

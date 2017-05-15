@@ -48,6 +48,7 @@
 }
 
 .sidebar {
+	flex-grow: 3;
 	left:0;
 	background-color: white;
 	height:100vh;
@@ -57,6 +58,15 @@
 	display: flex;
     flex-direction: column;
 	width:30vw;
+	max-width: 500px;
+	min-width: 330px;
+}
+
+@media screen and (min-width: 1600px) {
+	.sidebar {
+		flex-grow: 2;
+
+	}
 }
 
 .filterMain {
@@ -79,8 +89,8 @@
 MAKE EVERYTHING FLEXXXXX
 */
 
-/* Min HEIGHT 710px;
-MIN Width 1310px;
+/* Min HEIGHT 700px;
+MIN Width 1300px;
 */
 
 .dates {
