@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<!--
+<div class="studentPage">
 <div class="sidebar">
 
 	<h2><?php the_title();?></h2>
@@ -14,7 +14,7 @@
 	<!-- Insert social icons -- copy from 2016 single page -->
 
 </div>
--->
+
 
 <div class="mainArea">
 
@@ -30,7 +30,7 @@
         		<h3 class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
 
 				<!-- Figure out how to output project types with commas -->
-        		<?php the_sub_field('project_type'); ?>
+        		<p class="category"><?php the_sub_field('project_type'); ?></p>
 
 
 				<?php $post_objects = get_field('collaborators'); if( $post_objects ): ?>
@@ -43,9 +43,9 @@
 				<?php endif; ?>
 
 
+<hr>
 
-
-				<?php the_sub_field('project_description'); ?>
+				<p class="projectDescription"><?php the_sub_field('project_description'); ?></p>
 
 </div><!--col 6 close -->
 	<div class="col-md-6">
@@ -67,7 +67,7 @@
 
 
 									   <?php $imageurl = get_sub_field('image'); ?>
-								<div class="col-md-4">
+								<div class="col-md-4 imageGrid">
 									    <img src="<?php echo $imageurl; ?>" />
 
 										</div><!--col 4 close -->
@@ -97,7 +97,7 @@
 
 
 
-	<div class="col-md-6">
+	<div class="col-md-6 imageGrid">
 		<img src="<?php echo $imageurl; ?>" />
 									</div>
 
@@ -119,7 +119,7 @@
 								$img_thumb = $img['sizes']['medium'];
 							?>
 <div class="col-md-3"></div>
-							<div class="col-md-6 col-md-offset-3">
+							<div class="col-md-6 col-md-offset-3 imageGrid">
 								<img src="<?php echo $imageurl; ?>" />
 															</div>
 <div class="col-md-3"></div>
@@ -135,11 +135,11 @@
 								$img_thumb = $img['sizes']['medium'];
 							?>
 
-							<div class="col-md-12">
+							<div class="col-md-12 imageGrid">
 								<img src="<?php echo $imageurl; ?>" />
 															</div>
 
-							<div class="col-md-12">
+							<div class="col-md-12 imageGrid">
 				        <?php elseif( get_row_layout() == 'video' ): ?>]
 				        	<?php the_sub_field('video'); ?>
 								</div>

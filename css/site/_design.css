@@ -1,2 +1,27 @@
-h3.projectTitle {
-  color: red; }
+/* container for everything - incl sidebar and mainArea*/
+.studentPage {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+/* class for each image row */
+.imageGrid {
+  margin-bottom: 2%; }
+
+.projectTitle {
+  font-family: sans-serif; }
+
+/* area outside of sidebar */
+.mainArea {
+  padding: 5%; }
+
+.category {
+  text-transform: uppercase; }
+
+hr {
+  height: 1px;
+  background-color: black; }
+
+p.projectDescription {
+  font-size: 12px !important;
+  letter-spacing: 0.3px !important; }
