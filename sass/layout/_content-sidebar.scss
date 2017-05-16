@@ -1,3 +1,7 @@
+.body{
+	font-size:.75rem;
+}
+
 .content-area {
 	float: left;
 	margin: 0 (-$size__site-sidebar) 0 0;
@@ -44,7 +48,8 @@
   font-size: 7em;
   text-align: center;
   display: block;
-  margin: .2em 0; }
+  margin: .2em 0;
+  margin-top: .6em; }
 
 .sidebar {
   flex-grow: 3;
@@ -91,24 +96,25 @@
 MIN Width 1300px;
 */
 .dates {
-  margin: 2em;
-  margin-left: 2em;
+  margin-left: 2.4em;
+  margin-top: .5em;
   flex-grow: 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   .oneNight {
     margin: .5em 0;
-	   .nightType {
-      font-size: 1.3em;
+	.nightType {
+      font-size: 1.5em;
       font-weight: bold;
       display: block; }
     .date {
-      font-size: 1em;
+      font-size: 1.25em;
       font-weight: normal;
-      display: block; }
+      display: block;
+      font-family: "NeueLight", sans-serif; }
     .time {
-      font-size: .8em;
+      font-size: .9em;
       font-weight: normal;
       display: block; }
   	&:last-of-type {

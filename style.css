@@ -7790,10 +7790,22 @@ a {
 .bypostauthor {
   display: block; }
 
+@font-face {
+  font-family: "Neue";
+  font-weight: Light;
+  src: url("fonts/neue_haas/neueLight.otf") format("truetype"); }
+
+@font-face {
+  font-family: "Neue";
+  font-weight: Bold;
+  src: url("fonts/neue_haas/neueHeavy.otf") format("truetype"); }
+
 body {
   background: white;
   color: black;
-  overflow: hidden; }
+  overflow: hidden;
+  font-size: .8rem;
+  font-family: "Neue", sans-serif; }
 
 .homePage {
   display: -webkit-flex;
@@ -7825,10 +7837,16 @@ body {
       display: flex;
       -webkit-flex-direction: column;
       -ms-flex-direction: column;
-      flex-direction: column; }
+      flex-direction: column;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
       .mainArea .scca-homepage-item .contentCenter img {
         max-height: 100%;
         width: auto; }
+
+.name {
+  font-weight: 700; }
 
 @media screen and (max-width: 768px) {
   body {
@@ -8031,6 +8049,9 @@ object {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
+.body {
+  font-size: .75rem; }
+
 .content-area {
   float: left;
   margin: 0 -25% 0 0;
@@ -8067,7 +8088,8 @@ object {
   font-size: 7em;
   text-align: center;
   display: block;
-  margin: .2em 0; }
+  margin: .2em 0;
+  margin-top: .6em; }
 
 .sidebar {
   -webkit-flex-grow: 3;
@@ -8129,8 +8151,8 @@ object {
 MIN Width 1300px;
 */
 .dates {
-  margin: 2em;
-  margin-left: 2em;
+  margin-left: 2.4em;
+  margin-top: .5em;
   -webkit-flex-grow: 2;
   -ms-flex-positive: 2;
   flex-grow: 2;
@@ -8146,15 +8168,16 @@ MIN Width 1300px;
   .dates .oneNight {
     margin: .5em 0; }
     .dates .oneNight .nightType {
-      font-size: 1.3em;
+      font-size: 1.5em;
       font-weight: bold;
       display: block; }
     .dates .oneNight .date {
-      font-size: 1em;
+      font-size: 1.25em;
       font-weight: normal;
-      display: block; }
+      display: block;
+      font-family: "NeueLight", sans-serif; }
     .dates .oneNight .time {
-      font-size: .8em;
+      font-size: .9em;
       font-weight: normal;
       display: block; }
     .dates .oneNight:last-of-type {

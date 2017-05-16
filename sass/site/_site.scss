@@ -12,12 +12,24 @@
 
 @import "primary/comments";
 
+@font-face {
+    font-family: "Neue";
+    font-weight: Light;
+    src: url("fonts/neue_haas/neueLight.otf") format("truetype");
+}
 
+@font-face {
+    font-family: "Neue";
+    font-weight: Bold;
+    src: url("fonts/neue_haas/neueHeavy.otf") format("truetype");
+}
 
 body {
 	background: white;
 	color: black;
-	overflow: hidden
+	overflow: hidden;
+	font-size:.8rem;
+	font-family: "Neue", sans-serif;
 }
 
 .homePage {
@@ -38,6 +50,7 @@ body {
 		.contentCenter {
 			display: flex;
 	    	flex-direction: column;
+	    	justify-content: center;
 			img {
 				max-height: 100%;
 				width:auto;
@@ -45,6 +58,12 @@ body {
 		}
 	}
 }
+
+
+.name{
+	font-weight:700;
+}
+
 
 @media screen and (max-width: 768px) {
   body {

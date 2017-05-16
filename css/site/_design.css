@@ -4,47 +4,6 @@
   display: -ms-flexbox;
   display: flex; }
 
-@media screen and (max-width: 768px) {
-  .studentPage {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-flow: column;
-    -ms-flex-flow: column;
-    flex-flow: column; } }
-
-/* SIDEBAR */
-.studentSidebar {
-  margin: 0 auto; }
-  .studentSidebar .name {
-    font-weight: bold;
-    display: block;
-    font-size: 2em; }
-  .studentSidebar .name:last-of-type {
-    margin-bottom: 2em; }
-  .studentSidebar .headshot {
-    height: 25vh;
-    display: block; }
-  .studentSidebar .focus {
-    display: block; }
-
-/* MEDIA QUERY */
-@media screen and (max-width: 768px) {
-  .studentSidebar {
-    margin: 0; }
-    .studentSidebar .name {
-      font-weight: bold;
-      display: block;
-      font-size: 2em; }
-    .studentSidebar .name:last-of-type {
-      margin-bottom: 2em; }
-    .studentSidebar .headshot {
-      display: none; }
-    .studentSidebar .focus {
-      display: none; }
-    .studentSidebar .website {
-      display: none; } }
-
 /* class for each image row */
 .imageGrid {
   margin-bottom: 2%; }
@@ -66,15 +25,3 @@ hr {
 p.projectDescription {
   font-size: 12px !important;
   letter-spacing: 0.3px !important; }
-
-.video {
-  display: block;
-  width: 100%;
-  height: auto; }
-
-.video p {
-  display: none; }
-
-iframe {
-  min-width: 100%;
-  min-height: 500px; }
