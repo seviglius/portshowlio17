@@ -66,7 +66,7 @@
 							<?php endif; ?>
 
 
-							<hr>
+							<!--<hr>-->
 
 							<p class="projectDescription"><?php the_sub_field('project_description'); ?></p>
 

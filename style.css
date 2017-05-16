@@ -7894,6 +7894,26 @@ body {
   display: -ms-flexbox;
   display: flex; }
 
+body {
+  font-family: "Neue", sans-serif; }
+
+.projectTitle {
+  font-weight: 700;
+  margin-bottom: .2rem; }
+
+.studentSidebar .name {
+  line-height: 1.2em; }
+
+.studentSidebar .headshot {
+  margin-top: 1em; }
+
+a:visited {
+  color: #999999; }
+
+a:hover {
+  color: #666666;
+  text-decoration: none; }
+
 @media screen and (max-width: 768px) {
   .studentPage {
     display: -webkit-flex;
@@ -7905,7 +7925,16 @@ body {
 
 /* SIDEBAR */
 .studentSidebar {
-  margin: 0 auto; }
+  margin: 0 auto;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
   .studentSidebar .name {
     font-weight: bold;
     display: block;
@@ -7913,19 +7942,22 @@ body {
   .studentSidebar .name:last-of-type {
     margin-bottom: 2em; }
   .studentSidebar .headshot {
-    height: 25vh;
+    height: 30vh;
     display: block; }
   .studentSidebar .focus {
-    display: block; }
+    display: block;
+    font-weight: 700; }
 
 /* MEDIA QUERY */
 @media screen and (max-width: 768px) {
   .studentSidebar {
-    margin: 0; }
+    margin: 0;
+    margin-left: .4em; }
     .studentSidebar .name {
+      line-height: 1.2em;
       font-weight: bold;
       display: block;
-      font-size: 2em; }
+      font-size: 1.7em; }
     .studentSidebar .name:last-of-type {
       margin-bottom: 2em; }
     .studentSidebar .headshot {
@@ -7933,22 +7965,21 @@ body {
     .studentSidebar .focus {
       display: none; }
     .studentSidebar .website {
-      display: none; } }
+      display: none; }
+  .projectTitle {
+    margin-top: .6em; } }
 
 /* class for each image row */
 .imageGrid {
-  margin-bottom: 2%; }
-
-.projectTitle {
-  font-family: sans-serif; }
+  margin-bottom: 3.5%; }
 
 /* area outside of sidebar */
 .mainArea {
   padding: 5%; }
 
-.category {
-  text-transform: uppercase; }
-
+/*.category {
+  text-transform: uppercase;
+}*/
 hr {
   height: 1px;
   background-color: black; }
