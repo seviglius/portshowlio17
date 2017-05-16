@@ -1,26 +1,50 @@
 <?php get_header(); ?>
 
+<?php  function split_name($name) {
+				$name = trim($name);
+				$last_name = (strpos($name, ' ') === false) ? '' : preg_replace('#.*\s([\w-]*)$#', '$1', $name);
+				$first_name = trim( preg_replace('#'.$last_name.'#', '', $name ) );
+				return array($first_name, $last_name);
+} ?>
+
+
 <div class="studentPage">
 <div class="sidebar">
 
-	<h2><?php the_title();?></h2>
+    <div class='Logo'>
+        <span class="icon-port-logo_black-nockout-ps-full"></span>
+    </div>
 
-	<?php the_field('headshot'); ?>
+    <div class='hr'></div>
 
-	<a href="http://<?php the_field('portfolio_site'); ?>"><?php the_field('portfolio_site'); ?></a>
+	<div class='studentSidebar'>
+		<span class='name'><?php echo split_name(get_the_title())[0]; ?></span>
+		<span class='name'><?php echo split_name(get_the_title())[1]; ?></span>
 
-	<!-- Insert Focus objects here -- you can see 2015 theme to write this if you'd like. or look at ACF website -->
+		<img class='headshot' src='<?php the_field('headshot'); ?>' />
 
-	<!-- Insert social icons -- copy from 2016 single page -->
+		<a class='website' href="http://<?php the_field('portfolio_site'); ?>"><?php the_field('portfolio_site'); ?></a>
+
+		<!-- Insert Focus objects here -- you can see 2015 theme to write this if you'd like. or look at ACF website -->
+
+		<?php $focus = get_field('focus');
+			if( $focus ): ?>
+			<?php foreach( $focus as $focus ): ?>
+					<span class='focus'><?php echo $focus; ?></span>
+			<?php endforeach; ?>
+		<?php endif; ?>
+
+		<!-- Insert social icons -- copy from 2016 single page -->
+	</div>
 
 </div>
 
 
 <div class="mainArea">
 
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-xl-6 col-lg-8 col-md-12">
 
 <?php if( have_rows('projects') ): ?>
 	<?php while ( have_rows('projects') ) : the_row(); ?>
@@ -48,7 +72,7 @@
 				<p class="projectDescription"><?php the_sub_field('project_description'); ?></p>
 
 </div><!--col 6 close -->
-	<div class="col-md-6">
+	<div class="col-lg-12 col-md-0">
 	</div>
 
 
@@ -85,14 +109,14 @@
 									<?php while(has_sub_field('images')): ?>
 
 
-										<?php
+										<?php /*
 											$img = get_sub_field('image');
 											$img_title = $img['title'];
 											$img_alt = $img['alt'];
 											$img_caption = $img['caption'];
 											$img_desc = $img['description'];
 											$img_url = $img['url'];
-											$img_thumb = $img['sizes']['medium'];
+											$img_thumb = $img['sizes']['medium']; */
 										?>
 
 
