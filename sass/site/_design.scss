@@ -5,6 +5,46 @@
 display: flex;
 }
 
+@media screen and (max-width: 768px) {
+  .studentPage {
+    display: flex;
+    flex-flow: column; } }
+
+/* SIDEBAR */
+.studentSidebar {
+  margin: 0 auto;
+  .name {
+    font-weight: bold;
+    display: block;
+    font-size: 2em; }
+    .name:last-of-type {
+      margin-bottom: 2em; }
+  .headshot {
+    height: 25vh;
+    display: block; }
+  .focus {
+    display: block; }
+}
+
+/* MEDIA QUERY */
+@media screen and (max-width: 768px) {
+  .studentSidebar {
+    margin: 0;
+    .name {
+      font-weight: bold;
+      display: block;
+      font-size: 2em; }
+      .name:last-of-type {
+        margin-bottom: 2em; }
+    .headshot {
+      display: none; }
+    .focus {
+      display: none; }
+    .website {
+      display: none; }
+  }
+}
+
 /* class for each image row */
 .imageGrid {
   margin-bottom: 2%;

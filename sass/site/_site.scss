@@ -45,3 +45,33 @@ body {
 		}
 	}
 }
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow: visible; }
+
+  .homePage {
+    display: flex;
+    overflow: visible;
+    flex-flow: column; }
+
+  .mainArea {
+    height: 100vh;
+    overflow-y: visible;
+    overflow-x: visible;
+    flex-grow: 2;
+    display: flex;
+    .scca-homepage-item {
+      display: flex;
+      justify-content: center;
+      margin: 2em 0;
+      .contentCenter {
+        display: flex;
+        flex-direction: column;
+        img {
+          max-height: 100%;
+          width: auto; }
+	  }
+	  }
+	  }
+  }

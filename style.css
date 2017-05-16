@@ -8567,8 +8567,8 @@ body {
     font-weight: bold;
     display: block;
     font-size: 2em; }
-    .studentSidebar .name:last-of-type {
-      margin-bottom: 2em; }
+  .studentSidebar .name:last-of-type {
+    margin-bottom: 2em; }
   .studentSidebar .headshot {
     height: 25vh;
     display: block; }
@@ -8583,8 +8583,8 @@ body {
       font-weight: bold;
       display: block;
       font-size: 2em; }
-      .studentSidebar .name:last-of-type {
-        margin-bottom: 2em; }
+    .studentSidebar .name:last-of-type {
+      margin-bottom: 2em; }
     .studentSidebar .headshot {
       display: none; }
     .studentSidebar .focus {
@@ -8613,7 +8613,6 @@ p.projectDescription {
   font-size: 12px !important;
   letter-spacing: 0.3px !important; }
 
-/* MEDIA QUERY */
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
@@ -8797,8 +8796,8 @@ MIN Width 1300px;
       font-size: .8em;
       font-weight: normal;
       display: block; }
-  .dates .oneNight:last-of-type {
-    flex-grow: 1; }
+    .dates .oneNight:last-of-type {
+      flex-grow: 1; }
   .dates .eventLink {
     font-weight: bold;
     text-transform: uppercase; }
@@ -8828,12 +8827,6 @@ MIN Width 1300px;
   .hr {
     display: none; }
 
-  /*
-  MAKE EVERYTHING FLEXXXXX
-  */
-  /* Min HEIGHT 700px;
-  MIN Width 1300px;
-  */
   .dates {
     flex-flow: row;
     margin: 0; }
