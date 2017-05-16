@@ -73,3 +73,19 @@ p.projectDescription {
   font-size: 12px!important;
   letter-spacing: .3px!important;
 }
+
+
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.video p{
+  display: none;
+}
+
+iframe {
+  min-width: 100%;
+  min-height: 500px;
+}
