@@ -66,11 +66,20 @@ a:hover{
     display: block;
     font-weight: 700;
     }
+    .socialSection{
+        margin: 2em 0;
+    }
+    .socialIcon {
+      padding: 1em;
+      background: black;
+      color: white;
+      }
 }
 
 /* MEDIA QUERY */
 @media screen and (max-width: 768px) {
   .studentSidebar {
+    justify-content: flex-start;
     margin: 0;
     margin-left: .4em;
       .name {
@@ -78,6 +87,9 @@ a:hover{
         font-weight: bold;
         display: block;
         font-size: 1.7em; }
+        .name:first-of-type {
+            margin-top: .6em;
+        }
         .name:last-of-type {
           margin-bottom: 2em; }
       .headshot {
@@ -86,6 +98,9 @@ a:hover{
         display: none; }
       .website {
         display: none; }
+        .socialSection {
+            display:none;
+        }
     }
 
    .projectTitle{

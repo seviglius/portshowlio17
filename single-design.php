@@ -35,6 +35,34 @@
 		<?php endif; ?>
 
 		<!-- Insert social icons -- copy from 2016 single page -->
+
+		<div class='socialSection'>
+			<?php if( get_field('facebook_page') ): ?>
+				<a class='socialIcon' href='<?php the_field('facebook_page')?>'><span class='icon-facebook'></span></a>
+			<?php endif; ?>
+			<?php if( get_field('linkedin_page') ): ?>
+				<a class='socialIcon' href='<?php the_field('linkedin_page')?>'><span class='icon-linkedin'></span></a>
+			<?php endif; ?>
+			<?php if( get_field('twitter_page') ): ?>
+				<a class='socialIcon' href='<?php the_field('twitter_page')?>'><span class='icon-twitter'></span></a>
+			<?php endif; ?>
+			<?php if( get_field('instagram_page') ): ?>
+				<a class='socialIcon' href='<?php the_field('instagram_page')?>'><span class='icon-instagram'></span></a>
+			<?php endif; ?>
+			<?php if( get_field('tumblr_page') ): ?>
+				<a class='socialIcon' href='<?php the_field('tumblr_page')?>'><span class='icon-tumblr'></span></a>
+			<?php endif; ?>
+			<?php if( get_field('pinterest_page') ): ?>
+				<a class='socialIcon' href='<?php the_field('pinterest_page')?>'><span class='icon-pinterest'></span></a>
+			<?php endif; ?>
+			<?php if( get_field('youtube_page') ): ?>
+				<a class='socialIcon' href='<?php the_field('youtube_page')?>'><span class='icon-youtube'></span></a>
+			<?php endif; ?>
+			<?php if( get_field('vimeo_page') ): ?>
+				<a class='socialIcon' href='<?php the_field('vimeo_page')?>'><span class='icon-vimeo'></span></a>
+			<?php endif; ?>
+		</div>
+
 	</div>
 
 </div>
@@ -183,6 +211,30 @@
 	</div>
 </div>
 </div>
+
+<script>
+	$(".studentSidebar").click(function() {
+	if (	$(window).width() <= '768' &&  $('.sidebar').height() < 100) {
+		$('.headshot').css('display','block');
+		$('.website').css('display','block');
+		$('.focus').css('display','block');
+		$('.socialSection').css('display','block');
+		$height = $('.socialSection').offset().top + $('.socialSection').height() + 50;
+		$('.sidebar').animate( {
+			height: $height
+		},500);
+	} else if ( 	$(window).width() <= '768' &&  $('.sidebar').height() >= 100 ) {
+		$('.sidebar').animate( {
+			height: 86
+		},500, function() {
+			$('.headshot').css('display','none');
+			$('.website').css('display','none');
+			$('.focus').css('display','none');
+			$('.socialSection').css('display','none');
+		});
+	}
+	})
+</script>
 
 
 

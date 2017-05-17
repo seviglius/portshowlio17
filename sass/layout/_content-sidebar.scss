@@ -23,27 +23,6 @@
 	width: $size__site-main;
 }
 
-.icon-port-logo_black-nockout-ps-full {
-	content: "\e903";
-}
-
-.icon-arrow:before {
-	content: "\e904";
-}
-
-.icon-facebook:before {
-	content: "\e900";
-}
-
-.icon-instagram:before {
-	content: "\e901";
-}
-
-.icon-twitter:before {
-	content: "\e902";
-}
-
-
 .Logo {
   font-size: 7em;
   text-align: center;
@@ -92,9 +71,6 @@
   flex-direction: column;
   justify-content: flex-end; }
 
-/* Min HEIGHT 700px;
-MIN Width 1300px;
-*/
 .dates {
   margin-left: 2.4em;
   margin-top: .5em;
@@ -139,11 +115,16 @@ MIN Width 1300px;
     margin: 0 .2em; }
 
   .sidebar {
-    height: initial;
+	position: fixed;
+    width: 100vw;
+    background: white;
+    z-index: 9999;
+    height: 86px;
     flex-direction: row;
-    width: initial;
     max-width: initial;
-    min-width: initial; }
+    min-width: initial;
+	}
+
 
   .filterMain {
     margin: 0; }
