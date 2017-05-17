@@ -8601,6 +8601,13 @@ body {
   .studentPage {
     display: flex;
     flex-flow: column; } }
+@media screen and (max-height: 650px) {
+  .projectSelector {
+    display: none; }
+
+  .studentPage {
+    display: flex;
+    flex-flow: column; } }
 /* SIDEBAR */
 .studentSidebar {
   margin: 0 auto;
@@ -8659,11 +8666,37 @@ a {
 
 .projectTitle {
   margin-top: 100px; }
-  .projectTitle .first {
-    margin-top: 0px; }
+
+.firstProject {
+  margin-top: 0px; }
 
 /* MEDIA QUERY */
 @media screen and (max-width: 768px) {
+  .studentSidebar {
+    justify-content: flex-start;
+    margin: 0;
+    margin-left: .4em; }
+    .studentSidebar .name {
+      line-height: 1.2em;
+      font-weight: bold;
+      display: block;
+      font-size: 1.7em; }
+    .studentSidebar .name:first-of-type {
+      margin-top: .6em; }
+    .studentSidebar .name:last-of-type {
+      margin-bottom: 2em; }
+    .studentSidebar .headshot {
+      display: none; }
+    .studentSidebar .focus {
+      display: none; }
+    .studentSidebar .website {
+      display: none; }
+    .studentSidebar .socialSection {
+      display: none; }
+
+  .projectTitle {
+    margin-top: .6em; } }
+@media screen and (max-height: 650px) {
   .studentSidebar {
     justify-content: flex-start;
     margin: 0;
@@ -8905,6 +8938,40 @@ object {
     color: white; }
 
 @media screen and (max-width: 768px) {
+  .Logo {
+    font-size: 4em;
+    margin: 0 .2em; }
+
+  .sidebar {
+    position: fixed;
+    width: 100vw;
+    background: white;
+    z-index: 9999;
+    height: 86px;
+    flex-direction: row;
+    max-width: initial;
+    min-width: initial; }
+
+  .mainArea {
+    margin-top: 85px; }
+
+  .filterMain {
+    margin: 0; }
+
+  .hr {
+    display: none; }
+
+  .dates {
+    flex-flow: row;
+    margin: 0; }
+    .dates .oneNight {
+      display: none; }
+    .dates .eventLink {
+      width: 100px; }
+
+  .socialLinks {
+    display: none; } }
+@media screen and (max-height: 650px) {
   .Logo {
     font-size: 4em;
     margin: 0 .2em; }

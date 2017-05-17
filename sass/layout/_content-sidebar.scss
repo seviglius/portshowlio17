@@ -149,3 +149,44 @@
   .socialLinks {
     display: none; }
 }
+
+@media screen and (max-height: 650px) {
+  .Logo {
+    font-size: 4em;
+    margin: 0 .2em; }
+
+  .sidebar {
+	position: fixed;
+    width: 100vw;
+    background: white;
+    z-index: 9999;
+    height: 86px;
+    flex-direction: row;
+    max-width: initial;
+    min-width: initial;
+	}
+
+  .mainArea{
+    margin-top: 85px;
+  }
+
+
+  .filterMain {
+    margin: 0; }
+
+  .hr {
+    display: none; }
+
+  .dates {
+    flex-flow: row;
+    margin: 0;
+    .oneNight {
+      display: none; }
+    .eventLink {
+      width: 100px;
+  	}
+  }
+
+  .socialLinks {
+    display: none; }
+}

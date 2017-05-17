@@ -74,11 +74,16 @@
 	<div class="row">
 
 				<?php if( have_rows('projects') ): ?>
+					<?php $i = 0 ?>
 					<?php while ( have_rows('projects') ) : the_row(); ?>
 						<div class="col-xl-6 col-lg-8 col-md-12">
 	        		<?php if( get_row_layout() == 'project' ): ?>
-	        				<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle first"><?php the_sub_field('project_title'); ?></h3>
-
+						<?php $i++ ?>
+						<?php if($i==1): ?>
+	        				<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle firstProject"><?php the_sub_field('project_title'); ?></h3>
+						<?php else: ?>
+							<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
+						<?php endif; ?>
 								<!-- Figure out how to output project types with commas -->
 	        			<p class="category"><?php the_sub_field('project_type'); ?></p>
 
@@ -227,14 +232,19 @@
 
 <script>
 	$(window).resize(function() {
-		if( $(window).width() > '768') {
+		if( $(window).width() > '768' && $(window).height() > 650) {
 			$('.headshot').css('display','block');
 			$('.website').css('display','block');
 			$('.focus').css('display','block');
 			$('.socialSection').css('display','block');
 			$('.sidebar').css('height','100vh');
-		}
-		if( $(window).width() <='768') {
+		} else if( $(window).width() <='768') {
+			$('.headshot').css('display','none');
+			$('.website').css('display','none');
+			$('.focus').css('display','none');
+			$('.socialSection').css('display','none');
+			$('.sidebar').css('height','86');
+		} else if( $(window).width() > '768' && $(window).height() <= 650) {
 			$('.headshot').css('display','none');
 			$('.website').css('display','none');
 			$('.focus').css('display','none');
@@ -244,6 +254,7 @@
 	})
 
 	$(".studentSidebar").click(function() {
+		console.log($(window).height());
 	if (	$(window).width() <= '768' &&  $('.sidebar').height() < 100) {
 		$('.headshot').css('display','block');
 		$('.website').css('display','block');
@@ -262,7 +273,28 @@
 			$('.focus').css('display','none');
 			$('.socialSection').css('display','none');
 		});
+	} else if ( $(window).height() <= '650' &&  $('.sidebar').height() >= 100 ) {
+		$('.sidebar').animate( {
+			height: 86
+		},500, function() {
+			$('.headshot').css('display','none');
+			$('.website').css('display','none');
+			$('.focus').css('display','none');
+			$('.socialSection').css('display','none');
+		});
+	} else if ( $(window).height() <= '650' &&  $('.sidebar').height() <= 100 ) {
+		$('.headshot').css('display','block');
+		$('.website').css('display','block');
+		$('.focus').css('display','block');
+		$('.socialSection').css('display','block');
+		$height = $('.socialSection').offset().top + $('.socialSection').height() + 50 - $('.studentSidebar').offset().top;
+		$('.sidebar').animate( {
+			height: $height
+		},500);
 	}
+
+
+
 	})
 
 	<?php if( have_rows('projects') ): ?>
