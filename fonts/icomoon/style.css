@@ -54,19 +54,9 @@
 .icon-port-logo_black-nockout-ps-full:before {
   content: "\e903";
 }
-.icon-logo_med .path1:before {
+.icon-logo_med:before {
   content: "\e903b";
   color: rgb(0, 0, 0);
-}
-.icon-logo_med .path2:before {
-  content: "\e903d";
-  margin-left: -1.587890625em;
-  color: rgb(255, 255, 255);
-}
-.icon-logo_med .path3:before {
-  content: "\e903e";
-  margin-left: -1.587890625em;
-  color: rgb(255, 255, 255);
 }
 .icon-logo_small:before {
   content: "\e903c";

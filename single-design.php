@@ -11,8 +11,12 @@
 <div class="studentPage">
 <div class="sidebar">
 
-    <div class='Logo'>
+    <div id='logoBig' class='Logo'>
         <span class="icon-port-logo_black-nockout-ps-full"></span>
+    </div>
+	<div id='logoSmall' class='Logo'>
+        <span class="icon-logo_med">
+		</span>
     </div>
 
     <div class='hr'></div>
@@ -23,7 +27,7 @@
 
 		<img class='headshot' src='<?php the_field('headshot'); ?>' />
 
-		<a class='website' href="http://<?php the_field('portfolio_site'); ?>"><?php the_field('portfolio_site'); ?></a>
+		<a class='website' href="http://<?php the_field('portfolio_site'); ?>" target='_blank'><?php the_field('portfolio_site'); ?></a>
 
 		<!-- Insert Focus objects here -- you can see 2015 theme to write this if you'd like. or look at ACF website -->
 
@@ -38,28 +42,28 @@
 
 		<div class='socialSection'>
 			<?php if( get_field('facebook_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('facebook_page')?>'><span class='icon-facebook'></span></a>
+				<a class='socialIcon' href='<?php the_field('facebook_page')?>' target='_blank'><span class='icon-facebook'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('linkedin_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('linkedin_page')?>'><span class='icon-linkedin'></span></a>
+				<a class='socialIcon' href='<?php the_field('linkedin_page')?>' target='_blank'><span class='icon-linkedin'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('twitter_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('twitter_page')?>'><span class='icon-twitter'></span></a>
+				<a class='socialIcon' href='<?php the_field('twitter_page')?>' target='_blank'><span class='icon-twitter'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('instagram_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('instagram_page')?>'><span class='icon-instagram'></span></a>
+				<a class='socialIcon' href='<?php the_field('instagram_page')?>' target='_blank'><span class='icon-instagram'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('tumblr_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('tumblr_page')?>'><span class='icon-tumblr'></span></a>
+				<a class='socialIcon' href='<?php the_field('tumblr_page')?>' target='_blank'><span class='icon-tumblr'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('pinterest_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('pinterest_page')?>'><span class='icon-pinterest'></span></a>
+				<a class='socialIcon' href='<?php the_field('pinterest_page')?>' target='_blank'><span class='icon-pinterest'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('youtube_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('youtube_page')?>'><span class='icon-youtube'></span></a>
+				<a class='socialIcon' href='<?php the_field('youtube_page')?>' target='_blank'><span class='icon-youtube'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('vimeo_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('vimeo_page')?>'><span class='icon-vimeo'></span></a>
+				<a class='socialIcon' href='<?php the_field('vimeo_page')?>' target='_blank'><span class='icon-vimeo'></span></a>
 			<?php endif; ?>
 		</div>
 
@@ -305,6 +309,7 @@
 
 					$scrollto = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location').offset().top + $(".mainArea").scrollTop() - 15;
 					console.log($scrollto);
+					$('.mainArea').clearQueue();
 				    $(".mainArea").animate({
 				        scrollTop: $scrollto
 				    }, 2000);

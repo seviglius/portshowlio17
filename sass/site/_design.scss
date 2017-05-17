@@ -5,6 +5,13 @@
 display: flex;
 }
 
+#logoBig {
+    display:block;
+}
+#logoSmall {
+    display:none;
+}
+
 body{
   font-family: "Neue", sans-serif;
 }
@@ -26,6 +33,7 @@ body{
     padding: 15px;
     background-color: rgba(255,255,255,.8);
     .projectSelectorName {
+        cursor: pointer;
         display: block;
         font-weight: bold;
         text-align: right;
@@ -92,6 +100,7 @@ body{
 
 .studentSidebar .headshot{
   margin-top:1em;
+  width: 30vh;
 }
 
 
@@ -138,7 +147,15 @@ a {
 
 /* MEDIA QUERY */
 @media screen and (max-width: 768px) {
+    #logoBig {
+        display:none;
+    }
+    #logoSmall {
+        display:block;
+    }
   .studentSidebar {
+      flex-grow: 2;
+      cursor: pointer;
     justify-content: flex-start;
     margin: 0;
     margin-left: .4em;
@@ -170,7 +187,15 @@ a {
 }
 
 @media screen and (max-height: 650px) {
+    #logoBig {
+        display:none;
+    }
+    #logoSmall {
+        display:block;
+    }
   .studentSidebar {
+      flex-grow: 2;
+      cursor: pointer;
     justify-content: flex-start;
     margin: 0;
     margin-left: .4em;

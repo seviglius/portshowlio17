@@ -8570,6 +8570,12 @@ body {
 .studentPage {
   display: flex; }
 
+#logoBig {
+  display: block; }
+
+#logoSmall {
+  display: none; }
+
 body {
   font-family: "Neue", sans-serif; }
 
@@ -8588,6 +8594,7 @@ body {
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.8); }
   .projectSelector .projectSelectorName {
+    cursor: pointer;
     display: block;
     font-weight: bold;
     text-align: right;
@@ -8638,7 +8645,8 @@ body {
   line-height: 1.2em; }
 
 .studentSidebar .headshot {
-  margin-top: 1em; }
+  margin-top: 1em;
+  width: 30vh; }
 
 /*Website Link Styling*/
 .website {
@@ -8672,7 +8680,15 @@ a {
 
 /* MEDIA QUERY */
 @media screen and (max-width: 768px) {
+  #logoBig {
+    display: none; }
+
+  #logoSmall {
+    display: block; }
+
   .studentSidebar {
+    flex-grow: 2;
+    cursor: pointer;
     justify-content: flex-start;
     margin: 0;
     margin-left: .4em; }
@@ -8697,7 +8713,15 @@ a {
   .projectTitle {
     margin-top: .6em; } }
 @media screen and (max-height: 650px) {
+  #logoBig {
+    display: none; }
+
+  #logoSmall {
+    display: block; }
+
   .studentSidebar {
+    flex-grow: 2;
+    cursor: pointer;
     justify-content: flex-start;
     margin: 0;
     margin-left: .4em; }
