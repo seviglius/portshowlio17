@@ -7898,6 +7898,10 @@ body {
   font-family: "Neue", sans-serif; }
 
 .projectTitle {
+  font-family: "Neue";
+  font-weight: Bold; }
+
+.projectTitle {
   font-weight: 700;
   margin-bottom: .2rem; }
 
