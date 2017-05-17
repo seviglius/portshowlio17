@@ -113,7 +113,7 @@
 									<?php if( have_rows('images') ): ?>
 										<?php  while( have_rows('images') ) : the_row(); ?>
 
-										 <div class="col-md-4 imageGrid">
+										 <div class="col-lg-4 imageGrid">
 											 <?php $imageurl = get_sub_field('image'); ?>
 									    	<img src="<?php echo $imageurl; ?>" />
 											</div><!--col 4 close -->
@@ -136,7 +136,7 @@
 												$img_thumb = $img['sizes']['medium']; */
 											?>
 
-											<div class="col-md-6 imageGrid">
+											<div class="col-lg-6 imageGrid">
 												<?php $imageurl = get_sub_field('image'); ?>
 												<img src="<?php echo $imageurl; ?>" />
 											</div>
@@ -156,12 +156,12 @@
 										$img_url = $img['url'];
 										$img_thumb = $img['sizes']['medium'];*/
 									?>
-									<div class="col-md-3"></div>
-									<div class="col-md-6 col-md-offset-3 imageGrid">
+									<div class="col-lg-3"></div>
+									<div class="col-lg-6 col-lg-offset-3 imageGrid">
 										<?php $imageurl = get_sub_field('image'); ?>
 										<img src="<?php echo $imageurl; ?>" />
 									</div>
-									<div class="col-md-3"></div>
+									<div class="col-lg-3"></div>
 
 								<!--Landscape -->
 				        <?php elseif( get_row_layout() == 'landscape_image' ): ?>
@@ -176,14 +176,14 @@
 									?>
 
 
-						 		<div class="col-md-12 imageGrid">
+						 		<div class="col-lg-12 imageGrid">
 									<?php $imageurl = get_sub_field('image'); ?>
 									 <img src="<?php echo $imageurl; ?>" />
 								 </div><!--col 12 close -->
 
 								<!--Video -->
 				        <?php elseif( get_row_layout() == 'video' ): ?>
-									<div class="col-md-12 imageGrid video">
+									<div class="col-lg-12 imageGrid video">
 				        		<?php the_sub_field('video'); ?>
 
 									</div>
@@ -213,13 +213,23 @@
 </div>
 
 <script>
+	$(window).resize(function() {
+		if( $(window).width() > '768') {
+			$('.headshot').css('display','block');
+			$('.website').css('display','block');
+			$('.focus').css('display','block');
+			$('.socialSection').css('display','block');
+			$('.sidebar').css('height','100vh');
+		}
+	})
+
 	$(".studentSidebar").click(function() {
 	if (	$(window).width() <= '768' &&  $('.sidebar').height() < 100) {
 		$('.headshot').css('display','block');
 		$('.website').css('display','block');
 		$('.focus').css('display','block');
 		$('.socialSection').css('display','block');
-		$height = $('.socialSection').offset().top + $('.socialSection').height() + 50;
+		$height = $('.socialSection').offset().top + $('.socialSection').height() + 50 - $('.studentSidebar').offset().top;
 		$('.sidebar').animate( {
 			height: $height
 		},500);
