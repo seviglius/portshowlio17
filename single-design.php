@@ -96,7 +96,7 @@
 
 							<!--<hr>-->
 
-							<p class="projectDescription"><?php the_sub_field('project_description'); ?></p>
+							<span class="projectDescription"><?php the_sub_field('project_description'); ?></span>
 
 						</div><!--col 6 close -->
 						<div class="col-lg-12 col-md-0">

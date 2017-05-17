@@ -19,23 +19,6 @@ body{
 }
 
 
-.studentSidebar .name {
-    line-height: 1.2em;
-    }
-
-.studentSidebar .headshot{
-  margin-top:1em;
-}
-
-
-a:visited{
-  color:#999999;
-}
-
-a:hover{
-  color:#666666;
-  text-decoration:none;
-}
 
 
 
@@ -64,7 +47,8 @@ a:hover{
     display: block; }
   .focus {
     display: block;
-    font-weight: 700;
+    font-weight: 400;
+    font-size: 12px;
     }
     .socialSection{
         margin: 2em 0;
@@ -75,6 +59,56 @@ a:hover{
       color: white;
       }
 }
+
+.studentSidebar .name {
+    line-height: 1.2em;
+    }
+
+.studentSidebar .headshot{
+  margin-top:1em;
+}
+
+
+
+/*Website Link Styling*/
+.website{
+  font-weight:700;
+  margin: 7px 0 7px 0;
+  font-size: 13px;
+  letter-spacing: .035em;
+}
+
+a:hover{
+  color:#666666;
+  text-decoration:none;
+}
+ 
+a:visited{
+  color:#999999;
+}
+
+a:hover{
+  color:#666666;
+  text-decoration:none;
+}
+
+a {
+  color:#999999;
+}
+
+.projectDescription {
+  p:last-of-type {
+  margin-bottom:2.25em;
+  }
+}
+
+.projectTitle{
+  margin-top:100px;
+  &:first-of-type{
+   // margin-top:0px;
+  }
+}
+
 
 /* MEDIA QUERY */
 @media screen and (max-width: 768px) {
@@ -111,7 +145,10 @@ a:hover{
 
 /* class for each image row */
 .imageGrid {
-  margin-bottom: 3.5%;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+
 }
 
 
