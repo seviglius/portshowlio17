@@ -119,14 +119,14 @@
 								<!--1 COLUMN PORTRAIT -->
 								<?php elseif( get_row_layout() == 'portrait_1_column' ): ?>
 
-									<?php
+									<?php /*
 										$img = get_sub_field('image');
 										$img_title = $img['title'];
 										$img_alt = $img['alt'];
 										$img_caption = $img['caption'];
 										$img_desc = $img['description'];
 										$img_url = $img['url'];
-										$img_thumb = $img['sizes']['medium'];
+										$img_thumb = $img['sizes']['medium'];*/
 									?>
 									<div class="col-md-3"></div>
 									<div class="col-md-6 col-md-offset-3 imageGrid">
@@ -157,7 +157,7 @@
 				        <?php elseif( get_row_layout() == 'video' ): ?>
 									<div class="col-md-12 imageGrid video">
 				        		<?php the_sub_field('video'); ?>
-			
+
 									</div>
 
 				        <?php endif; ?>
