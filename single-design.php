@@ -11,12 +11,12 @@
 <div class="studentPage">
 <div class="sidebar">
 
-    <div id='logoBig' class='Logo'>
-        <span class="icon-port-logo_black-nockout-ps-full"></span>
+	<div id='logoBig' class='Logo'>
+        <a href="/" class="logolink"><span class="icon-port-logo_black-nockout-ps-full"></span></a>
     </div>
-	<div id='logoSmall' class='Logo'>
-        <span class="icon-logo_med">
-		</span>
+    <div id='logoSmall' class='Logo'>
+        <a href="/" class="logolink"><span class="icon-logo_med">
+        </span></a>
     </div>
 
     <div class='hr'></div>
@@ -31,7 +31,7 @@
 
 		<img class='headshot' src='<?php the_field('headshot'); ?>' />
 
-		<a class='website' href="http://<?php the_field('portfolio_site'); ?>" target='_blank'><?php the_field('portfolio_site'); ?></a>
+		<a class='website graylink' href="http://<?php the_field('portfolio_site'); ?>" target='_blank'><?php the_field('portfolio_site'); ?></a>
 
 		<!-- Insert Focus objects here -- you can see 2015 theme to write this if you'd like. or look at ACF website -->
 
@@ -97,11 +97,13 @@
 									<!-- Figure out how to output project types with commas -->
 		        			<p class="category"><?php the_sub_field('project_type'); ?></p>
 
-
+									<?php if( get_sub_field('collaborators') ): ?>
+										<p class="collaboratortitle">Collaborators</p>
+ 									<?php endif; ?>
 									<?php $post_objects = get_sub_field('collaborators'); if( $post_objects ): ?>
 										<?php foreach( $post_objects as $post): // variable must be called $post (IMPORTANT) ?>
 						        	<?php setup_postdata($post); ?>
-						        	<a class="collaborators" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+						        	<a class="collaborators graylink" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 						    		<?php endforeach; ?>
 						    	</p>
 						    	<?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
