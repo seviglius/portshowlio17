@@ -8600,6 +8600,8 @@ body {
     text-align: right;
     padding: 5px;
     font-size: 1.1em; }
+    .projectSelector .projectSelectorName:hover {
+      color: darkgray; }
 
 @media screen and (max-width: 768px) {
   .projectSelector {
@@ -8650,69 +8652,26 @@ body {
   max-width: 300px;
   max-height: 300px; }
 
-.collaboratortitle {
-  font-weight: 700;
-  margin-bottom: 0em; }
-
+/*Website Link Styling*/
 .website {
   font-weight: 700;
   margin: 7px 0 7px 0;
   font-size: 13px;
   letter-spacing: .035em; }
 
-/*Global Link Styling*/
+a:hover {
+  color: #666666;
+  text-decoration: none; }
+
+a:visited {
+  color: #999999; }
+
+a:hover {
+  color: #666666;
+  text-decoration: none; }
+
 a {
-  text-decoration: none; }
-
-/*Gray Link Styling*/
-a.graylink:hover {
-  color: #666666;
-  text-decoration: none; }
-
-a.graylink:visited {
   color: #999999; }
-
-a.graylink:hover {
-  color: #666666;
-  text-decoration: none; }
-
-a.graylink {
-  color: #999999; }
-
-a.graylink {
-  -webkit-transition-timing-function: ease;
-  -webkit-transition: .5s;
-  /* Safari */
-  transition: .5s; }
-
-/*Logo Link Styling*/
-a.logolink:hover {
-  color: #000000;
-  text-decoration: none; }
-
-a.logolink:visited {
-  color: #000000; }
-
-a.logolink:hover {
-  color: #222222;
-  text-decoration: none; }
-
-a.logolink {
-  color: #000000;
-  -webkit-transition-timing-function: color ease;
-  -webkit-transition: color .5s;
-  /* Safari */
-  transition: color .5s; }
-
-a.logolink:active {
-  text-decoration: none; }
-
-a.logolink:focus {
-  text-decoration: none; }
-
-/*social icons styling*/
-a.socialIcon:hover {
-  text-decoration: none; }
 
 .projectDescription p:last-of-type {
   margin-bottom: 2.25em; }
