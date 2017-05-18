@@ -75,36 +75,38 @@
 <div class="mainArea">
 
 <div class="container">
-	<div class="row">
+<div class="row">
 
 				<?php if( have_rows('projects') ): ?>
 					<?php $i = 0 ?>
 					<?php while ( have_rows('projects') ) : the_row(); ?>
-						<div class="col-xl-6 col-lg-8 col-md-12">
-	        		<?php if( get_row_layout() == 'project' ): ?>
-						<?php $i++ ?>
-						<?php if($i==1): ?>
-	        				<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle firstProject"><?php the_sub_field('project_title'); ?></h3>
-						<?php else: ?>
-							<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
-						<?php endif; ?>
-								<!-- Figure out how to output project types with commas -->
-	        			<p class="category"><?php the_sub_field('project_type'); ?></p>
+						<?php if( get_row_layout() == 'project' ): ?>
 
+							<div class="col-xl-6 col-lg-8 col-md-12">
 
-								<?php $post_objects = get_sub_field('collaborators'); if( $post_objects ): ?>
-									<?php foreach( $post_objects as $post): // variable must be called $post (IMPORTANT) ?>
-					        	<?php setup_postdata($post); ?>
-					        	<a class="collaborators" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-					    		<?php endforeach; ?>
-					    	</p>
-					    	<?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+							<?php $i++ ?>
+							<?php if($i==1): ?>
+		        				<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle firstProject"><?php the_sub_field('project_title'); ?></h3>
+							<?php else: ?>
+								<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
 							<?php endif; ?>
+									<!-- Figure out how to output project types with commas -->
+		        			<p class="category"><?php the_sub_field('project_type'); ?></p>
 
 
-							<!--<hr>-->
+									<?php $post_objects = get_sub_field('collaborators'); if( $post_objects ): ?>
+										<?php foreach( $post_objects as $post): // variable must be called $post (IMPORTANT) ?>
+						        	<?php setup_postdata($post); ?>
+						        	<a class="collaborators" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+						    		<?php endforeach; ?>
+						    	</p>
+						    	<?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+								<?php endif; ?>
 
-							<span class="projectDescription"><?php the_sub_field('project_description'); ?></span>
+
+								<!--<hr>-->
+
+								<span class="projectDescription"><?php the_sub_field('project_description'); ?></span>
 
 						</div><!--col 6 close -->
 						<div class="col-lg-12 col-md-0">
@@ -210,6 +212,7 @@
         	<?php elseif( get_row_layout() == 'download' ): ?>
 
         	<?php endif; ?>
+				<span id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height' > </span>
     		<?php endwhile; ?>
 
 			<?php else : ?>
@@ -301,6 +304,33 @@
 
 	})
 
+
+
+		<?php if( have_rows('projects') ): ?>
+			<?php while ( have_rows('projects') ) : the_row(); ?>
+				<?php if( get_row_layout() == 'project' ): ?>
+
+				$(".mainArea").scroll(function() {
+					$scroll = $(".mainArea").scrollTop();
+
+					$startHeight = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location').offset().top + $(".mainArea").scrollTop() - 50;
+					$endHeight = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height').offset().top + $(".mainArea").scrollTop() + $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height').height();
+					console.log($scroll, $startHeight,$endHeight);
+
+					if($scroll >= $startHeight  && $scroll < $endHeight) {
+						$('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').css("text-decoration","underline")
+					} else {
+						$('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').css("text-decoration","none")
+					}
+
+
+						})
+
+				<?php endif; ?>
+			<?php endwhile; ?>
+		<?php endif; ?>
+
+
 	<?php if( have_rows('projects') ): ?>
 		<?php while ( have_rows('projects') ) : the_row(); ?>
 			<?php if( get_row_layout() == 'project' ): ?>
@@ -319,6 +349,8 @@
 			<?php endif; ?>
 		<?php endwhile; ?>
 	<?php endif; ?>
+
+
 
 </script>
 
