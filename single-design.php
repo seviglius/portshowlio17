@@ -12,22 +12,26 @@
 <div class="sidebar">
 
     <div id='logoBig' class='Logo'>
-        <a href="/" class="logolink"><span class="icon-port-logo_black-nockout-ps-full"></span></a>
+        <span class="icon-port-logo_black-nockout-ps-full"></span>
     </div>
 	<div id='logoSmall' class='Logo'>
-        <a href="/" class="logolink"><span class="icon-logo_med">
-		</span></a>
+        <span class="icon-logo_med">
+		</span>
     </div>
 
     <div class='hr'></div>
 
 	<div class='studentSidebar'>
-		<span class='name'><?php echo split_name(get_the_title())[0]; ?></span>
-		<span class='name'><?php echo split_name(get_the_title())[1]; ?></span>
+		<span class='nameContainer'>
+			<span class='name'><?php echo split_name(get_the_title())[0]; ?></span>
+			<span class='name'><?php echo split_name(get_the_title())[1]; ?></span>
+			<span class='clickArrow'><span class='icon-arrow'></span></span>
+		</span>
+		<div class='fakeBottom'></div>
 
 		<img class='headshot' src='<?php the_field('headshot'); ?>' />
 
-		<a class='website graylink' href="http://<?php the_field('portfolio_site'); ?>" target='_blank'><?php the_field('portfolio_site'); ?></a>
+		<a class='website' href="http://<?php the_field('portfolio_site'); ?>" target='_blank'><?php the_field('portfolio_site'); ?></a>
 
 		<!-- Insert Focus objects here -- you can see 2015 theme to write this if you'd like. or look at ACF website -->
 
@@ -93,14 +97,11 @@
 									<!-- Figure out how to output project types with commas -->
 		        			<p class="category"><?php the_sub_field('project_type'); ?></p>
 
-		        					<?php if( get_sub_field('collaborators') ): ?>
-										<p class="collaboratortitle">Collaborators</p>
-									<?php endif; ?>
 
 									<?php $post_objects = get_sub_field('collaborators'); if( $post_objects ): ?>
 										<?php foreach( $post_objects as $post): // variable must be called $post (IMPORTANT) ?>
 						        	<?php setup_postdata($post); ?>
-						        	<a class="collaborators graylink" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+						        	<a class="collaborators" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 						    		<?php endforeach; ?>
 						    	</p>
 						    	<?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
@@ -248,18 +249,27 @@
 			$('.focus').css('display','block');
 			$('.socialSection').css('display','block');
 			$('.sidebar').css('height','100vh');
+			$('.clickArrow').css('display','none');
+			$('.sidebar').removeClass('sidebarBlackout');
+			$('.nameContainer').removeClass('topFixed');
+			$('.studentSidebar').removeClass('justifyCenter');
+			$('.socialIcon').removeClass('socialBlackout');
+			$('.clickArrow').removeClass('rotateBack');
+			$('.fakeBottom').css('display','none');
 		} else if( $(window).width() <='768') {
 			$('.headshot').css('display','none');
 			$('.website').css('display','none');
 			$('.focus').css('display','none');
 			$('.socialSection').css('display','none');
 			$('.sidebar').css('height','86');
+			$('.clickArrow').css('display','block');
 		} else if( $(window).width() > '768' && $(window).height() <= 650) {
 			$('.headshot').css('display','none');
 			$('.website').css('display','none');
 			$('.focus').css('display','none');
 			$('.socialSection').css('display','none');
 			$('.sidebar').css('height','86');
+			$('.clickArrow').css('display','block');
 		}
 	})
 
@@ -270,37 +280,49 @@
 		$('.website').css('display','block');
 		$('.focus').css('display','block');
 		$('.socialSection').css('display','block');
-		$height = $('.socialSection').offset().top + $('.socialSection').height() + 50 - $('.studentSidebar').offset().top;
-		$('.sidebar').animate( {
-			height: $height
-		},500);
+		$('.sidebar').css('height','100vh');
+		$('.sidebar').addClass('sidebarBlackout');
+		$('.nameContainer').addClass('topFixed');
+		$('.studentSidebar').addClass('justifyCenter');
+		$('.socialIcon').addClass('socialBlackout');
+		$('.clickArrow').addClass('rotateBack');
+		$('.fakeBottom').css('display','block');
 	} else if ( 	$(window).width() <= '768' &&  $('.sidebar').height() >= 100 ) {
-		$('.sidebar').animate( {
-			height: 86
-		},500, function() {
-			$('.headshot').css('display','none');
-			$('.website').css('display','none');
-			$('.focus').css('display','none');
-			$('.socialSection').css('display','none');
-		});
+		$('.sidebar').css('height','86px');
+		$('.headshot').css('display','none');
+		$('.website').css('display','none');
+		$('.focus').css('display','none');
+		$('.socialSection').css('display','none');
+		$('.sidebar').removeClass('sidebarBlackout');
+		$('.nameContainer').removeClass('topFixed');
+		$('.studentSidebar').removeClass('justifyCenter');
+		$('.socialIcon').removeClass('socialBlackout');
+		$('.clickArrow').removeClass('rotateBack');
+		$('.fakeBottom').css('display','none');
 	} else if ( $(window).height() <= '650' &&  $('.sidebar').height() >= 100 ) {
-		$('.sidebar').animate( {
-			height: 86
-		},500, function() {
-			$('.headshot').css('display','none');
-			$('.website').css('display','none');
-			$('.focus').css('display','none');
-			$('.socialSection').css('display','none');
-		});
+		$('.sidebar').css('height','86px');
+		$('.headshot').css('display','none');
+		$('.website').css('display','none');
+		$('.focus').css('display','none');
+		$('.socialSection').css('display','none');
+		$('.sidebar').removeClass('sidebarBlackout');
+		$('.nameContainer').removeClass('topFixed');
+		$('.studentSidebar').removeClass('justifyCenter');
+		$('.socialIcon').removeClass('socialBlackout');
+		$('.clickArrow').removeClass('rotateBack');
+		$('.fakeBottom').css('display','none');
 	} else if ( $(window).height() <= '650' &&  $('.sidebar').height() <= 100 ) {
 		$('.headshot').css('display','block');
 		$('.website').css('display','block');
 		$('.focus').css('display','block');
 		$('.socialSection').css('display','block');
-		$height = $('.socialSection').offset().top + $('.socialSection').height() + 50 - $('.studentSidebar').offset().top;
-		$('.sidebar').animate( {
-			height: $height
-		},500);
+		$('.sidebar').css('height','100vh');
+		$('.sidebar').addClass('sidebarBlackout');
+		$('.nameContainer').addClass('topFixed');
+		$('.studentSidebar').addClass('justifyCenter');
+		$('.socialIcon').addClass('socialBlackout');
+		$('.clickArrow').addClass('rotateBack');
+		$('.fakeBottom').css('display','block');
 	}
 
 

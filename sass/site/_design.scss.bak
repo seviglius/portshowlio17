@@ -101,8 +101,6 @@ body{
 .studentSidebar .headshot{
   margin-top:1em;
   width: 30vh;
-  max-width: 300px;
-max-height: 300px;
 }
 
 

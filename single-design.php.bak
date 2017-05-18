@@ -7,11 +7,16 @@
 				return array($first_name, $last_name);
 } ?>
 
+
 <div class="studentPage">
 <div class="sidebar">
 
-    <div class='Logo'>
-        <span class="icon-port-logo_black-nockout-ps-full"></span>
+    <div id='logoBig' class='Logo'>
+        <a href="/" class="logolink"><span class="icon-port-logo_black-nockout-ps-full"></span></a>
+    </div>
+	<div id='logoSmall' class='Logo'>
+        <a href="/" class="logolink"><span class="icon-logo_med">
+		</span></a>
     </div>
 
     <div class='hr'></div>
@@ -22,7 +27,7 @@
 
 		<img class='headshot' src='<?php the_field('headshot'); ?>' />
 
-		<a class='website' href="http://<?php the_field('portfolio_site'); ?>"><?php the_field('portfolio_site'); ?></a>
+		<a class='website graylink' href="http://<?php the_field('portfolio_site'); ?>" target='_blank'><?php the_field('portfolio_site'); ?></a>
 
 		<!-- Insert Focus objects here -- you can see 2015 theme to write this if you'd like. or look at ACF website -->
 
@@ -37,28 +42,28 @@
 
 		<div class='socialSection'>
 			<?php if( get_field('facebook_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('facebook_page')?>'><span class='icon-facebook'></span></a>
+				<a class='socialIcon' href='<?php the_field('facebook_page')?>' target='_blank'><span class='icon-facebook'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('linkedin_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('linkedin_page')?>'><span class='icon-linkedin'></span></a>
+				<a class='socialIcon' href='<?php the_field('linkedin_page')?>' target='_blank'><span class='icon-linkedin'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('twitter_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('twitter_page')?>'><span class='icon-twitter'></span></a>
+				<a class='socialIcon' href='<?php the_field('twitter_page')?>' target='_blank'><span class='icon-twitter'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('instagram_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('instagram_page')?>'><span class='icon-instagram'></span></a>
+				<a class='socialIcon' href='<?php the_field('instagram_page')?>' target='_blank'><span class='icon-instagram'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('tumblr_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('tumblr_page')?>'><span class='icon-tumblr'></span></a>
+				<a class='socialIcon' href='<?php the_field('tumblr_page')?>' target='_blank'><span class='icon-tumblr'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('pinterest_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('pinterest_page')?>'><span class='icon-pinterest'></span></a>
+				<a class='socialIcon' href='<?php the_field('pinterest_page')?>' target='_blank'><span class='icon-pinterest'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('youtube_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('youtube_page')?>'><span class='icon-youtube'></span></a>
+				<a class='socialIcon' href='<?php the_field('youtube_page')?>' target='_blank'><span class='icon-youtube'></span></a>
 			<?php endif; ?>
 			<?php if( get_field('vimeo_page') ): ?>
-				<a class='socialIcon' href='<?php the_field('vimeo_page')?>'><span class='icon-vimeo'></span></a>
+				<a class='socialIcon' href='<?php the_field('vimeo_page')?>' target='_blank'><span class='icon-vimeo'></span></a>
 			<?php endif; ?>
 		</div>
 
@@ -70,32 +75,41 @@
 <div class="mainArea">
 
 <div class="container">
-	<div class="row">
+<div class="row">
 
 				<?php if( have_rows('projects') ): ?>
+					<?php $i = 0 ?>
 					<?php while ( have_rows('projects') ) : the_row(); ?>
-						<div class="col-xl-6 col-lg-8 col-md-12">
-	        		<?php if( get_row_layout() == 'project' ): ?>
+						<?php if( get_row_layout() == 'project' ): ?>
 
-	        			<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
+							<div class="col-xl-6 col-lg-8 col-md-12">
 
-								<!-- Figure out how to output project types with commas -->
-	        			<p class="category"><?php the_sub_field('project_type'); ?></p>
-
-
-								<?php $post_objects = get_field('collaborators'); if( $post_objects ): ?>
-									<?php foreach( $post_objects as $post): // variable must be called $post (IMPORTANT) ?>
-					        	<?php setup_postdata($post); ?>
-					        	<a class="collaborators" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-					    		<?php endforeach; ?>
-					    	</p>
-					    	<?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+							<?php $i++ ?>
+							<?php if($i==1): ?>
+		        				<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle firstProject"><?php the_sub_field('project_title'); ?></h3>
+							<?php else: ?>
+								<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
 							<?php endif; ?>
+									<!-- Figure out how to output project types with commas -->
+		        			<p class="category"><?php the_sub_field('project_type'); ?></p>
+
+		        					<?php if( get_sub_field('collaborators') ): ?>
+										<p class="collaboratortitle">Collaborators</p>
+									<?php endif; ?>
+
+									<?php $post_objects = get_sub_field('collaborators'); if( $post_objects ): ?>
+										<?php foreach( $post_objects as $post): // variable must be called $post (IMPORTANT) ?>
+						        	<?php setup_postdata($post); ?>
+						        	<a class="collaborators graylink" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+						    		<?php endforeach; ?>
+						    	</p>
+						    	<?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+								<?php endif; ?>
 
 
-							<!--<hr>-->
+								<!--<hr>-->
 
-							<p class="projectDescription"><?php the_sub_field('project_description'); ?></p>
+								<span class="projectDescription"><?php the_sub_field('project_description'); ?></span>
 
 						</div><!--col 6 close -->
 						<div class="col-lg-12 col-md-0">
@@ -201,6 +215,7 @@
         	<?php elseif( get_row_layout() == 'download' ): ?>
 
         	<?php endif; ?>
+				<span id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height' > </span>
     		<?php endwhile; ?>
 
 			<?php else : ?>
@@ -227,14 +242,19 @@
 
 <script>
 	$(window).resize(function() {
-		if( $(window).width() > '768') {
+		if( $(window).width() > '768' && $(window).height() > 650) {
 			$('.headshot').css('display','block');
 			$('.website').css('display','block');
 			$('.focus').css('display','block');
 			$('.socialSection').css('display','block');
 			$('.sidebar').css('height','100vh');
-		}
-		if( $(window).width() <='768') {
+		} else if( $(window).width() <='768') {
+			$('.headshot').css('display','none');
+			$('.website').css('display','none');
+			$('.focus').css('display','none');
+			$('.socialSection').css('display','none');
+			$('.sidebar').css('height','86');
+		} else if( $(window).width() > '768' && $(window).height() <= 650) {
 			$('.headshot').css('display','none');
 			$('.website').css('display','none');
 			$('.focus').css('display','none');
@@ -244,6 +264,7 @@
 	})
 
 	$(".studentSidebar").click(function() {
+		console.log($(window).height());
 	if (	$(window).width() <= '768' &&  $('.sidebar').height() < 100) {
 		$('.headshot').css('display','block');
 		$('.website').css('display','block');
@@ -262,17 +283,68 @@
 			$('.focus').css('display','none');
 			$('.socialSection').css('display','none');
 		});
+	} else if ( $(window).height() <= '650' &&  $('.sidebar').height() >= 100 ) {
+		$('.sidebar').animate( {
+			height: 86
+		},500, function() {
+			$('.headshot').css('display','none');
+			$('.website').css('display','none');
+			$('.focus').css('display','none');
+			$('.socialSection').css('display','none');
+		});
+	} else if ( $(window).height() <= '650' &&  $('.sidebar').height() <= 100 ) {
+		$('.headshot').css('display','block');
+		$('.website').css('display','block');
+		$('.focus').css('display','block');
+		$('.socialSection').css('display','block');
+		$height = $('.socialSection').offset().top + $('.socialSection').height() + 50 - $('.studentSidebar').offset().top;
+		$('.sidebar').animate( {
+			height: $height
+		},500);
 	}
+
+
+
 	})
+
+
+
+		<?php if( have_rows('projects') ): ?>
+			<?php while ( have_rows('projects') ) : the_row(); ?>
+				<?php if( get_row_layout() == 'project' ): ?>
+
+				$(".mainArea").scroll(function() {
+					$scroll = $(".mainArea").scrollTop();
+
+					$startHeight = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location').offset().top + $(".mainArea").scrollTop() - 50;
+					$endHeight = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height').offset().top + $(".mainArea").scrollTop() + $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height').height();
+					console.log($scroll, $startHeight,$endHeight);
+
+					if($scroll >= $startHeight  && $scroll < $endHeight) {
+						$('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').css("text-decoration","underline")
+					} else {
+						$('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').css("text-decoration","none")
+					}
+
+
+						})
+
+				<?php endif; ?>
+			<?php endwhile; ?>
+		<?php endif; ?>
+
 
 	<?php if( have_rows('projects') ): ?>
 		<?php while ( have_rows('projects') ) : the_row(); ?>
 			<?php if( get_row_layout() == 'project' ): ?>
 
-				$('.<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').click(function() {
-					console.log('asdfasdf');
-				    $('html, body').animate({
-				        scrollTop: $('.<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location').offset().top
+				$('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').click(function() {
+
+					$scrollto = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location').offset().top + $(".mainArea").scrollTop() - 15;
+					console.log($scrollto);
+					$('.mainArea').clearQueue();
+				    $(".mainArea").animate({
+				        scrollTop: $scrollto
 				    }, 2000);
 				});
 
@@ -280,6 +352,8 @@
 			<?php endif; ?>
 		<?php endwhile; ?>
 	<?php endif; ?>
+
+
 
 </script>
 

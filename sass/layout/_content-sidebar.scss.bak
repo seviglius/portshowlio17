@@ -23,25 +23,12 @@
 	width: $size__site-main;
 }
 
-.infoLink {
-	color:black;
-	text-decoration: none;
-	&:hover {
-		color:black;
-		text-decoration: none;
-	}
-	&:visited {
-		color:black;
-	}
-}
-
 .Logo {
   font-size: 7em;
   text-align: center;
   display: block;
   margin: .2em 0;
   margin-top: .6em; }
-
 
 .sidebar {
   flex-grow: 3;
@@ -57,74 +44,6 @@
   max-width: 500px;
   min-width: 330px; }
 
-  .sidebarBlackout {
-	  a.logolink{
-		  transition: none;
-		  color:white;
-		  &:hover {
-			  color:white;
-		  }
-		  &:visited {
-			  color:white;
-		  }
-	  }
-  	background: black;
-  	color: white;
-  	border-color: white;
-  }
-
-.justifyCenter {
-	justify-content: center;
-}
-
-.clickArrow {
-	display: none;
-	position: fixed;
-	top: 52px;
-	right: 22px;
-	font-weight: bold;
-	transform: rotate(135deg);
-	text-transform: uppercase;
-}
-
-.rotateBack {
-	transform: rotate(315deg);
-}
-
-.fakeBottom {
-	display: none;
-	border-bottom-color: white;
-border-bottom-style: solid;
-position: fixed;
-width: 100vw;
-top: 86px;
-left: 0;
-}
-
-.takeoverName {
-	.name {
-		display:block;
-	}
-}
-
-
-.topFixed {
-	position: fixed;
-    top: 0;
-}
-
-.socialBlackout {
-	background: white !important;
-	color: black !important;
-}
-
-
-@media (min-width: 1800px) {
-	.container {
-	    width: 1760px;
-	    max-width: 100%;
-	}
-}
 
 @media screen and (min-width: 1600px) {
   .sidebar {
@@ -192,9 +111,6 @@ left: 0;
 }
 
 @media screen and (max-width: 768px) {
-	.clickArrow {
-		display: block;
-	}
   .Logo {
     font-size: 4em;
     margin: 0 .2em; }
@@ -202,6 +118,7 @@ left: 0;
   .sidebar {
 	position: fixed;
     width: 100vw;
+    background: white;
     z-index: 9999;
     height: 86px;
     flex-direction: row;
@@ -215,7 +132,16 @@ left: 0;
 
 
   .filterMain {
-    margin: 0; }
+    margin: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;}
+
+
+#workLink{
+    margin-right: 1em;
+    margin-left: 1em;
+}
 
   .hr {
     display: none; }
@@ -226,7 +152,7 @@ left: 0;
     .oneNight {
       display: none; }
     .eventLink {
-      width: 100px;
+      /*width: 100px;*/
   	}
   }
 
@@ -235,9 +161,6 @@ left: 0;
 }
 
 @media screen and (max-height: 650px) {
-	.clickArrow {
-		display: block;
-	}
   .Logo {
     font-size: 4em;
     margin: 0 .2em; }
@@ -245,6 +168,7 @@ left: 0;
   .sidebar {
 	position: fixed;
     width: 100vw;
+    background: white;
     z-index: 9999;
     height: 86px;
     flex-direction: row;
