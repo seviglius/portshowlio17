@@ -92,7 +92,7 @@
 	        			<p class="category"><?php the_sub_field('project_type'); ?></p>
 
 
-								<?php $post_objects = get_field('collaborators'); if( $post_objects ): ?>
+								<?php $post_objects = get_sub_field('collaborators'); if( $post_objects ): ?>
 									<?php foreach( $post_objects as $post): // variable must be called $post (IMPORTANT) ?>
 					        	<?php setup_postdata($post); ?>
 					        	<a class="collaborators" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
