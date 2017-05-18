@@ -44,6 +44,7 @@
   max-width: 500px;
   min-width: 330px; }
 
+
 @media screen and (min-width: 1600px) {
   .sidebar {
     flex-grow: 2; } }
@@ -131,7 +132,16 @@
 
 
   .filterMain {
-    margin: 0; }
+    margin: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;}
+
+
+#workLink{
+    margin-right: 1em;
+    margin-left: 1em;
+}
 
   .hr {
     display: none; }
@@ -142,7 +152,7 @@
     .oneNight {
       display: none; }
     .eventLink {
-      width: 100px;
+      /*width: 100px;*/
   	}
   }
 

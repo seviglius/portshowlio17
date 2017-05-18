@@ -6,8 +6,12 @@
 <div class='homePage'>
 <div class="sidebar">
 
-    <div class='Logo'>
-        <span class="icon-port-logo_black-nockout-ps-full"></span>
+    <div id='logoBig' class='Logo'>
+        <a href="/" class="logolink"><span class="icon-port-logo_black-nockout-ps-full"></span></a>
+    </div>
+    <div id='logoSmall' class='Logo'>
+        <a href="/" class="logolink"><span class="icon-logo_med">
+        </span></a>
     </div>
 
     <div class='hr'></div>

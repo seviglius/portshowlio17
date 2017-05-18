@@ -25,7 +25,7 @@
         {}
       ],
       "properties": {
-        "order": 28,
+        "order": 45,
         "id": 11,
         "name": "pinterest",
         "prevSize": 32,
@@ -56,7 +56,7 @@
       "properties": {
         "ligatures": "facebook, brand10",
         "name": "facebook",
-        "order": 17,
+        "order": 46,
         "id": 4,
         "prevSize": 32,
         "code": 59648
@@ -88,7 +88,7 @@
       "properties": {
         "ligatures": "instagram, brand12",
         "name": "instagram",
-        "order": 19,
+        "order": 47,
         "id": 5,
         "prevSize": 32,
         "code": 59649
@@ -119,7 +119,7 @@
       "properties": {
         "ligatures": "twitter, brand16",
         "name": "twitter",
-        "order": 20,
+        "order": 48,
         "id": 6,
         "prevSize": 32,
         "code": 59650
@@ -149,7 +149,7 @@
       "properties": {
         "ligatures": "youtube, brand21",
         "name": "youtube",
-        "order": 21,
+        "order": 49,
         "id": 7,
         "prevSize": 32,
         "code": 59657
@@ -179,7 +179,7 @@
       "properties": {
         "ligatures": "vimeo, brand24",
         "name": "vimeo",
-        "order": 22,
+        "order": 50,
         "id": 8,
         "prevSize": 32,
         "code": 59656
@@ -209,7 +209,7 @@
       "properties": {
         "ligatures": "tumblr, brand49",
         "name": "tumblr",
-        "order": 23,
+        "order": 51,
         "id": 9,
         "prevSize": 32,
         "code": 59655
@@ -241,7 +241,7 @@
       "properties": {
         "ligatures": "linkedin2, brand65",
         "name": "linkedin",
-        "order": 24,
+        "order": 52,
         "id": 10,
         "prevSize": 32,
         "code": 59653
@@ -274,7 +274,7 @@
         {}
       ],
       "properties": {
-        "order": 25,
+        "order": 53,
         "id": 3,
         "name": "arrow",
         "prevSize": 32,
@@ -329,7 +329,7 @@
         {}
       ],
       "properties": {
-        "order": 26,
+        "order": 54,
         "id": 2,
         "name": "port-logo_black-nockout-ps-full",
         "prevSize": 32,
@@ -342,23 +342,13 @@
     {
       "icon": {
         "paths": [
-          "M-2.427 0h1383.128l247.507 354.275v669.725h-1383.128l-247.507-354.275z",
-          "M1198.711 604.209v308.171h-75.223v-308.171h75.223z",
-          "M1273.934 667.299v-63.090h198.976l-63.090 308.171h-75.223l53.384-245.081h-114.047z"
+          "M1380.701 0h-1383.128v669.725l247.507 354.275h1383.128v-669.725l-247.507-354.275zM1198.711 912.379h-75.223v-308.171h75.223v308.171zM1409.82 912.379h-75.223l53.384-245.081h-114.047v-63.090h198.976l-63.090 308.171z"
         ],
         "attrs": [
-          {
-            "fill": "rgb(0, 0, 0)"
-          },
-          {
-            "fill": "rgb(255, 255, 255)"
-          },
-          {
-            "fill": "rgb(255, 255, 255)"
-          }
+          {}
         ],
         "width": 1626,
-        "isMulticolor": true,
+        "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
@@ -379,27 +369,14 @@
         }
       },
       "attrs": [
-        {
-          "fill": "rgb(0, 0, 0)"
-        },
-        {
-          "fill": "rgb(255, 255, 255)"
-        },
-        {
-          "fill": "rgb(255, 255, 255)"
-        }
+        {}
       ],
       "properties": {
-        "order": 27,
+        "order": 55,
         "id": 1,
         "name": "logo_med",
         "prevSize": 32,
-        "code": 954427,
-        "codes": [
-          954427,
-          954429,
-          954430
-        ]
+        "code": 954427
       },
       "setIdx": 0,
       "setId": 2,
@@ -430,7 +407,7 @@
         {}
       ],
       "properties": {
-        "order": 18,
+        "order": 44,
         "id": 0,
         "name": "logo_small",
         "prevSize": 32,
