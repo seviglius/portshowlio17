@@ -23,10 +23,10 @@
 
     <div class='hr'></div>
 
-    <span id='workLink' class='filterMain'>
+    <span id='studentLink' class='filterMain'>
         <?php the_field('student_link'); ?>
     </span>
-    <span id='studentLink' class='filterMain'>
+    <span id='workLink' class='filterMain'>
         <?php the_field('work_link'); ?>
     </span>
 
@@ -70,7 +70,7 @@
 
 </div>
 
-<div class="container mainArea">
+<div class="container mainArea workSection">
 
     <?php
         //remove_all_filters('posts_orderby');
@@ -125,6 +125,54 @@
 
 
 </div>
+
+
+<div class="container mainArea studentSection">
+	<?php
+        //remove_all_filters('posts_orderby');
+        $args = array(
+            'post_type' => array('design', 'photography'),
+            'posts_per_page' => 100,
+            'orderby'        => 'rand',
+        );
+        $query = new WP_Query($args);
+        $featuredimage = get_field_objects();
+    ?>
+
+
+    <?php if( $query->have_posts() ): ?>
+        <div class='row'>
+        <?php while ($query->have_posts()) : $query->the_post(); ?>
+                <div class="col-lg-4 col-md-12 scca-homepage-item">
+                    <a class='infoLink' href='<?php the_permalink() ?>'>
+						<div class='contentCenter'>
+                            <img class='<?php echo str_replace(' ', '-', strtolower(get_field('project_title_2x3'))); ?><?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>' src='<?php the_field('headshot')?>' />
+                            <span class='name'><?php the_title() ?></span>
+                            <span class='specalties'>
+								<?php $focus = get_field('focus');
+									if( $focus ): ?>
+									<?php $f = 0 ?>
+									<?php foreach( $focus as $focus ): ?>
+											<?php echo $focus; ?>
+											<?php if ($f++ == 2): ?>
+											<?php else: ?> |
+											<?php endif; ?>
+									<?php endforeach; ?>
+								<?php endif; ?>
+							</span>
+                    	</div>
+					</a>
+
+                </div><!--scca-homepage-item closes-->
+        <?php wp_reset_query(); ?>
+
+        <?php endwhile; ?>
+        </div>
+    <?php else : ?>
+        Hello
+    <?php endif; ?>
+</div>
+
 </div>
 
 <script>
@@ -144,7 +192,7 @@
 
             //DO MY STUFF HERE
 
-
+				//THE WORK HOVER
 
                 $(".<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>")
                 .hover(function() {
@@ -177,12 +225,55 @@
                 }
                 })
 
+				//THE STUDENT HOVER
+
+				$(".<?php echo str_replace(' ', '-', strtolower(get_field('project_title_2x3'))); ?><?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>")
+				.hover(function() {
+					console.log($(window).width(),$(window).height())
+					if( $(window).width() > 768 && $(window).height() > 650) {
+					$('.dates').clearQueue();
+					$('.sidebarTakeover').clearQueue();
+					$('.socialLinks').clearQueue();
+					$('.dates').css('display','none');
+					$('.socialLinks').css('display','none');
+
+					$('.dates').after("<div class='sidebarTakeover'><img class='<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>' src='<?php the_field('featured_image_4x3')?>' /><span class='name'><?php the_field('project_title_4x3') ?></span><span class='specalties'><?php the_field('project_type_4x3') ?></span></div>");
+					$('.sidebarTakeover').fadeIn();
+				}
+				},
+				function() {
+					if( $(window).width() > 768 && $(window).height() > 650) {
+					$('.dates').clearQueue();
+					$('.sidebarTakeover').clearQueue();
+					$('.socialLinks').clearQueue();
+					$('.sidebarTakeover').fadeOut();
+					$('.dates').next().remove();
+					$('.dates').fadeIn(500,function() {
+						$('.dates').css('opacity',1);
+					});
+					$('.socialLinks').fadeIn(500,function() {
+						$('.socialLinks').css('opacity',1);
+					});
+					$('.dates').css('display','flex');
+				}
+				})
 
         <?php wp_reset_query(); ?>
 
         <?php endwhile; ?>
     <?php else : ?>
     <?php endif; ?>
+
+	$('#studentLink').click(function() {
+		$('.workSection').css('display','none');
+		$('.studentSection').css('display','block');
+	})
+
+	$('#workLink').click(function() {
+		$('.workSection').css('display','block');
+		$('.studentSection').css('display','none');
+	})
+
 </script>
 
 <?php get_footer(); ?>
