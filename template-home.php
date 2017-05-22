@@ -173,6 +173,52 @@
     <?php endif; ?>
 </div>
 
+<div class="container mainArea eventSection">
+    <div class='row'>
+
+    </div>
+</div>
+
+<!-- FILTERING SECTION -->
+
+<div class='filterContainer'>
+
+	<?php
+        //remove_all_filters('posts_orderby');
+        $args = array(
+            'post_type' => array('design', 'photography'),
+            'posts_per_page' => 1,
+            'orderby'        => 'rand',
+        );
+        $query = new WP_Query($args);
+        $featuredimage = get_field_objects();
+    ?>
+
+    <?php if( $query->have_posts() ): ?>
+        <?php while ($query->have_posts()) : $query->the_post(); ?>
+
+			<?php $field = get_field_object('focus');
+			      $choices = $field['choices'];
+				  ?>
+
+			<?php foreach ($choices as $choice): ?>
+				<div class='filterChoiceCont'>
+					<span class='filterChoice <?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>Button'>
+						<?php echo $choice ?>
+					</span>
+				</div>
+			<?php endforeach; ?>
+
+        <?php wp_reset_query(); ?>
+
+        <?php endwhile; ?>
+    <?php else : ?>
+    <?php endif; ?>
+
+	<span class='filterButton'>FILTER</span>
+
+</div>
+
 </div>
 
 <script>
@@ -266,13 +312,63 @@
 
 	$('#studentLink').click(function() {
 		$('.workSection').css('display','none');
-		$('.studentSection').css('display','block');
+		$('.studentSection').css('display','flex');
+		$('.eventSection').css('display','none');
 	})
 
 	$('#workLink').click(function() {
-		$('.workSection').css('display','block');
+		$('.workSection').css('display','flex');
 		$('.studentSection').css('display','none');
+		$('.eventSection').css('display','none');
 	})
+
+	$('.eventLink').click(function() {
+		$('.workSection').css('display','none');
+		$('.studentSection').css('display','none');
+		$('.eventSection').css('display','flex');
+	})
+
+	$('.filterButton').click(function() {
+		$('.filterChoice').css('display','inline-block');
+	})
+
+	<?php
+        //remove_all_filters('posts_orderby');
+        $args = array(
+            'post_type' => array('design', 'photography'),
+            'posts_per_page' => 1,
+            'orderby'        => 'rand',
+        );
+        $query = new WP_Query($args);
+        $featuredimage = get_field_objects();
+    ?>
+
+    <?php if( $query->have_posts() ): ?>
+        <?php while ($query->have_posts()) : $query->the_post(); ?>
+
+			<?php $field = get_field_object('focus');
+			      $choices = $field['choices'];
+				  ?>
+
+			<?php foreach ($choices as $choice): ?>
+				$('.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>Button').click(function() {
+					if($(this).data('selected') === 1 ){
+						$(this).css('transform','none');
+						$(this).css('background-color','black');
+						$(this).data('selected', 0);
+					} else {
+						$(this).css('transform','rotateY(30deg) translateZ(10px)');
+						$(this).css('background-color','orange');
+						$(this).data('selected', 1);
+					}
+				})
+			<?php endforeach; ?>
+
+        <?php wp_reset_query(); ?>
+
+        <?php endwhile; ?>
+    <?php else : ?>
+    <?php endif; ?>
 
 </script>
 

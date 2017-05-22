@@ -1,0 +1,37 @@
+.eventSection {
+    display:none;
+}
+
+.studentSection {
+    display:none;
+}
+
+.filterContainer {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    .filterButton {
+        background-color: rgba(255,255,255,.7);
+        padding:15px;
+        font-size: 1.3em;
+        font-weight: bold;
+        position: fixed;
+        right:40px;
+        bottom: 20px;
+    }
+    .filterChoiceCont {
+        perspective: 300px;
+        display: inline-block;
+    }
+    .filterChoice {
+        transition: .5s transform;
+        transform-style: preserve-3d;
+        background-color: rgba(0,0,0,.9);
+        color:white;
+        padding:15px;
+        font-size: 1.3em;
+        font-weight: bold;
+        display: none;
+        margin: 5px;
+    }
+}
