@@ -141,3 +141,12 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+/*Google maps API*/
+function my_acf_init() {
+	
+	acf_update_setting('google_api_key', 'AIzaSyBmISmhav5F5sFCFpQF-1jM_MjkLpNxnoI');
+}
+
+add_action('acf/init', 'my_acf_init');
