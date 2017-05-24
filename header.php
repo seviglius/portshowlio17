@@ -15,6 +15,8 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="<?php bloginfo('template_url');?>/js/jquery-3.2.1.min.js"></script>
+<script src="<?php bloginfo('template_url');?>/js/isotope.pkgd.min.js"></script>
+<script src="<?php bloginfo('template_url');?>/js/cells-by-row.js"></script>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="stylesheet" href="<?php bloginfo('template_url');?>/fonts/icomoon/style.css">
 

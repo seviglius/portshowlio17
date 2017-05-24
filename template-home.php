@@ -86,22 +86,39 @@
 
     <?php if( $query->have_posts() ): ?>
         <?php $i = 0 ?>
-        <div class='row'>
+        <div class='row grid'>
         <?php while ($query->have_posts()) : $query->the_post(); ?>
-                <div class="col-lg-4 col-md-12 scca-homepage-item">
-                    <a class='infoLink' href='<?php the_permalink() ?>'><div class='contentCenter'>
-                        <?php if($i++ % 2): ?>
-                            <img class='<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>' src='<?php the_field('featured_image_2x3')?>' />
-                            <span class='name'><?php the_field('project_title_2x3') ?></span>
-                            <span class='specalties'><?php the_field('project_type_2x3') ?></span>
-                        <?php elseif ($i %3): ?>
-                            <img class='<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>' src='<?php the_field('featured_image_4x3')?>' />
-                            <span class='name'><?php the_field('project_title_4x3') ?></span>
-                            <span class='specalties'><?php the_field('project_type_4x3') ?></span>
+
+
+						<?php $i++ ?>
+                        <?php if($i % 2): ?>
+							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3')))) ?>  <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3'))))?>
+							<?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4')))) ?> " >
+								<a class='infoLink' href='<?php the_permalink() ?>'><div class='contentCenter'>
+		                            <img class='<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Project' src='<?php the_field('featured_image_2x3')?>' />
+		                            <span class='name'><?php the_field('project_title_2x3') ?></span>
+		                            <span class='specalties'><?php the_field('project_type_2x3') ?></span>
+								</div> </a>
+							</div>
+						<?php elseif ($i %3): ?>
+							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3')))) ?> <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3'))))?>
+							<?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4')))) ?> ">
+								<a class='infoLink' href='<?php the_permalink() ?>'><div class='contentCenter'>
+									<?php $i=0 ?>
+		                            <img class='<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Project' src='<?php the_field('featured_image_4x3')?>' />
+		                            <span class='name'><?php the_field('project_title_4x3') ?></span>
+		                            <span class='specalties'><?php the_field('project_type_4x3') ?></span>
+								</div> </a>
+							</div>
                         <?php else : ?>
-                            <img class='<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>' src='<?php the_field('featured_image_3x4')?>' />
-                            <span class='name'><?php the_field('project_title_3x4') ?></span>
-                            <span class='specalties'><?php the_field('project_type_3x4') ?></span>
+							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3'))))?>  <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3'))))?>
+							 <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4')))) ?>">
+								<a class='infoLink' href='<?php the_permalink() ?>'><div class='contentCenter'>
+		                            <img class=' <?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Project' src='<?php the_field('featured_image_3x4')?>' />
+		                            <span class='name'><?php the_field('project_title_3x4') ?></span>
+		                            <span class='specalties'><?php the_field('project_type_3x4') ?></span>
+								</div> </a>
+							</div>
                         <?php endif; ?>
 
 
@@ -111,9 +128,9 @@
                            <h5><?php the_field('featured_project_name'); ?></h5>
                        </div--><!--scca-caption closes-->
                         <!--p class="scca-labels"><?php the_field('featured_project_type'); ?></p-->
-                    </div> </a>
 
-                </div><!--scca-homepage-item closes-->
+
+                <!--scca-homepage-item closes-->
         <?php wp_reset_query(); ?>
 
         <?php endwhile; ?>
@@ -141,12 +158,19 @@
 
 
     <?php if( $query->have_posts() ): ?>
-        <div class='row'>
+        <div class='row grid'>
         <?php while ($query->have_posts()) : $query->the_post(); ?>
-                <div class="col-lg-4 col-md-12 scca-homepage-item">
+                <div class="col-lg-4 col-md-12 scca-homepage-item project
+				<?php $focus = get_field('focus');
+					if( $focus ): ?>
+					<?php foreach( $focus as $focus ): ?>
+							<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($focus))); ?>
+					<?php endforeach; ?>
+				<?php endif; ?>
+				">
                     <a class='infoLink' href='<?php the_permalink() ?>'>
 						<div class='contentCenter'>
-                            <img class='<?php echo str_replace(' ', '-', strtolower(get_field('project_title_2x3'))); ?><?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>' src='<?php the_field('headshot')?>' />
+                            <img class='<?php echo str_replace(' ', '-', strtolower(get_field('project_title_2x3'))); ?><?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Person' src='<?php the_field('headshot')?>' />
                             <span class='name'><?php the_title() ?></span>
                             <span class='specalties'>
 								<?php $focus = get_field('focus');
@@ -184,6 +208,7 @@
         <p class="address"><?php the_field('address_line2'); ?></p>
 
         <?php if( have_rows('locations') ): ?>
+			<span class='clickDetect'>
             <div class="acf-map">
                 <?php while ( have_rows('locations') ) : the_row();
 
@@ -197,6 +222,7 @@
                     </div>
             <?php endwhile; ?>
             </div>
+		</span>
         <?php endif; ?>
 
         <span class="eventDescription"><?php the_field('directions'); ?></span>
@@ -222,10 +248,13 @@
 
 <div class='filterContainer'>
 
+
+
+	<span class='photoButtonFilters'>
 	<?php
         //remove_all_filters('posts_orderby');
         $args = array(
-            'post_type' => array('design', 'photography'),
+            'post_type' => array('design'),
             'posts_per_page' => 1,
             'orderby'        => 'rand',
         );
@@ -253,6 +282,55 @@
         <?php endwhile; ?>
     <?php else : ?>
     <?php endif; ?>
+</span>
+
+
+	<span class='designButtonFilters'>
+	<?php
+        //remove_all_filters('posts_orderby');
+        $argsPhoto = array(
+            'post_type' => array('photography'),
+            'posts_per_page' => 1,
+            'orderby'        => 'rand',
+        );
+        $queryphoto = new WP_Query($argsPhoto);
+        $featuredimage = get_field_objects();
+    ?>
+
+    <?php if( $queryphoto->have_posts() ): ?>
+        <?php while ($queryphoto->have_posts()) : $queryphoto->the_post(); ?>
+
+			<?php $field = get_field_object('focus');
+			      $choices = $field['choices'];
+				  ?>
+
+			<?php foreach ($choices as $choice): ?>
+				<div class='filterChoiceCont'>
+					<span class='filterChoice <?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>Button'>
+						<?php echo $choice ?>
+					</span>
+				</div>
+			<?php endforeach; ?>
+
+        <?php wp_reset_query(); ?>
+
+        <?php endwhile; ?>
+    <?php else : ?>
+    <?php endif; ?>
+</span>
+
+<div class='filterChoiceCont'>
+	<span class='filterChoiceMain designButton'>
+		Design
+	</span>
+</div>
+
+<div class='filterChoiceCont'>
+	<span class='filterChoiceMain photoButton'>
+		Photography
+	</span>
+</div>
+
 
 	<span class='filterButton'>FILTER</span>
 
@@ -261,6 +339,14 @@
 </div>
 
 <script>
+
+	var $grid = $('.grid').isotope({
+	  // options
+	  itemSelector: '.project',
+	  layoutMode: 'fitRows',
+	  transitionDuration: 300
+	});
+
     <?php
         //remove_all_filters('posts_orderby');
         $args = array(
@@ -279,7 +365,7 @@
 
 				//THE WORK HOVER
 
-                $(".<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>")
+                $(".<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Project")
                 .hover(function() {
                     console.log($(window).width(),$(window).height())
                     if( $(window).width() > 768 && $(window).height() > 650) {
@@ -312,7 +398,7 @@
 
 				//THE STUDENT HOVER
 
-				$(".<?php echo str_replace(' ', '-', strtolower(get_field('project_title_2x3'))); ?><?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>")
+				$(".<?php echo str_replace(' ', '-', strtolower(get_field('project_title_2x3'))); ?><?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Person")
 				.hover(function() {
 					console.log($(window).width(),$(window).height())
 					if( $(window).width() > 768 && $(window).height() > 650) {
@@ -353,23 +439,43 @@
 		$('.workSection').css('display','none');
 		$('.studentSection').css('display','flex');
 		$('.eventSection').css('display','none');
+
+		$('.sidebar').removeClass('sidebarBlackout');
+		$('body').css('background','white');
+
+		var $filtersJoin = $filters.join(', ');
+		$grid.isotope({ filter: $filtersJoin });
 	})
 
 	$('#workLink').click(function() {
 		$('.workSection').css('display','flex');
 		$('.studentSection').css('display','none');
 		$('.eventSection').css('display','none');
+
+		$('.sidebar').removeClass('sidebarBlackout');
+		$('body').css('background','white');
+
+		var $filtersJoin = $filters.join(', ');
+		$grid.isotope({ filter: $filtersJoin });
 	})
 
 
 	$('.filterButton').click(function() {
-		$('.filterChoice').css('display','inline-block');
+		$('.filterChoiceMain').css('display','inline-block');
+	})
+
+	$('.photoButton').click(function() {
+		$('.photoButtonFilters').css('display',"inline-block");
+	})
+
+	$('.designButton').click(function() {
+		$('.designButtonFilters').css('display',"inline-block");
 	})
 
 	<?php
         //remove_all_filters('posts_orderby');
         $args = array(
-            'post_type' => array('design', 'photography'),
+            'post_type' => array('design'),
             'posts_per_page' => 1,
             'orderby'        => 'rand',
         );
@@ -377,6 +483,7 @@
         $featuredimage = get_field_objects();
     ?>
 
+	 var $filters = []
     <?php if( $query->have_posts() ): ?>
         <?php while ($query->have_posts()) : $query->the_post(); ?>
 
@@ -387,10 +494,20 @@
 			<?php foreach ($choices as $choice): ?>
 				$('.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>Button').click(function() {
 					if($(this).data('selected') === 1 ){
+						var index = $filters.indexOf('.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>');
+						if (index > -1) {
+						    $filters.splice(index, 1);
+						}
+						var $filtersJoin = $filters.join(', ');
+					    $grid.isotope({ filter: $filtersJoin });
 						$(this).css('transform','none');
 						$(this).css('background-color','black');
 						$(this).data('selected', 0);
 					} else {
+						$filters.push( '.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>' );
+						console.log('asdf')
+						var $filtersJoin = $filters.join(', ');
+					    $grid.isotope({ filter: $filtersJoin });
 						$(this).css('transform','rotateY(30deg) translateZ(10px)');
 						$(this).css('background-color','orange');
 						$(this).data('selected', 1);
@@ -403,6 +520,59 @@
         <?php endwhile; ?>
     <?php else : ?>
     <?php endif; ?>
+
+	<?php
+        //remove_all_filters('posts_orderby');
+        $argsphoto = array(
+            'post_type' => array('photography'),
+            'posts_per_page' => 1,
+            'orderby'        => 'rand',
+        );
+        $queryphoto = new WP_Query($argsphoto);
+        $featuredimage = get_field_objects();
+    ?>
+
+	 var $filters = []
+    <?php if( $queryphoto->have_posts() ): ?>
+        <?php while ($queryphoto->have_posts()) : $queryphoto->the_post(); ?>
+
+			<?php $field = get_field_object('focus');
+			      $choices = $field['choices'];
+				  ?>
+
+			<?php foreach ($choices as $choice): ?>
+				$('.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>Button').click(function() {
+					if($(this).data('selected') === 1 ){
+						var index = $filters.indexOf('.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>');
+						if (index > -1) {
+						    $filters.splice(index, 1);
+						}
+						var $filtersJoin = $filters.join(', ');
+					    $grid.isotope({ filter: $filtersJoin });
+						$(this).css('transform','none');
+						$(this).css('background-color','black');
+						$(this).data('selected', 0);
+					} else {
+						$filters.push( '.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>' );
+						console.log('asdf')
+						var $filtersJoin = $filters.join(', ');
+					    $grid.isotope({ filter: $filtersJoin });
+						$(this).css('transform','rotateY(30deg) translateZ(10px)');
+						$(this).css('background-color','orange');
+						$(this).data('selected', 1);
+					}
+				})
+			<?php endforeach; ?>
+
+        <?php wp_reset_query(); ?>
+
+        <?php endwhile; ?>
+    <?php else : ?>
+    <?php endif; ?>
+
+	//isotope
+
+
 
 </script>
 
@@ -772,11 +942,19 @@
 
             });
 
+			$('.clickDetect').click(function(){
+					$('.acf-map').css('pointer-events','auto');})
+			.mouseleave(function(){
+						$('.acf-map').css('pointer-events','none');});
+
 			$('.eventLink').click(function() {
 				$('.workSection').css('display','none');
 				$('.studentSection').css('display','none');
 				$('.eventSection').css('display','flex');
 				google.maps.event.trigger(map, 'resize');
+
+				$('.sidebar').addClass('sidebarBlackout');
+				$('body').css('background','black');
 			})
 
 
