@@ -185,7 +185,7 @@
 
         <?php if( have_rows('locations') ): ?>
             <div class="acf-map">
-                <?php while ( have_rows('locations') ) : the_row(); 
+                <?php while ( have_rows('locations') ) : the_row();
 
                     $location = get_sub_field('location');
 
@@ -203,7 +203,7 @@
         <p class="eventMap"><?php the_field('event_map'); ?></p>
         <p><?php the_field('floor'); ?></p>
 
-        <?php 
+        <?php
 
             $image = get_field('floor_map');
 
@@ -213,7 +213,7 @@
 
         <?php endif; ?>
 
-        
+
 
     </div>
 </div>
@@ -361,11 +361,6 @@
 		$('.eventSection').css('display','none');
 	})
 
-	$('.eventLink').click(function() {
-		$('.workSection').css('display','none');
-		$('.studentSection').css('display','none');
-		$('.eventSection').css('display','flex');
-	})
 
 	$('.filterButton').click(function() {
 		$('.filterChoice').css('display','inline-block');
@@ -433,18 +428,18 @@
             */
 
             function new_map( $el ) {
-                
+
                 // var
                 var $markers = $el.find('.marker');
-            
-
-            /*Disables Scroll Wheel*/    
-            
 
 
+            /*Disables Scroll Wheel*/
 
-            
-            /*Google Maps Styling*/    
+
+
+
+
+            /*Google Maps Styling*/
             var styles = [
                     {
                         "featureType": "all",
@@ -635,31 +630,32 @@
                     mapTypeId   : google.maps.MapTypeId.ROADMAP,
                     styles :  styles
                 };
-                
-                
-                // create map               
+
+
+                // create map
                 var map = new google.maps.Map( $el[0], args);
-                
-                
+
+
+
                 // add a markers reference
                 map.markers = [];
-                
-                
+
+
                 // add markers
                 $markers.each(function(){
-                    
+
                     add_marker( $(this), map );
-                    
+
                 });
-                
-                
+
+
                 // center map
                 center_map( map );
-                
-                
+
+
                 // return
                 return map;
-                
+
             }
 
             /*
@@ -775,6 +771,14 @@
                 });
 
             });
+
+			$('.eventLink').click(function() {
+				$('.workSection').css('display','none');
+				$('.studentSection').css('display','none');
+				$('.eventSection').css('display','flex');
+				google.maps.event.trigger(map, 'resize');
+			})
+
 
             })(jQuery);
             </script>
