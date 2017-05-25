@@ -92,29 +92,29 @@
 
 						<?php $i++ ?>
                         <?php if($i % 2): ?>
-							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3')))) ?>  <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3'))))?>
-							<?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4')))) ?> " >
+							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3'))))) ?>  <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3')))))?>
+							<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4'))))) ?> " >
 								<a class='infoLink' href='<?php the_permalink() ?>'><div class='contentCenter'>
-		                            <img class='<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Project' src='<?php the_field('featured_image_2x3')?>' />
+		                            <img class='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Project' src='<?php the_field('featured_image_2x3')?>' />
 		                            <span class='name'><?php the_field('project_title_2x3') ?></span>
 		                            <span class='specalties'><?php the_field('project_type_2x3') ?></span>
 								</div> </a>
 							</div>
 						<?php elseif ($i %3): ?>
-							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3')))) ?> <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3'))))?>
-							<?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4')))) ?> ">
+							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3'))))) ?> <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3')))))?>
+							<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4'))))) ?> ">
 								<a class='infoLink' href='<?php the_permalink() ?>'><div class='contentCenter'>
 									<?php $i=0 ?>
-		                            <img class='<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Project' src='<?php the_field('featured_image_4x3')?>' />
+		                            <img class='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Project' src='<?php the_field('featured_image_4x3')?>' />
 		                            <span class='name'><?php the_field('project_title_4x3') ?></span>
 		                            <span class='specalties'><?php the_field('project_type_4x3') ?></span>
 								</div> </a>
 							</div>
                         <?php else : ?>
-							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3'))))?>  <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3'))))?>
-							 <?php echo str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4')))) ?>">
+							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3')))))?>  <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3')))))?>
+							 <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4'))))) ?>">
 								<a class='infoLink' href='<?php the_permalink() ?>'><div class='contentCenter'>
-		                            <img class=' <?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Project' src='<?php the_field('featured_image_3x4')?>' />
+		                            <img class=' <?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Project' src='<?php the_field('featured_image_3x4')?>' />
 		                            <span class='name'><?php the_field('project_title_3x4') ?></span>
 		                            <span class='specalties'><?php the_field('project_type_3x4') ?></span>
 								</div> </a>
@@ -164,13 +164,13 @@
 				<?php $focus = get_field('focus');
 					if( $focus ): ?>
 					<?php foreach( $focus as $focus ): ?>
-							<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($focus))); ?>
+							<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($focus)))); ?>
 					<?php endforeach; ?>
 				<?php endif; ?>
 				">
                     <a class='infoLink' href='<?php the_permalink() ?>'>
 						<div class='contentCenter'>
-                            <img class='<?php echo str_replace(' ', '-', strtolower(get_field('project_title_2x3'))); ?><?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Person' src='<?php the_field('headshot')?>' />
+                            <img class='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_field('project_title_2x3')))); ?><?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Person' src='<?php the_field('headshot')?>' />
                             <span class='name'><?php the_title() ?></span>
                             <span class='specalties'>
 								<?php $focus = get_field('focus');
@@ -271,7 +271,7 @@
 
 			<?php foreach ($choices as $choice): ?>
 				<div class='filterChoiceCont'>
-					<span class='filterChoice <?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>Button'>
+					<span class='filterChoice <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>Button'>
 						<?php echo $choice ?>
 					</span>
 				</div>
@@ -306,7 +306,7 @@
 
 			<?php foreach ($choices as $choice): ?>
 				<div class='filterChoiceCont'>
-					<span class='filterChoice <?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>Button'>
+					<span class='filterChoice <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>Button'>
 						<?php echo $choice ?>
 					</span>
 				</div>
@@ -365,7 +365,7 @@
 
 				//THE WORK HOVER
 
-                $(".<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Project")
+                $(".<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Project")
                 .hover(function() {
                     console.log($(window).width(),$(window).height())
                     if( $(window).width() > 768 && $(window).height() > 650) {
@@ -398,7 +398,7 @@
 
 				//THE STUDENT HOVER
 
-				$(".<?php echo str_replace(' ', '-', strtolower(get_field('project_title_2x3'))); ?><?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>Person")
+				$(".<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_field('project_title_2x3')))); ?><?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Person")
 				.hover(function() {
 					console.log($(window).width(),$(window).height())
 					if( $(window).width() > 768 && $(window).height() > 650) {
@@ -408,7 +408,7 @@
 					$('.dates').css('display','none');
 					$('.socialLinks').css('display','none');
 
-					$('.dates').after("<div class='sidebarTakeover'><img class='<?php echo str_replace(' ', '-', strtolower(get_the_title())); ?>' src='<?php the_field('featured_image_4x3')?>' /><span class='name'><?php the_field('project_title_4x3') ?></span><span class='specalties'><?php the_field('project_type_4x3') ?></span></div>");
+					$('.dates').after("<div class='sidebarTakeover'><img class='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>' src='<?php the_field('featured_image_4x3')?>' /><span class='name'><?php the_field('project_title_4x3') ?></span><span class='specalties'><?php the_field('project_type_4x3') ?></span></div>");
 					$('.sidebarTakeover').fadeIn();
 				}
 				},
@@ -461,15 +461,29 @@
 
 
 	$('.filterButton').click(function() {
-		$('.filterChoiceMain').css('display','inline-block');
+		if($('.filterChoiceMain').css('display') === 'inline-block') {
+			$('.filterChoiceMain').css('display','none');
+		} else {
+				$('.filterChoiceMain').css('display','inline-block');
+		}
+
+
 	})
 
 	$('.photoButton').click(function() {
-		$('.photoButtonFilters').css('display',"inline-block");
+		if($('.photoButtonFilters').css('display') === 'inline-block') {
+			$('.photoButtonFilters').css('display','none');
+		} else {
+				$('.photoButtonFilters').css('display','inline-block');
+		}
 	})
 
 	$('.designButton').click(function() {
-		$('.designButtonFilters').css('display',"inline-block");
+		if($('.designButtonFilters').css('display') === 'inline-block') {
+			$('.designButtonFilters').css('display','none');
+		} else {
+				$('.designButtonFilters').css('display','inline-block');
+		}
 	})
 
 	<?php
@@ -492,9 +506,9 @@
 				  ?>
 
 			<?php foreach ($choices as $choice): ?>
-				$('.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>Button').click(function() {
+				$('.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>Button').click(function() {
 					if($(this).data('selected') === 1 ){
-						var index = $filters.indexOf('.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>');
+						var index = $filters.indexOf('.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>');
 						if (index > -1) {
 						    $filters.splice(index, 1);
 						}
@@ -504,7 +518,7 @@
 						$(this).css('background-color','black');
 						$(this).data('selected', 0);
 					} else {
-						$filters.push( '.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>' );
+						$filters.push( '.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>' );
 						console.log('asdf')
 						var $filtersJoin = $filters.join(', ');
 					    $grid.isotope({ filter: $filtersJoin });
@@ -521,7 +535,7 @@
     <?php else : ?>
     <?php endif; ?>
 
-	<?php
+	/*<?php
         //remove_all_filters('posts_orderby');
         $argsphoto = array(
             'post_type' => array('photography'),
@@ -541,9 +555,9 @@
 				  ?>
 
 			<?php foreach ($choices as $choice): ?>
-				$('.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>Button').click(function() {
+				$('.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>Button').click(function() {
 					if($(this).data('selected') === 1 ){
-						var index = $filters.indexOf('.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>');
+						var index = $filters.indexOf('.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>');
 						if (index > -1) {
 						    $filters.splice(index, 1);
 						}
@@ -553,7 +567,7 @@
 						$(this).css('background-color','black');
 						$(this).data('selected', 0);
 					} else {
-						$filters.push( '.<?php echo str_replace('/','_', str_replace(' ', '-', strtolower($choice))); ?>' );
+						$filters.push( '.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>' );
 						console.log('asdf')
 						var $filtersJoin = $filters.join(', ');
 					    $grid.isotope({ filter: $filtersJoin });
@@ -568,7 +582,7 @@
 
         <?php endwhile; ?>
     <?php else : ?>
-    <?php endif; ?>
+    <?php endif; ?>*/
 
 	//isotope
 
