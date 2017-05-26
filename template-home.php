@@ -200,6 +200,8 @@
 <div class="container mainArea eventSection">
     <div class='row aboutPage'>
 
+        <span class='closePage'><span class='icon-x'></span></span>
+
         <p class="eventTitle"><?php the_field('scca'); ?></p>
         <p><?php the_field('presents'); ?></p>
         <p class="graduating"><?php the_field('graduating'); ?></p>
@@ -225,7 +227,8 @@
 		</span>
         <?php endif; ?>
 
-        <span class="eventDescription"><?php the_field('directions'); ?></span>
+        <span class="directions"><?php the_field('directions'); ?></span>
+        <p class="getDirections">Get Directions</p>
         <p class="eventMap"><?php the_field('event_map'); ?></p>
         <p><?php the_field('floor'); ?></p>
 
@@ -238,6 +241,18 @@
                 <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
 
         <?php endif; ?>
+
+        <div class="container">
+            <div class="col-md-4 floorArea">
+                <div class="yellowBox"></div><p>Student Work</p>
+            </div>
+            <div class="col-md-4 floorArea">
+                <div class="blueBox"></div><p>Gallery</p>  
+            </div>
+            <div class="col-md-4 floorArea">
+                <div class="orangeBox" ></div><p>Video / AR / VR</p>
+            </div>
+        </div>
 
 
 
@@ -617,11 +632,6 @@
                 var $markers = $el.find('.marker');
 
 
-            /*Disables Scroll Wheel*/
-
-
-
-
 
             /*Google Maps Styling*/
             var styles = [
@@ -809,7 +819,7 @@
 
                 // vars
                 var args = {
-                    zoom        : 16,
+                    zoom        : 14,
                     center      : new google.maps.LatLng(0, 0),
                     mapTypeId   : google.maps.MapTypeId.ROADMAP,
                     styles :  styles
@@ -920,7 +930,7 @@
                 {
                     // set center of map
                     map.setCenter( bounds.getCenter() );
-                    map.setZoom( 16 );
+                    map.setZoom( 14 );
                 }
                 else
                 {

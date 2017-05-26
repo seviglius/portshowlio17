@@ -52,6 +52,7 @@ body{
     display:block;
     color: white;
     background-color: black;
+    width: 100%;
 }
 
 .eventTitle{
@@ -63,13 +64,14 @@ body{
 .graduating{
     font-size: 6em;
     font-weight: bold;
-    margin-bottom: .5em;
+    margin-bottom: .2em;
     line-height: 1em;
     max-width: 775px;
   }
 
 .eventDescription p{
     max-width: 600px;
+    margin-bottom:6em;
   }
 
 .address{
@@ -79,11 +81,12 @@ body{
 }
 
 .acf-map {
-    pointer-events: none;
+  pointer-events: none;
   width: 100%;
   height: 400px;
   border: none;
   margin: 20px 0;
+  position:relative;
 }
 
 .acf-map img {
@@ -94,7 +97,84 @@ body{
   font-size: 1.5em;
     font-weight: bold;
     margin-bottom:0;
+    clear:both;
+    max-width:100%;
 }
+
+.directions p{
+  max-width: 600px;
+  float:left;
+  margin-right: 30px;
+}
+
+.getDirections{
+  border:thin white solid;
+  padding:15px;
+  font-weight:700;
+  font-size:1em;
+  text-align: center;
+  margin-bottom:6em;
+}
+
+.getDirections{
+  border:thin white solid;
+  padding: .7em;
+  font-weight:700;
+  font-size:1em;
+  text-align: center;
+  -webkit-transition-timing-function: ease;
+   -webkit-transition: .5s; /* Safari */
+   transition: .5s;
+  width: 11em;
+  height: auto;
+  display: inline-block;
+   
+}
+
+.getDirections:hover{
+  color:black;
+  background-color:white;
+}
+
+.closePage{
+  position: fixed;
+  font-size:5em;
+  color:white;
+  right: 50px;
+  top: 30px;
+}
+
+.floorArea{
+  display:inline-block;
+  float:left;
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.blueBox{
+    height: 1.5em;
+    width: 1.5em;
+    background-color: blue;
+    float: left;
+    margin-right: 10px;
+}
+
+.orangeBox{
+    height: 1.5em;
+    width: 1.5em;
+    background-color: orange;
+    float: left;
+    margin-right: 10px;
+}
+
+.yellowBox{
+    height: 1.5em;
+    width: 1.5em;
+    background-color: yellow;
+    float: left;
+    margin-right: 10px;
+}
+
 
 
 
@@ -109,6 +189,8 @@ body{
   .studentPage {
     display: flex;
     flex-flow: column; } }
+
+  
 
     @media screen and (max-height: 650px) {
     .projectSelector {
@@ -270,6 +352,11 @@ a.graylink:hover{
     #logoSmall {
         display:block;
     }
+
+  .closePage{
+      display:none;
+    }
+
   .studentSidebar {
       flex-grow: 2;
       cursor: pointer;
