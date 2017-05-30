@@ -10,15 +10,14 @@
 .filterContainer {
     position: fixed;
     bottom: 20px;
-    right: 40px;
+    right: 0;
     .filterButton {
         background-color: rgba(255,255,255,.7);
         padding:15px;
         font-size: 1.3em;
         font-weight: bold;
-        position: fixed;
-        right:40px;
-        bottom: 20px;
+        margin: 5px;
+        display: inline-block;
     }
     .filterChoiceMain{
         transition: .5s transform;
@@ -47,9 +46,22 @@
         margin: 5px;
     }
     .photoButtonFilters {
+        background-color: rgba(255,255,255,.9);
         display:none;
+        position: relative;
+            padding: 15px;
+        bottom: 65px;
     }
     .designButtonFilters {
+        background-color: rgba(255,255,255,.9);
+            padding: 15px;
         display:none;
+        position: relative;
+        bottom: 65px;
+    }
+    .mainFilters {
+        position: fixed;
+        right:40px;
+        bottom: 20px;
     }
 }

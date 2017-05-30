@@ -9,6 +9,10 @@
 				return array($first_name, $last_name);
 } ?>
 
+<?php  function removeBadStuff($object) {
+				return str_replace(",", "",str_replace(".", "",str_replace(":", "",str_replace("&", "",str_replace("+", "",str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($object)))))))));
+} ?>
+
 <?php get_header(); ?>
 <div class='homePage'>
 <div class="sidebar">
@@ -92,45 +96,32 @@
 
 						<?php $i++ ?>
                         <?php if($i % 2): ?>
-							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3'))))) ?>  <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3')))))?>
-							<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4'))))) ?> " >
+							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php  echo get_post_type() ?> <?php echo removeBadStuff(get_field('project_type_2x3')) ?>" >
 								<a class='infoLink' href='<?php the_permalink() ?>'><div class='contentCenter'>
-		                            <img class='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Project' src='<?php the_field('featured_image_2x3')?>' />
+		                            <img class='<?php echo removeBadStuff(get_the_title()); ?>Project' src='<?php the_field('featured_image_2x3')?>' />
 		                            <span class='name'><?php the_field('project_title_2x3') ?></span>
 		                            <span class='specalties'><?php the_field('project_type_2x3') ?></span>
 								</div> </a>
 							</div>
 						<?php elseif ($i %3): ?>
-							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3'))))) ?> <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3')))))?>
-							<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4'))))) ?> ">
+							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo get_post_type() ?> <?php echo removeBadStuff(get_field('project_type_4x3')) ?>">
 								<a class='infoLink' href='<?php the_permalink() ?>'><div class='contentCenter'>
 									<?php $i=0 ?>
-		                            <img class='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Project' src='<?php the_field('featured_image_4x3')?>' />
+		                            <img class='<?php echo removeBadStuff(get_the_title()); ?>Project' src='<?php the_field('featured_image_4x3')?>' />
 		                            <span class='name'><?php the_field('project_title_4x3') ?></span>
 		                            <span class='specalties'><?php the_field('project_type_4x3') ?></span>
 								</div> </a>
 							</div>
                         <?php else : ?>
-							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_2x3')))))?>  <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_4x3')))))?>
-							 <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower(get_field('project_type_3x4'))))) ?>">
+							<div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo get_post_type() ?> <?php echo removeBadStuff(get_field('project_type_3x4'))?>">
 								<a class='infoLink' href='<?php the_permalink() ?>'><div class='contentCenter'>
-		                            <img class=' <?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Project' src='<?php the_field('featured_image_3x4')?>' />
+		                            <img class=' <?php echo removeBadStuff(get_the_title()); ?>Project' src='<?php the_field('featured_image_3x4')?>' />
 		                            <span class='name'><?php the_field('project_title_3x4') ?></span>
 		                            <span class='specalties'><?php the_field('project_type_3x4') ?></span>
 								</div> </a>
 							</div>
                         <?php endif; ?>
 
-
-                        <!--a href="<?php the_permalink(); ?>"><img src="<?php the_field('featured_project_image'); ?>"></a>
-
-                        <div class="scca-caption">
-                           <h5><?php the_field('featured_project_name'); ?></h5>
-                       </div--><!--scca-caption closes-->
-                        <!--p class="scca-labels"><?php the_field('featured_project_type'); ?></p-->
-
-
-                <!--scca-homepage-item closes-->
         <?php wp_reset_query(); ?>
 
         <?php endwhile; ?>
@@ -160,17 +151,17 @@
     <?php if( $query->have_posts() ): ?>
         <div class='row grid'>
         <?php while ($query->have_posts()) : $query->the_post(); ?>
-                <div class="col-lg-4 col-md-12 scca-homepage-item project
+                <div class="col-lg-4 col-md-12 scca-homepage-item project <?php echo get_post_type() ?>
 				<?php $focus = get_field('focus');
 					if( $focus ): ?>
 					<?php foreach( $focus as $focus ): ?>
-							<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($focus)))); ?>
+							<?php echo removeBadStuff($focus); ?>
 					<?php endforeach; ?>
 				<?php endif; ?>
 				">
                     <a class='infoLink' href='<?php the_permalink() ?>'>
 						<div class='contentCenter'>
-                            <img class='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_field('project_title_2x3')))); ?><?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Person' src='<?php the_field('headshot')?>' />
+                            <img class='<?php echo removeBadStuff(get_field('project_title_2x3')); ?><?php echo removeBadStuff(get_the_title()); ?>Person' src='<?php the_field('headshot')?>' />
                             <span class='name'><?php the_title() ?></span>
                             <span class='specalties'>
 								<?php $focus = get_field('focus');
@@ -247,7 +238,7 @@
                 <div class="yellowBox"></div><p>Student Work</p>
             </div>
             <div class="col-md-4 floorArea">
-                <div class="blueBox"></div><p>Gallery</p>  
+                <div class="blueBox"></div><p>Gallery</p>
             </div>
             <div class="col-md-4 floorArea">
                 <div class="orangeBox" ></div><p>Video / AR / VR</p>
@@ -265,11 +256,11 @@
 
 
 
-	<span class='photoButtonFilters'>
+	<span class='designButtonFilters'>
 	<?php
         //remove_all_filters('posts_orderby');
         $args = array(
-            'post_type' => array('design'),
+            'post_type' => 'design',
             'posts_per_page' => 1,
             'orderby'        => 'rand',
         );
@@ -286,7 +277,7 @@
 
 			<?php foreach ($choices as $choice): ?>
 				<div class='filterChoiceCont'>
-					<span class='filterChoice <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>Button'>
+					<span class='filterChoice <?php echo removeBadStuff($choice); ?>Button'>
 						<?php echo $choice ?>
 					</span>
 				</div>
@@ -300,11 +291,11 @@
 </span>
 
 
-	<span class='designButtonFilters'>
+	<span class='photoButtonFilters'>
 	<?php
         //remove_all_filters('posts_orderby');
         $argsPhoto = array(
-            'post_type' => array('photography'),
+            'post_type' => 'photography',
             'posts_per_page' => 1,
             'orderby'        => 'rand',
         );
@@ -321,7 +312,7 @@
 
 			<?php foreach ($choices as $choice): ?>
 				<div class='filterChoiceCont'>
-					<span class='filterChoice <?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>Button'>
+					<span class='filterChoice <?php echo removeBadStuff($choice); ?>Button'>
 						<?php echo $choice ?>
 					</span>
 				</div>
@@ -334,20 +325,23 @@
     <?php endif; ?>
 </span>
 
-<div class='filterChoiceCont'>
-	<span class='filterChoiceMain designButton'>
-		Design
-	</span>
-</div>
+<div class='mainFilters'>
+	<div class='filterChoiceCont'>
+		<span class='filterChoiceMain designButton'>
+			Design
+		</span>
+	</div>
 
-<div class='filterChoiceCont'>
-	<span class='filterChoiceMain photoButton'>
-		Photography
-	</span>
-</div>
-
-
+	<div class='filterChoiceCont'>
+		<span class='filterChoiceMain photoButton'>
+			Photography
+		</span>
+	</div>
 	<span class='filterButton'>FILTER</span>
+</div>
+
+
+
 
 </div>
 
@@ -355,11 +349,46 @@
 
 <script>
 
+	$('.filterButton').css('opacity','.2');
+
+	$(window).on("load", function() {
+		$('.filterButton').css('opacity','1');
+		$('.filterButton').click(function() {
+			if($('.filterChoiceMain').css('display') === 'inline-block') {
+				$('.filterChoiceMain').css('display','none');
+
+				$('.designButtonFilters').css('display','none');
+
+
+				$('.photoButtonFilters').css('display','none');
+
+			} else {
+					$('.filterChoiceMain').css('display','inline-block');
+			}
+
+
+		})
+	});
+
+	var $filters = []
+
 	var $grid = $('.grid').isotope({
 	  // options
 	  itemSelector: '.project',
-	  layoutMode: 'fitRows',
-	  transitionDuration: 300
+	  transitionDuration: 0,
+	  layoutMode: 'cellsByRow'
+	  /*hiddenStyle: {
+		  display: 'none',
+		  position: 'initial',
+		  left:'auto',
+		  right:'auto'
+	  },
+	  visibleStyle: {
+		  display: 'flex',
+		  position: 'initial',
+		  left:'auto',
+		  right:'auto'
+	  }*/
 	});
 
     <?php
@@ -380,7 +409,7 @@
 
 				//THE WORK HOVER
 
-                $(".<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Project")
+                $(".<?php echo removeBadStuff(get_the_title()); ?>Project")
                 .hover(function() {
                     console.log($(window).width(),$(window).height())
                     if( $(window).width() > 768 && $(window).height() > 650) {
@@ -390,7 +419,7 @@
                     $('.dates').css('display','none');
                     $('.socialLinks').css('display','none');
 
-                    $('.dates').after("<div class='sidebarTakeover'><span class='takeoverName'><span class='name'><?php echo split_name(get_the_title())[0]; ?></span><span class='name'><?php echo split_name(get_the_title())[1]; ?></span></span><img src='<?php the_field('headshot') ?>' /></div>");
+                    $('.dates').after("<div class='sidebarTakeover'><span class='takeoverName'><span class='name'><?php echo split_name(get_the_title())[0]; ?></span><span class='name'><?php echo split_name(get_the_title())[1]; ?></span></span><img class='headshot' src='<?php the_field('headshot') ?>' /></div>");
                     $('.sidebarTakeover').fadeIn();
                 }
                 },
@@ -413,7 +442,7 @@
 
 				//THE STUDENT HOVER
 
-				$(".<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_field('project_title_2x3')))); ?><?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>Person")
+				$(".<?php echo removeBadStuff(get_field('project_title_2x3')); ?><?php echo removeBadStuff(get_the_title()); ?>Person")
 				.hover(function() {
 					console.log($(window).width(),$(window).height())
 					if( $(window).width() > 768 && $(window).height() > 650) {
@@ -423,7 +452,7 @@
 					$('.dates').css('display','none');
 					$('.socialLinks').css('display','none');
 
-					$('.dates').after("<div class='sidebarTakeover'><img class='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_the_title()))); ?>' src='<?php the_field('featured_image_4x3')?>' /><span class='name'><?php the_field('project_title_4x3') ?></span><span class='specalties'><?php the_field('project_type_4x3') ?></span></div>");
+					$('.dates').after("<div class='sidebarTakeover'><img class='<?php echo removeBadStuff(get_the_title()); ?>' src='<?php the_field('featured_image_4x3')?>' /><span class='projectName'><?php the_field('project_title_4x3') ?></span><span class='specialties'><?php the_field('project_type_4x3') ?></span></div>");
 					$('.sidebarTakeover').fadeIn();
 				}
 				},
@@ -474,37 +503,91 @@
 		$grid.isotope({ filter: $filtersJoin });
 	})
 
+	$('.closePage').click(function() {
+		$('.workSection').css('display','flex');
+		$('.eventSection').css('display','none');
 
-	$('.filterButton').click(function() {
-		if($('.filterChoiceMain').css('display') === 'inline-block') {
-			$('.filterChoiceMain').css('display','none');
-		} else {
-				$('.filterChoiceMain').css('display','inline-block');
-		}
-
-
+		$('.sidebar').removeClass('sidebarBlackout');
+		$('body').css('background','white');
 	})
 
+
 	$('.photoButton').click(function() {
+		if($('.designButtonFilters').css('display') === 'inline-block') {
+			$('.designButtonFilters').css('display','none');
+			$('.designButton').css('transform','none');
+			$('.designButton').css('background-color','black');
+			var index = $filters.indexOf('.design');
+			if (index > -1) {
+				$filters.splice(index, 1);
+			}
+			var $filtersJoin = $filters.join(', ');
+			$grid.isotope({ filter: $filtersJoin });
+		}
 		if($('.photoButtonFilters').css('display') === 'inline-block') {
 			$('.photoButtonFilters').css('display','none');
+			$(this).css('transform','none');
+			$(this).css('background-color','black');
+			var index = $filters.indexOf('.photography');
+			if (index > -1) {
+				$filters.splice(index, 1);
+			}
+			var $filtersJoin = $filters.join(', ');
+			$grid.isotope({ filter: $filtersJoin });
 		} else {
 				$('.photoButtonFilters').css('display','inline-block');
+				width = $('.mainArea').outerWidth();
+				console.log(width);
+				$(this).css('transform','rotateY(30deg) translateZ(10px)');
+				$('.photoButtonFilters').css('width',width);
+				$(this).css('background-color','orange');
+
+				$filters = ['.photography'];
+				var $filtersJoin = $filters.join(', ');
+				$grid.isotope({ filter: $filtersJoin });
 		}
 	})
 
 	$('.designButton').click(function() {
+		if($('.photoButtonFilters').css('display') === 'inline-block') {
+			$('.photoButtonFilters').css('display','none');
+			$('.photoButton').css('transform','none');
+			$('.photoButton').css('background-color','black');
+			var index = $filters.indexOf('.photography');
+			if (index > -1) {
+				$filters.splice(index, 1);
+			}
+			var $filtersJoin = $filters.join(', ');
+			$grid.isotope({ filter: $filtersJoin });
+		}
+
 		if($('.designButtonFilters').css('display') === 'inline-block') {
 			$('.designButtonFilters').css('display','none');
+			$(this).css('transform','none');
+			$(this).css('background-color','black');
+			var index = $filters.indexOf('.design');
+			if (index > -1) {
+				$filters.splice(index, 1);
+			}
+			var $filtersJoin = $filters.join(', ');
+			$grid.isotope({ filter: $filtersJoin });
 		} else {
 				$('.designButtonFilters').css('display','inline-block');
+				width = $('.mainArea').outerWidth();
+				$(this).css('transform','rotateY(30deg) translateZ(10px)');
+				$('.designButtonFilters').css('width',width);
+				$(this).css('background-color','orange');
+
+				$filters = ['.design'];
+				var $filtersJoin = $filters.join(', ');
+				$grid.isotope({ filter: $filtersJoin });
 		}
 	})
 
 	<?php
         //remove_all_filters('posts_orderby');
         $args = array(
-            'post_type' => array('design'),
+            'post_type' => 'design',
             'posts_per_page' => 1,
             'orderby'        => 'rand',
         );
@@ -512,7 +595,7 @@
         $featuredimage = get_field_objects();
     ?>
 
-	 var $filters = []
+
     <?php if( $query->have_posts() ): ?>
         <?php while ($query->have_posts()) : $query->the_post(); ?>
 
@@ -521,11 +604,14 @@
 				  ?>
 
 			<?php foreach ($choices as $choice): ?>
-				$('.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>Button').click(function() {
+				$('.<?php echo removeBadStuff($choice); ?>Button').click(function() {
 					if($(this).data('selected') === 1 ){
-						var index = $filters.indexOf('.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>');
+						var index = $filters.indexOf('.<?php echo removeBadStuff($choice); ?>');
 						if (index > -1) {
 						    $filters.splice(index, 1);
+						}
+						if( $filters.length === 0) {
+							$filters.push( '.design' );
 						}
 						var $filtersJoin = $filters.join(', ');
 					    $grid.isotope({ filter: $filtersJoin });
@@ -533,8 +619,11 @@
 						$(this).css('background-color','black');
 						$(this).data('selected', 0);
 					} else {
-						$filters.push( '.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>' );
-						console.log('asdf')
+						$filters.push( '.<?php echo removeBadStuff($choice); ?>' );
+						var index = $filters.indexOf('.design');
+						if (index > -1) {
+						    $filters.splice(index, 1);
+						}
 						var $filtersJoin = $filters.join(', ');
 					    $grid.isotope({ filter: $filtersJoin });
 						$(this).css('transform','rotateY(30deg) translateZ(10px)');
@@ -550,10 +639,10 @@
     <?php else : ?>
     <?php endif; ?>
 
-	/*<?php
+	<?php
         //remove_all_filters('posts_orderby');
         $argsphoto = array(
-            'post_type' => array('photography'),
+            'post_type' => 'photography',
             'posts_per_page' => 1,
             'orderby'        => 'rand',
         );
@@ -561,7 +650,6 @@
         $featuredimage = get_field_objects();
     ?>
 
-	 var $filters = []
     <?php if( $queryphoto->have_posts() ): ?>
         <?php while ($queryphoto->have_posts()) : $queryphoto->the_post(); ?>
 
@@ -570,11 +658,14 @@
 				  ?>
 
 			<?php foreach ($choices as $choice): ?>
-				$('.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>Button').click(function() {
+				$('.<?php echo removeBadStuff($choice); ?>Button').click(function() {
 					if($(this).data('selected') === 1 ){
-						var index = $filters.indexOf('.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>');
+						var index = $filters.indexOf('.<?php echo removeBadStuff($choice); ?>');
 						if (index > -1) {
 						    $filters.splice(index, 1);
+						}
+						if( $filters.length === 0) {
+							$filters.push( '.photography' );
 						}
 						var $filtersJoin = $filters.join(', ');
 					    $grid.isotope({ filter: $filtersJoin });
@@ -582,9 +673,14 @@
 						$(this).css('background-color','black');
 						$(this).data('selected', 0);
 					} else {
-						$filters.push( '.<?php echo str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($choice)))); ?>' );
-						console.log('asdf')
+						var index = $filters.indexOf('.photography');
+						if (index > -1) {
+						    $filters.splice(index, 1);
+						}
+						$filters.push( '.<?php echo removeBadStuff($choice); ?>' );
+						console.log($filters);
 						var $filtersJoin = $filters.join(', ');
+						console.log($filtersJoin);
 					    $grid.isotope({ filter: $filtersJoin });
 						$(this).css('transform','rotateY(30deg) translateZ(10px)');
 						$(this).css('background-color','orange');
@@ -597,7 +693,7 @@
 
         <?php endwhile; ?>
     <?php else : ?>
-    <?php endif; ?>*/
+    <?php endif; ?>
 
 	//isotope
 
@@ -630,7 +726,6 @@
 
                 // var
                 var $markers = $el.find('.marker');
-
 
 
             /*Google Maps Styling*/
