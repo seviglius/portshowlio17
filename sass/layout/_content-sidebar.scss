@@ -2,6 +2,8 @@
 	font-size:.75rem;
 }
 
+
+
 .content-area {
 	float: left;
 	margin: 0 (-$size__site-sidebar) 0 0;
@@ -24,6 +26,8 @@
 }
 
 .infoLink {
+	width:100%;
+	display:block;
 	color:black;
 	text-decoration: none;
 	&:hover {
@@ -218,8 +222,8 @@ left: 0;
     z-index: 9999;
     height: 86px;
     flex-direction: row;
-    max-width: initial;
-    min-width: initial;
+    max-width: 100%;
+    min-width: 100%;
 	}
 
   .mainArea{
@@ -261,8 +265,8 @@ left: 0;
     z-index: 9999;
     height: 86px;
     flex-direction: row;
-    max-width: initial;
-    min-width: initial;
+    max-width: 100%;
+    min-width: 100%;
 	}
 
   .mainArea{

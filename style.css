@@ -8539,6 +8539,7 @@ body {
       justify-content: center; }
       .mainArea .scca-homepage-item .contentCenter img {
         max-height: 100%;
+        flex-shrink: 0;
         width: auto; }
 
 .name {
@@ -8565,10 +8566,7 @@ body {
       margin: 2em 0; }
       .mainArea .scca-homepage-item .contentCenter {
         display: flex;
-        flex-direction: column; }
-        .mainArea .scca-homepage-item .contentCenter img {
-          max-height: 100%;
-          width: auto; } }
+        flex-direction: column; } }
 .eventSection {
   background: black;
   display: none; }
@@ -8794,7 +8792,8 @@ body {
   margin: 0 auto;
   justify-content: center;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  margin/**/: 5%; }
   .studentSidebar .name {
     font-weight: bold;
     display: block;
@@ -9121,6 +9120,8 @@ object {
   width: 100%; }
 
 .infoLink {
+  width: 100%;
+  display: block;
   color: black;
   text-decoration: none; }
   .infoLink:hover {
@@ -9285,8 +9286,8 @@ object {
     z-index: 9999;
     height: 86px;
     flex-direction: row;
-    max-width: initial;
-    min-width: initial; }
+    max-width: 100%;
+    min-width: 100%; }
 
   .mainArea {
     margin-top: 85px; }
@@ -9321,8 +9322,8 @@ object {
     z-index: 9999;
     height: 86px;
     flex-direction: row;
-    max-width: initial;
-    min-width: initial; }
+    max-width: 100%;
+    min-width: 100%; }
 
   .mainArea {
     margin-top: 85px; }

@@ -57,6 +57,7 @@ body {
 	    	justify-content: center;
 			img {
 				max-height: 100%;
+                flex-shrink: 0;
 				width:auto;
 			}
 		}
@@ -91,9 +92,6 @@ body {
       .contentCenter {
         display: flex;
         flex-direction: column;
-        img {
-          max-height: 100%;
-          width: auto; }
 	  }
 	  }
 	  }

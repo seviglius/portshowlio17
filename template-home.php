@@ -483,7 +483,7 @@
 		$('.workSection').css('display','none');
 		$('.studentSection').css('display','flex');
 		$('.eventSection').css('display','none');
-
+		$('.filterContainer').css('display','initial');
 		$('.sidebar').removeClass('sidebarBlackout');
 		$('body').css('background','white');
 
@@ -495,7 +495,7 @@
 		$('.workSection').css('display','flex');
 		$('.studentSection').css('display','none');
 		$('.eventSection').css('display','none');
-
+		$('.filterContainer').css('display','initial');
 		$('.sidebar').removeClass('sidebarBlackout');
 		$('body').css('background','white');
 
@@ -506,7 +506,7 @@
 	$('.closePage').click(function() {
 		$('.workSection').css('display','flex');
 		$('.eventSection').css('display','none');
-
+		$('.filterContainer').css('display','initial');
 		$('.sidebar').removeClass('sidebarBlackout');
 		$('body').css('background','white');
 	})
@@ -1071,7 +1071,7 @@
 				$('.studentSection').css('display','none');
 				$('.eventSection').css('display','flex');
 				google.maps.event.trigger(map, 'resize');
-
+				$('.filterContainer').css('display','none');
 				$('.sidebar').addClass('sidebarBlackout');
 				$('body').css('background','black');
 			})
