@@ -351,26 +351,24 @@
 
 	$('.mainArea').imagesLoaded(function() {
 
-	$('.filterButton').css('opacity','.2');
 
-	$(window).on("load", function() {
-		$('.filterButton').css('opacity','1');
-		$('.filterButton').click(function() {
-			if($('.filterChoiceMain').css('display') === 'inline-block') {
-				$('.filterChoiceMain').css('display','none');
+	$('.filterButton').css('opacity','1');
+	$('.filterButton').click(function() {
+		if($('.filterChoiceMain').css('display') === 'inline-block') {
+			$('.filterChoiceMain').css('display','none');
 
-				$('.designButtonFilters').css('display','none');
+			$('.designButtonFilters').css('display','none');
 
 
-				$('.photoButtonFilters').css('display','none');
+			$('.photoButtonFilters').css('display','none');
 
-			} else {
-					$('.filterChoiceMain').css('display','inline-block');
-			}
+		} else {
+				$('.filterChoiceMain').css('display','inline-block');
+		}
 
 
-		})
-	});
+	})
+
 
 	var $filters = []
 
