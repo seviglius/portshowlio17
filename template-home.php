@@ -27,12 +27,16 @@
 
     <div class='hr'></div>
 
-    <span id='studentLink' class='filterMain'>
-        <?php the_field('student_link'); ?>
-    </span>
-    <span id='workLink' class='filterMain'>
-        <?php the_field('work_link'); ?>
-    </span>
+
+    <div class="workstudents">
+        <span id='studentLink' class='filterMain'>
+            <?php the_field('student_link'); ?>
+        </span>
+        <span id='workLink' class='filterMain'>
+            <?php the_field('work_link'); ?>
+        </span>
+    </div>    
+
 
     <div class='hr'></div>
 

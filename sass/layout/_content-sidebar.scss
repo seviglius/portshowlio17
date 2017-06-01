@@ -39,6 +39,8 @@
 	}
 }
 
+
+
 .Logo {
   font-size: 7em;
   text-align: center;
@@ -97,15 +99,13 @@
 .clickArrow {
 	display: none;
 	position: fixed;
-	top: 52px;
-	right: 22px;
+	top: 46px;
+  right: 48px;
 	font-weight: bold;
-	transform: rotate(135deg);
 	text-transform: uppercase;
 }
 
 .rotateBack {
-	transform: rotate(315deg);
 }
 
 .fakeBottom {
@@ -135,6 +135,29 @@ left: 0;
 	color: black !important;
 }
 
+.sidebarTakeover .projectName{
+  font-size:.5em;
+  margin-top:.4em;
+}
+
+.sidebarTakeover .specialties{
+  font-size:.3em;
+}
+
+.filterContainer:hover{
+  cursor:pointer;
+}
+
+.eventLink:hover{
+    cursor:pointer;
+  }
+
+.icon-x{
+  cursor:pointer;
+}
+
+
+
 
 @media (min-width: 1800px) {
 	.container {
@@ -153,6 +176,11 @@ left: 0;
   text-transform: uppercase;
   font-size: 1.3em; }
 
+.filterMain:hover{
+  cursor:pointer;
+}
+
+
 .hr {
   width: 90%;
   margin: 1em auto;
@@ -166,9 +194,19 @@ left: 0;
   font-weight: bold;
   margin: 2em;
   margin-left: 2em;
+  margin-top:.5em;
   flex-grow: 2;
   flex-direction: column;
   justify-content: flex-end; }
+
+ 
+  .takeoverName .name{
+    margin-left:1em;
+
+  }
+
+
+
 
 .dates {
   margin-left: 2.4em;
@@ -198,6 +236,9 @@ left: 0;
   .eventLink {
     font-weight: bold;
     text-transform: uppercase; }
+
+
+
 }
 
 .socialLinks {
@@ -209,12 +250,18 @@ left: 0;
 }
 
 @media screen and (max-width: 768px) {
+.icon-arrow{
+  display:none;
+}
+
 	.clickArrow {
 		display: block;
+    font-size: 1.1em;
 	}
   .Logo {
     font-size: 4em;
     margin: 0 .2em; }
+
 
   .sidebar {
 	position: fixed;
@@ -230,6 +277,13 @@ left: 0;
     margin-top: 85px;
   }
 
+   .workstudents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3px;
+    margin-left: 12px;
+  }
 
   .filterMain {
     margin: 0; }
@@ -243,7 +297,8 @@ left: 0;
     .oneNight {
       display: none; }
     .eventLink {
-      width: 100px;
+      width: 140px;
+      margin-top:44px;
   	}
   }
 
@@ -255,6 +310,11 @@ left: 0;
 	.clickArrow {
 		display: block;
 	}
+
+.icon-arrow{
+  display:none;
+}
+
   .Logo {
     font-size: 4em;
     margin: 0 .2em; }
@@ -273,6 +333,13 @@ left: 0;
     margin-top: 85px;
   }
 
+   .workstudents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3px;
+    margin-left: 12px;
+  }
 
   .filterMain {
     margin: 0; }
@@ -286,7 +353,8 @@ left: 0;
     .oneNight {
       display: none; }
     .eventLink {
-      width: 100px;
+      width: 160px;
+      margin-top:44px;
   	}
   }
 

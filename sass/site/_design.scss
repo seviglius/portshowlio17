@@ -27,7 +27,7 @@ body{
 
 
 .projectSelector {
-    position: absolute;
+    position: fixed;
     right: 17px;
     top: 10px;
     padding: 15px;
@@ -44,6 +44,20 @@ body{
         }
     }
 }
+
+
+
+
+.contentCenter img{
+  transition: .4s ease-in-out;
+  -webkit-backface-visibility: hidden;
+}
+
+.contentCenter img:hover{
+  opacity:.8;
+
+}
+
 
 
 
@@ -136,6 +150,10 @@ body{
   background-color:white;
 }
 
+
+
+
+
 .closePage{
   position: fixed;
   font-size:5em;
@@ -203,27 +221,30 @@ body{
 
 /* SIDEBAR */
 .studentSidebar {
-  margin: 0 auto;
+  margin: 0 0 0 2.75em;
   justify-content: center;
   display: flex;
   flex-direction: column;
-  margin/**/:5%;
+  /*margin:5%; IE FIX*/
   .name {
     font-weight: bold;
     display: block;
-    font-size: 2em; }
+    font-size: 2em; 
+    }
     .name:last-of-type {
       margin-bottom: 2em; }
   .headshot {
     height: 30vh;
-    display: block; }
+    display: block;
+    }
   .focus {
     display: block;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 13px;
+    line-height:1.3em;
     }
     .socialSection{
-        margin: 2em 0;
+        margin: 2.5em 0;
     }
     .socialIcon {
       padding: 1em;
@@ -232,12 +253,22 @@ body{
       }
 }
 
+
+.socialIcon{
+  transition:.2s ease-in-out;
+}
+
+.socialIcon:hover {
+  opacity:.8;
+}
+
+
 .studentSidebar .name {
-    line-height: 1.2em;
+    line-height: .9em;
     }
 
 .studentSidebar .headshot{
-  margin-top:1em;
+  margin-top: 1.3em;  
   width: 30vh;
   max-width: 300px;
 max-height: 300px;
@@ -248,8 +279,13 @@ max-height: 300px;
    margin-bottom:0em;
 }
 
+.sidebarTakeover{
+  margin-left:1.4em !important;
+}
+
 .sidebarTakeover .name {
-    line-height: 1.2em;
+    line-height: .9em;
+    margin-left:-.1em;
     }
 
     .sidebarTakeover .projectName {
@@ -264,16 +300,17 @@ max-height: 300px;
     }
 
 .sidebarTakeover .headshot{
-  margin-top:1em;
+  margin-top:1.4em;
   width: 30vh;
   max-width: 300px;
-max-height: 300px;
+  max-height: 300px;
+
 }
 
 /*Website Link Styling*/
 .website{
   font-weight:700;
-  margin: 7px 0 7px 0;
+  margin: 10px 0 7px 0;
   font-size: 13px;
   letter-spacing: .035em;
 }
@@ -385,12 +422,12 @@ a.graylink:hover{
     margin: 0;
     margin-left: .4em;
       .name {
-        line-height: 1.2em;
+        line-height: .8em;
         font-weight: bold;
         display: block;
         font-size: 1.7em; }
         .name:first-of-type {
-            margin-top: .6em;
+            margin-top: .4em;
         }
         .name:last-of-type {
           margin-bottom: 2em; }
@@ -411,6 +448,17 @@ a.graylink:hover{
 
 }
 
+
+@media (min-width:768px) and (max-width:990px) {
+
+.marginFix{
+  margin-top:120px;
+}
+
+}
+
+
+
 @media screen and (max-height: 600px) {
     #logoBig {
         display:none;
@@ -425,12 +473,12 @@ a.graylink:hover{
     margin: 0;
     margin-left: .4em;
       .name {
-        line-height: 1.2em;
+        line-height: .9em;
         font-weight: bold;
         display: block;
         font-size: 1.7em; }
         .name:first-of-type {
-            margin-top: .6em;
+            margin-top: .3em;
         }
         .name:last-of-type {
           margin-bottom: 2em; }
@@ -495,3 +543,9 @@ iframe {
   min-width: 100%;
   min-height: 500px;
 }
+
+
+
+
+
+

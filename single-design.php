@@ -25,7 +25,7 @@
 		<span class='nameContainer'>
 			<span class='name'><?php echo split_name(get_the_title())[0]; ?></span>
 			<span class='name'><?php echo split_name(get_the_title())[1]; ?></span>
-			<span class='clickArrow'><span class='icon-arrow'></span></span>
+			<span class='clickArrow'>INFO</span></span>
 		</span>
 		<div class='fakeBottom'></div>
 
@@ -76,9 +76,9 @@
 </div>
 
 
-<div class="mainArea">
+<div class="container mainArea">
 
-<div class="container">
+<div class="container marginFix">
 <div class="row">
 
 				<?php if( have_rows('projects') ): ?>
