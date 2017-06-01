@@ -349,6 +349,8 @@
 
 <script>
 
+	$('.mainArea').imagesLoaded(function() {
+
 	$('.filterButton').css('opacity','.2');
 
 	$(window).on("load", function() {
@@ -696,7 +698,7 @@
     <?php endif; ?>
 
 	//isotope
-
+})
 
 
 </script>
