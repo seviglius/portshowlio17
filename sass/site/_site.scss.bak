@@ -68,12 +68,6 @@ body {
 
 .name{
 	font-weight:700;
-	padding-top:8px;
-}
-
-.specalties{
-	margin-top:-3px;
-	font-size:.9em;
 }
 
 
@@ -87,8 +81,7 @@ body {
     flex-flow: column; }
 
   .mainArea {
-    width:100%;
-    height: auto;
+    height: 100vh;
     overflow-y: visible;
     overflow-x: visible;
     flex-grow: 2;

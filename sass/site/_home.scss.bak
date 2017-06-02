@@ -7,24 +7,6 @@
     display:none;
 }
 
-.searchButton {
-    background-color: rgba(255, 255, 255, 0.7);
-padding: 15px;
-font-size: 1.3em;
-font-weight: bold;
-margin: 5px;
-display: inline-block;
-}
-
-.search {
-    background-color: rgba(255, 255, 255, 0.7);
-padding: 15px;
-font-size: 1.3em;
-font-weight: bold;
-margin: 5px;
-display: none;
-}
-
 .filterContainer {
     position: fixed;
     bottom: 20px;
@@ -57,8 +39,8 @@ display: none;
         transform-style: preserve-3d;
         background-color: rgba(0,0,0,.9);
         color:white;
-        padding: 10px;
-        font-size: 1em;
+        padding:15px;
+        font-size: 1.3em;
         font-weight: bold;
         display: inline-block;
         margin: 5px;

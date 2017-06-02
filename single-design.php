@@ -7,6 +7,9 @@
 				return array($first_name, $last_name);
 } ?>
 
+<?php  function removeBadStuff($object) {
+				return str_replace(",", "",str_replace(".", "",str_replace(":", "",str_replace("&", "",str_replace("+", "",str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($object)))))))));
+} ?>
 
 <div class="studentPage">
 <div class="sidebar">
@@ -90,9 +93,9 @@
 
 							<?php $i++ ?>
 							<?php if($i==1): ?>
-		        				<h3 id='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_sub_field('project_title')))); ?>Location' class="projectTitle firstProject"><?php the_sub_field('project_title'); ?></h3>
+		        				<h3 id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>Location' class="projectTitle firstProject"><?php the_sub_field('project_title'); ?></h3>
 							<?php else: ?>
-								<h3 id='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_sub_field('project_title')))); ?>Location' class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
+								<h3 id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>Location' class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
 							<?php endif; ?>
 									<!-- Figure out how to output project types with commas -->
 		        			<p class="category"><?php the_sub_field('project_type'); ?></p>
@@ -218,7 +221,7 @@
         	<?php elseif( get_row_layout() == 'download' ): ?>
 
         	<?php endif; ?>
-				<span id='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_sub_field('project_title')))); ?>Height' > </span>
+				<span id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>Height' > </span>
     		<?php endwhile; ?>
 
 			<?php else : ?>
@@ -232,7 +235,7 @@
 	<?php if( have_rows('projects') ): ?>
 		<?php while ( have_rows('projects') ) : the_row(); ?>
 			<?php if( get_row_layout() == 'project' ): ?>
-				<span id='<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_sub_field('project_title')))); ?>' class='projectSelectorName'>
+				<span id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>' class='projectSelectorName'>
 					<?php the_sub_field('project_title'); ?>
 				</span>
 			<?php endif; ?>
@@ -340,14 +343,14 @@
 				$(".mainArea").scroll(function() {
 					$scroll = $(".mainArea").scrollTop();
 
-					$startHeight = $('#<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_sub_field('project_title')))); ?>Location').offset().top + $(".mainArea").scrollTop() - 50;
-					$endHeight = $('#<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_sub_field('project_title')))); ?>Height').offset().top + $(".mainArea").scrollTop() + $('#<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_sub_field('project_title')))); ?>Height').height();
+					$startHeight = $('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>Location').offset().top + $(".mainArea").scrollTop() - 50;
+					$endHeight = $('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>Height').offset().top + $(".mainArea").scrollTop() + $('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>Height').height();
 					console.log($scroll, $startHeight,$endHeight);
 
 					if($scroll >= $startHeight  && $scroll < $endHeight) {
-						$('#<?php echo str_replace("'", "", str_replace(' ', '-', strtolower(get_sub_field('project_title')))); ?>').css("text-decoration","underline")
+						$('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>').css("text-decoration","underline")
 					} else {
-						$('#<?php echo str_replace("'", "", str_replace(' ', '-', strtolower(get_sub_field('project_title')))); ?>').css("text-decoration","none")
+						$('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>').css("text-decoration","none")
 					}
 
 
@@ -362,9 +365,9 @@
 		<?php while ( have_rows('projects') ) : the_row(); ?>
 			<?php if( get_row_layout() == 'project' ): ?>
 
-				$('#<?php echo str_replace("'", "",str_replace(' ', '-', strtolower(get_sub_field('project_title')))); ?>').click(function() {
+				$('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>').click(function() {
 
-					$scrollto = $('#<?php echo $FileName = str_replace("'", "", str_replace(' ', '-', strtolower(get_sub_field('project_title')))); ?>Location').offset().top + $(".mainArea").scrollTop() - 15;
+					$scrollto = $('#<?php echo $FileName = removeBadStuff(get_sub_field('project_title')); ?>Location').offset().top + $(".mainArea").scrollTop() - 15;
 					console.log($scrollto);
 					$('.mainArea').clearQueue();
 				    $(".mainArea").animate({

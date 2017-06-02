@@ -35,7 +35,7 @@
         <span id='workLink' class='filterMain'>
             <?php the_field('work_link'); ?>
         </span>
-    </div>    
+    </div>
 
 
     <div class='hr'></div>
@@ -341,6 +341,8 @@
 			Photography
 		</span>
 	</div>
+	<span class='search'><input type="text" class="quicksearch" placeholder="Search" /></span>
+	<span class='searchButton'>?</span>
 	<span class='filterButton'>FILTER</span>
 </div>
 
@@ -353,12 +355,52 @@
 
 <script>
 
-	$('.mainArea').imagesLoaded(function() {
+	Isotope.Item.prototype._create = function() {
+	  // assign id, used for original-order sorting
+	  this.id = this.layout.itemGUID++;
+	  // transition objects
+	  this._transn = {
+		ingProperties: {},
+		clean: {},
+		onEnd: {}
+	  };
+	  this.sortData = {};
+	};
+
+	Isotope.Item.prototype.layoutPosition = function() {
+	  this.emitEvent( 'layout', [ this ] );
+	};
+
+	Isotope.prototype.arrange = function( opts ) {
+	  // set any options pass
+	  this.option( opts );
+	  this._getIsInstant();
+	  // just filter
+	  this.filteredItems = this._filter( this.items );
+	  // flag for initalized
+	  this._isLayoutInited = true;
+	};
+
+	// layout mode that does not position items
+	Isotope.LayoutMode.create('none');
+
+	$('.filterButton').css('opacity','.1');
+
+	//$('.mainArea').imagesLoaded(function() {
 
 
 	$('.filterButton').css('opacity','1');
 	$('.filterButton').click(function() {
+		if($('.search').css('display') === 'inline-block') {
+			$('.search').css('display','none')
+			$filters = [];
+			var $filtersJoin = $filters.join(', ');
+			$grid.isotope({ filter: $filtersJoin });
+		}
 		if($('.filterChoiceMain').css('display') === 'inline-block') {
+
+
+
 			$('.filterChoiceMain').css('display','none');
 
 			$('.designButtonFilters').css('display','none');
@@ -367,20 +409,73 @@
 			$('.photoButtonFilters').css('display','none');
 
 		} else {
+
+			if ( $('.photoButton').data('selected') === 1) {
+				$('.photoButtonFilters').css('display','inline-block');
+				$('.mainArea').each( function() {
+					if( $(this).css('display') === 'flex' ) {
+						width = $(this).outerWidth();
+					}
+				})
+				$('.photoButtonFilters').css('width',width);
+			}
+			if ( $('.designButton').data('selected') === 1) {
+				$('.designButtonFilters').css('display','inline-block');
+				$('.mainArea').each( function() {
+					if( $(this).css('display') === 'flex' ) {
+						width = $(this).outerWidth();
+					}
+				})
+				$('.designButtonFilters').css('width',width);
+			}
+
 				$('.filterChoiceMain').css('display','inline-block');
 		}
 
 
 	})
 
+	$('.searchButton').click(function() {
+		console.log('searchClicked');
+		if($('.filterChoiceMain').css('display') === 'inline-block') {
+			$('.filterChoiceMain').css('display','none');
+			$('.designButtonFilters').css('display','none');
+			$('.photoButtonFilters').css('display','none');
+			$filters = [];
+			var $filtersJoin = $filters.join(', ');
+			$grid.isotope({ filter: $filtersJoin });
+		}
+		if ($('.search').css('display') === 'inline-block'){
+			$('.search').css('display','none')
+			$filters = [];
+			var $filtersJoin = $filters.join(', ');
+			$grid.isotope({ filter: $filtersJoin });
+		} else {
+			$('.filterChoiceMain').css('transform','none');
+			$('.filterChoiceMain').css('background-color','black');
+			$('.filterChoiceMain').data('selected', 0);
+			$('.filterChoice').css('transform','none');
+			$('.filterChoice').css('background-color','black');
+			$('.filterChoice').data('selected', 0);
+
+			$('.search').css('display','inline-block');
+			$filters = [];
+			var $filtersJoin = $filters.join(', ');
+			$grid.isotope({ filter: $filtersJoin });
+		}
+
+
+	})
 
 	var $filters = []
+	// quick search regex
+	var qsRegex;
 
 	var $grid = $('.grid').isotope({
 	  // options
 	  itemSelector: '.project',
 	  transitionDuration: 0,
-	  layoutMode: 'cellsByRow'
+	  layoutMode: 'none'
 	  /*hiddenStyle: {
 		  display: 'none',
 		  position: 'initial',
@@ -390,10 +485,42 @@
 	  visibleStyle: {
 		  display: 'flex',
 		  position: 'initial',
-		  left:'auto',
-		  right:'auto'
+		  width:'100px',
+		  left:'0px',
+		  right:'0px'
 	  }*/
 	});
+
+	// use value of search field to filter
+	var $quicksearch = $('.quicksearch').keyup( debounce( function() {
+		//console.log($quicksearch.val());
+		if($quicksearch.val()==='I am Blue') {
+			console.log('hax');
+			$('.sidebar').css('background','blue');
+			$('.sidebar').css('color','white');
+		}
+	  qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+	  //console.log('keyup');
+  	$grid.isotope({ filter: function() {
+  			return qsRegex ? $(this).text().match( qsRegex ) : true;
+		} });
+	}, 200 ) );
+
+	// debounce so filtering doesn't happen every millisecond
+	function debounce( fn, threshold ) {
+	  var timeout;
+	  return function debounced() {
+	    if ( timeout ) {
+	      clearTimeout( timeout );
+	    }
+	    function delayed() {
+	      fn();
+	      timeout = null;
+	    }
+	    timeout = setTimeout( delayed, threshold || 100 );
+	  }
+	}
+
 
     <?php
         //remove_all_filters('posts_orderby');
@@ -491,11 +618,18 @@
 		$('.sidebar').removeClass('sidebarBlackout');
 		$('body').css('background','white');
 
+		$('#studentLink').css('color','black');
+		$('#workLink').css('color','#999999');
+
 		var $filtersJoin = $filters.join(', ');
 		$grid.isotope({ filter: $filtersJoin });
 	})
 
 	$('#workLink').click(function() {
+
+		$('#workLink').css('color','black');
+		$('#studentLink').css('color','#999999');
+
 		$('.workSection').css('display','flex');
 		$('.studentSection').css('display','none');
 		$('.eventSection').css('display','none');
@@ -517,7 +651,15 @@
 
 
 	$('.photoButton').click(function() {
+		if($('.search').css('display') === 'inline-block') {
+			$('.search').css('display','none')
+		}
 		if($('.designButtonFilters').css('display') === 'inline-block') {
+			$('.filterChoice').css('transform','none');
+			$('.filterChoice').css('background-color','black');
+			$('.filterChoice').data('selected', 0);
+			$('.designButton').data('selected', 0);
+
 			$('.designButtonFilters').css('display','none');
 			$('.designButton').css('transform','none');
 			$('.designButton').css('background-color','black');
@@ -527,8 +669,14 @@
 			}
 			var $filtersJoin = $filters.join(', ');
 			$grid.isotope({ filter: $filtersJoin });
+
 		}
 		if($('.photoButtonFilters').css('display') === 'inline-block') {
+			$('.filterChoice').css('transform','none');
+			$('.filterChoice').css('background-color','black');
+			$('.filterChoice').data('selected', 0);
+			$(this).data('selected', 0);
+
 			$('.photoButtonFilters').css('display','none');
 			$(this).css('transform','none');
 			$(this).css('background-color','black');
@@ -539,8 +687,18 @@
 			var $filtersJoin = $filters.join(', ');
 			$grid.isotope({ filter: $filtersJoin });
 		} else {
+
+				$('.filterChoice').css('transform','none');
+				$('.filterChoice').css('background-color','black');
+				$('.filterChoice').data('selected', 0);
+				$(this).data('selected', 1);
+
 				$('.photoButtonFilters').css('display','inline-block');
-				width = $('.mainArea').outerWidth();
+				$('.mainArea').each( function() {
+					if( $(this).css('display') === 'flex' ) {
+						width = $(this).outerWidth();
+					}
+				})
 				console.log(width);
 				$(this).css('transform','rotateY(30deg) translateZ(10px)');
 				$('.photoButtonFilters').css('width',width);
@@ -549,11 +707,21 @@
 				$filters = ['.photography'];
 				var $filtersJoin = $filters.join(', ');
 				$grid.isotope({ filter: $filtersJoin });
+
 		}
 	})
 
 	$('.designButton').click(function() {
+		if($('.search').css('display') === 'inline-block') {
+			$('.search').css('display','none')
+		}
+
 		if($('.photoButtonFilters').css('display') === 'inline-block') {
+			$('.filterChoice').css('transform','none');
+			$('.filterChoice').css('background-color','black');
+			$('.filterChoice').data('selected', 0);
+			$('.photoButton').data('selected', 0);
+
 			$('.photoButtonFilters').css('display','none');
 			$('.photoButton').css('transform','none');
 			$('.photoButton').css('background-color','black');
@@ -566,9 +734,14 @@
 		}
 
 		if($('.designButtonFilters').css('display') === 'inline-block') {
+			$('.filterChoice').css('transform','none');
+			$('.filterChoice').css('background-color','black');
+			$('.filterChoice').data('selected', 0);
+
 			$('.designButtonFilters').css('display','none');
 			$(this).css('transform','none');
 			$(this).css('background-color','black');
+			$(this).data('selected', 0);
 			var index = $filters.indexOf('.design');
 			if (index > -1) {
 				$filters.splice(index, 1);
@@ -576,11 +749,20 @@
 			var $filtersJoin = $filters.join(', ');
 			$grid.isotope({ filter: $filtersJoin });
 		} else {
+			$('.filterChoice').css('transform','none');
+			$('.filterChoice').css('background-color','black');
+			$('.filterChoice').data('selected', 0);
+
 				$('.designButtonFilters').css('display','inline-block');
-				width = $('.mainArea').outerWidth();
+				$('.mainArea').each( function() {
+					if( $(this).css('display') === 'flex' ) {
+						width = $(this).outerWidth();
+					}
+				})
 				$(this).css('transform','rotateY(30deg) translateZ(10px)');
 				$('.designButtonFilters').css('width',width);
 				$(this).css('background-color','orange');
+				$(this).data('selected', 1);
 
 				$filters = ['.design'];
 				var $filtersJoin = $filters.join(', ');
@@ -673,6 +855,7 @@
 						}
 						var $filtersJoin = $filters.join(', ');
 					    $grid.isotope({ filter: $filtersJoin });
+						$grid.isotope('layout');
 						$(this).css('transform','none');
 						$(this).css('background-color','black');
 						$(this).data('selected', 0);
@@ -700,7 +883,7 @@
     <?php endif; ?>
 
 	//isotope
-})
+//})
 
 
 </script>
@@ -1071,13 +1254,23 @@
 						$('.acf-map').css('pointer-events','none');});
 
 			$('.eventLink').click(function() {
-				$('.workSection').css('display','none');
-				$('.studentSection').css('display','none');
-				$('.eventSection').css('display','flex');
-				google.maps.event.trigger(map, 'resize');
-				$('.filterContainer').css('display','none');
-				$('.sidebar').addClass('sidebarBlackout');
-				$('body').css('background','black');
+				if($('.eventSection').css('display')==='flex') {
+					$('.workSection').css('display','flex');
+					$('.eventSection').css('display','none');
+					$('.filterContainer').css('display','initial');
+					$('.sidebar').removeClass('sidebarBlackout');
+					$('body').css('background','white');
+				} else {
+					$('.workSection').css('display','none');
+					$('.studentSection').css('display','none');
+					$('.eventSection').css('display','flex');
+					google.maps.event.trigger(map, 'resize');
+					$('.filterContainer').css('display','none');
+					$('.sidebar').addClass('sidebarBlackout');
+					$('body').css('background','black');
+				}
+
+
 			})
 
 

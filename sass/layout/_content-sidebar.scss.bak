@@ -2,6 +2,8 @@
 	font-size:.75rem;
 }
 
+
+
 .content-area {
 	float: left;
 	margin: 0 (-$size__site-sidebar) 0 0;
@@ -23,12 +25,35 @@
 	width: $size__site-main;
 }
 
+.infoLink {
+	width:100%;
+	display:block;
+	color:black;
+	text-decoration: none;
+	&:hover {
+		color:black;
+		text-decoration: none;
+	}
+	&:visited {
+		color:black;
+	}
+}
+
+
+
 .Logo {
   font-size: 7em;
   text-align: center;
   display: block;
   margin: .2em 0;
   margin-top: .6em; }
+
+@media screen and (max-height: 650px) {
+	.Logo {
+		font-size: 5em;
+	}
+}
+
 
 .sidebar {
   flex-grow: 3;
@@ -44,16 +69,125 @@
   max-width: 500px;
   min-width: 330px; }
 
+  .sidebarBlackout {
+	  a.logolink{
+		  transition: none;
+		  color:white;
+		  &:hover {
+			  color:white;
+		  }
+		  &:visited {
+			  color:white;
+		  }
+	  }
+  	background: black;
+  	color: white;
+  	border-color: white;
+	.hr {
+		border-bottom-color: white;
+	}
+	.socialbox {
+		background: white !important;
+		color: black !important;
+	}
+  }
+
+.justifyCenter {
+	justify-content: center;
+}
+
+.clickArrow {
+	display: none;
+	position: fixed;
+	top: 46px;
+  right: 48px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.rotateBack {
+}
+
+.fakeBottom {
+	display: none;
+	border-bottom-color: white;
+border-bottom-style: solid;
+position: fixed;
+width: 100vw;
+top: 86px;
+left: 0;
+}
+
+.takeoverName {
+	.name {
+		display:block;
+	}
+}
+
+
+.topFixed {
+	position: fixed;
+    top: 0;
+}
+
+.socialBlackout {
+	background: white !important;
+	color: black !important;
+}
+
+.sidebarTakeover .projectName{
+  font-size:.5em;
+  margin-top:.4em;
+}
+
+.sidebarTakeover .specialties{
+  font-size:.3em;
+}
+
+.filterContainer:hover{
+  cursor:pointer;
+}
+
+.eventLink:hover{
+    cursor:pointer;
+  }
+
+.icon-x{
+  cursor:pointer;
+}
+
+
+
+
+@media (min-width: 1800px) {
+	.container {
+	    width: 1760px;
+	    max-width: 100%;
+	}
+}
 
 @media screen and (min-width: 1600px) {
   .sidebar {
     flex-grow: 2; } }
+
+#studentLink {
+	color: #999999;
+}
+
+#workLink {
+	color: black;
+}
 .filterMain {
   margin-left: 2em;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 1.3em; }
+
+.filterMain:hover{
+  cursor:pointer;
+}
+
 
 .hr {
   width: 90%;
@@ -68,9 +202,19 @@
   font-weight: bold;
   margin: 2em;
   margin-left: 2em;
+  margin-top:.5em;
   flex-grow: 2;
   flex-direction: column;
   justify-content: flex-end; }
+
+ 
+  .takeoverName .name{
+    margin-left:1em;
+
+  }
+
+
+
 
 .dates {
   margin-left: 2.4em;
@@ -100,6 +244,9 @@
   .eventLink {
     font-weight: bold;
     text-transform: uppercase; }
+
+
+
 }
 
 .socialLinks {
@@ -111,75 +258,40 @@
 }
 
 @media screen and (max-width: 768px) {
+.icon-arrow{
+  display:none;
+}
+
+	.clickArrow {
+		display: block;
+    font-size: 1.1em;
+	}
   .Logo {
     font-size: 4em;
     margin: 0 .2em; }
 
+
   .sidebar {
 	position: fixed;
     width: 100vw;
-    background: white;
     z-index: 9999;
     height: 86px;
     flex-direction: row;
-    max-width: initial;
-    min-width: initial;
+    max-width: 100%;
+    min-width: 100%;
 	}
 
   .mainArea{
     margin-top: 85px;
   }
 
-
-  .filterMain {
-    margin: 0; 
+   .workstudents{
     display: flex;
     flex-direction: column;
-    justify-content: center;}
-
-
-#workLink{
-    margin-right: 1em;
-    margin-left: 1em;
-}
-
-  .hr {
-    display: none; }
-
-  .dates {
-    flex-flow: row;
-    margin: 0;
-    .oneNight {
-      display: none; }
-    .eventLink {
-      /*width: 100px;*/
-  	}
+    justify-content: center;
+    margin-top: 3px;
+    margin-left: 12px;
   }
-
-  .socialLinks {
-    display: none; }
-}
-
-@media screen and (max-height: 650px) {
-  .Logo {
-    font-size: 4em;
-    margin: 0 .2em; }
-
-  .sidebar {
-	position: fixed;
-    width: 100vw;
-    background: white;
-    z-index: 9999;
-    height: 86px;
-    flex-direction: row;
-    max-width: initial;
-    min-width: initial;
-	}
-
-  .mainArea{
-    margin-top: 85px;
-  }
-
 
   .filterMain {
     margin: 0; }
@@ -193,7 +305,64 @@
     .oneNight {
       display: none; }
     .eventLink {
-      width: 100px;
+      width: 140px;
+      margin-top:44px;
+  	}
+  }
+
+  .socialLinks {
+    display: none; }
+}
+
+@media screen and (max-height: 600px) {
+	.clickArrow {
+		display: block;
+	}
+
+.icon-arrow{
+  display:none;
+}
+
+  .Logo {
+    font-size: 4em;
+    margin: 0 .2em; }
+
+  .sidebar {
+	position: fixed;
+    width: 100vw;
+    z-index: 9999;
+    height: 86px;
+    flex-direction: row;
+    max-width: 100%;
+    min-width: 100%;
+	}
+
+  .mainArea{
+    margin-top: 85px;
+  }
+
+   .workstudents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3px;
+    margin-left: 12px;
+  }
+
+  .filterMain {
+    margin: 0; }
+
+  .hr {
+    display: none; }
+
+  .dates {
+    flex-flow: row;
+    margin: 0;
+    .oneNight {
+      display: none; }
+    .eventLink {
+      width: 160px;
+      margin-top:44px;
   	}
   }
 

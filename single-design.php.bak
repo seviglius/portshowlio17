@@ -7,23 +7,30 @@
 				return array($first_name, $last_name);
 } ?>
 
+<?php  function removeBadStuff($object) {
+				return str_replace(",", "",str_replace(".", "",str_replace(":", "",str_replace("&", "",str_replace("+", "",str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($object)))))))));
+} ?>
 
 <div class="studentPage">
 <div class="sidebar">
 
-    <div id='logoBig' class='Logo'>
+	<div id='logoBig' class='Logo'>
         <a href="/" class="logolink"><span class="icon-port-logo_black-nockout-ps-full"></span></a>
     </div>
-	<div id='logoSmall' class='Logo'>
+    <div id='logoSmall' class='Logo'>
         <a href="/" class="logolink"><span class="icon-logo_med">
-		</span></a>
+        </span></a>
     </div>
 
     <div class='hr'></div>
 
 	<div class='studentSidebar'>
-		<span class='name'><?php echo split_name(get_the_title())[0]; ?></span>
-		<span class='name'><?php echo split_name(get_the_title())[1]; ?></span>
+		<span class='nameContainer'>
+			<span class='name'><?php echo split_name(get_the_title())[0]; ?></span>
+			<span class='name'><?php echo split_name(get_the_title())[1]; ?></span>
+			<span class='clickArrow'><span class='icon-arrow'></span></span>
+		</span>
+		<div class='fakeBottom'></div>
 
 		<img class='headshot' src='<?php the_field('headshot'); ?>' />
 
@@ -86,17 +93,16 @@
 
 							<?php $i++ ?>
 							<?php if($i==1): ?>
-		        				<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle firstProject"><?php the_sub_field('project_title'); ?></h3>
+		        				<h3 id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>Location' class="projectTitle firstProject"><?php the_sub_field('project_title'); ?></h3>
 							<?php else: ?>
-								<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
+								<h3 id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>Location' class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
 							<?php endif; ?>
 									<!-- Figure out how to output project types with commas -->
 		        			<p class="category"><?php the_sub_field('project_type'); ?></p>
 
-		        					<?php if( get_sub_field('collaborators') ): ?>
+									<?php if( get_sub_field('collaborators') ): ?>
 										<p class="collaboratortitle">Collaborators</p>
-									<?php endif; ?>
-
+ 									<?php endif; ?>
 									<?php $post_objects = get_sub_field('collaborators'); if( $post_objects ): ?>
 										<?php foreach( $post_objects as $post): // variable must be called $post (IMPORTANT) ?>
 						        	<?php setup_postdata($post); ?>
@@ -215,7 +221,7 @@
         	<?php elseif( get_row_layout() == 'download' ): ?>
 
         	<?php endif; ?>
-				<span id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height' > </span>
+				<span id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>Height' > </span>
     		<?php endwhile; ?>
 
 			<?php else : ?>
@@ -229,7 +235,7 @@
 	<?php if( have_rows('projects') ): ?>
 		<?php while ( have_rows('projects') ) : the_row(); ?>
 			<?php if( get_row_layout() == 'project' ): ?>
-				<span id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>' class='projectSelectorName'>
+				<span id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>' class='projectSelectorName'>
 					<?php the_sub_field('project_title'); ?>
 				</span>
 			<?php endif; ?>
@@ -242,24 +248,33 @@
 
 <script>
 	$(window).resize(function() {
-		if( $(window).width() > '768' && $(window).height() > 650) {
+		if( $(window).width() > '768' && $(window).height() > 600) {
 			$('.headshot').css('display','block');
 			$('.website').css('display','block');
 			$('.focus').css('display','block');
 			$('.socialSection').css('display','block');
 			$('.sidebar').css('height','100vh');
+			$('.clickArrow').css('display','none');
+			$('.sidebar').removeClass('sidebarBlackout');
+			$('.nameContainer').removeClass('topFixed');
+			$('.studentSidebar').removeClass('justifyCenter');
+			$('.socialIcon').removeClass('socialBlackout');
+			$('.clickArrow').removeClass('rotateBack');
+			$('.fakeBottom').css('display','none');
 		} else if( $(window).width() <='768') {
 			$('.headshot').css('display','none');
 			$('.website').css('display','none');
 			$('.focus').css('display','none');
 			$('.socialSection').css('display','none');
 			$('.sidebar').css('height','86');
-		} else if( $(window).width() > '768' && $(window).height() <= 650) {
+			$('.clickArrow').css('display','block');
+		} else if( $(window).width() > '768' && $(window).height() <= 600) {
 			$('.headshot').css('display','none');
 			$('.website').css('display','none');
 			$('.focus').css('display','none');
 			$('.socialSection').css('display','none');
 			$('.sidebar').css('height','86');
+			$('.clickArrow').css('display','block');
 		}
 	})
 
@@ -270,37 +285,49 @@
 		$('.website').css('display','block');
 		$('.focus').css('display','block');
 		$('.socialSection').css('display','block');
-		$height = $('.socialSection').offset().top + $('.socialSection').height() + 50 - $('.studentSidebar').offset().top;
-		$('.sidebar').animate( {
-			height: $height
-		},500);
+		$('.sidebar').css('height','100vh');
+		$('.sidebar').addClass('sidebarBlackout');
+		$('.nameContainer').addClass('topFixed');
+		$('.studentSidebar').addClass('justifyCenter');
+		$('.socialIcon').addClass('socialBlackout');
+		$('.clickArrow').addClass('rotateBack');
+		$('.fakeBottom').css('display','block');
 	} else if ( 	$(window).width() <= '768' &&  $('.sidebar').height() >= 100 ) {
-		$('.sidebar').animate( {
-			height: 86
-		},500, function() {
-			$('.headshot').css('display','none');
-			$('.website').css('display','none');
-			$('.focus').css('display','none');
-			$('.socialSection').css('display','none');
-		});
-	} else if ( $(window).height() <= '650' &&  $('.sidebar').height() >= 100 ) {
-		$('.sidebar').animate( {
-			height: 86
-		},500, function() {
-			$('.headshot').css('display','none');
-			$('.website').css('display','none');
-			$('.focus').css('display','none');
-			$('.socialSection').css('display','none');
-		});
-	} else if ( $(window).height() <= '650' &&  $('.sidebar').height() <= 100 ) {
+		$('.sidebar').css('height','86px');
+		$('.headshot').css('display','none');
+		$('.website').css('display','none');
+		$('.focus').css('display','none');
+		$('.socialSection').css('display','none');
+		$('.sidebar').removeClass('sidebarBlackout');
+		$('.nameContainer').removeClass('topFixed');
+		$('.studentSidebar').removeClass('justifyCenter');
+		$('.socialIcon').removeClass('socialBlackout');
+		$('.clickArrow').removeClass('rotateBack');
+		$('.fakeBottom').css('display','none');
+	} else if ( $(window).height() <= '600' &&  $('.sidebar').height() >= 100 ) {
+		$('.sidebar').css('height','86px');
+		$('.headshot').css('display','none');
+		$('.website').css('display','none');
+		$('.focus').css('display','none');
+		$('.socialSection').css('display','none');
+		$('.sidebar').removeClass('sidebarBlackout');
+		$('.nameContainer').removeClass('topFixed');
+		$('.studentSidebar').removeClass('justifyCenter');
+		$('.socialIcon').removeClass('socialBlackout');
+		$('.clickArrow').removeClass('rotateBack');
+		$('.fakeBottom').css('display','none');
+	} else if ( $(window).height() <= '600' &&  $('.sidebar').height() <= 100 ) {
 		$('.headshot').css('display','block');
 		$('.website').css('display','block');
 		$('.focus').css('display','block');
 		$('.socialSection').css('display','block');
-		$height = $('.socialSection').offset().top + $('.socialSection').height() + 50 - $('.studentSidebar').offset().top;
-		$('.sidebar').animate( {
-			height: $height
-		},500);
+		$('.sidebar').css('height','100vh');
+		$('.sidebar').addClass('sidebarBlackout');
+		$('.nameContainer').addClass('topFixed');
+		$('.studentSidebar').addClass('justifyCenter');
+		$('.socialIcon').addClass('socialBlackout');
+		$('.clickArrow').addClass('rotateBack');
+		$('.fakeBottom').css('display','block');
 	}
 
 
@@ -316,14 +343,14 @@
 				$(".mainArea").scroll(function() {
 					$scroll = $(".mainArea").scrollTop();
 
-					$startHeight = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location').offset().top + $(".mainArea").scrollTop() - 50;
-					$endHeight = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height').offset().top + $(".mainArea").scrollTop() + $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height').height();
+					$startHeight = $('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>Location').offset().top + $(".mainArea").scrollTop() - 50;
+					$endHeight = $('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>Height').offset().top + $(".mainArea").scrollTop() + $('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>Height').height();
 					console.log($scroll, $startHeight,$endHeight);
 
 					if($scroll >= $startHeight  && $scroll < $endHeight) {
-						$('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').css("text-decoration","underline")
+						$('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>').css("text-decoration","underline")
 					} else {
-						$('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').css("text-decoration","none")
+						$('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>').css("text-decoration","none")
 					}
 
 
@@ -338,9 +365,9 @@
 		<?php while ( have_rows('projects') ) : the_row(); ?>
 			<?php if( get_row_layout() == 'project' ): ?>
 
-				$('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').click(function() {
+				$('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>').click(function() {
 
-					$scrollto = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location').offset().top + $(".mainArea").scrollTop() - 15;
+					$scrollto = $('#<?php echo $FileName = removeBadStuff(get_sub_field('project_title')); ?>Location').offset().top + $(".mainArea").scrollTop() - 15;
 					console.log($scrollto);
 					$('.mainArea').clearQueue();
 				    $(".mainArea").animate({

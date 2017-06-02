@@ -127,7 +127,7 @@ left: 0;
 
 .topFixed {
 	position: fixed;
-    top: 0;
+    top: 6px;
 }
 
 .socialBlackout {
@@ -136,12 +136,12 @@ left: 0;
 }
 
 .sidebarTakeover .projectName{
-  font-size:.5em;
-  margin-top:.4em;
+  font-size:.7em;
+  margin-top:.45em;
 }
 
 .sidebarTakeover .specialties{
-  font-size:.3em;
+  font-size:.5em;
 }
 
 .filterContainer:hover{
@@ -158,7 +158,6 @@ left: 0;
 
 
 
-
 @media (min-width: 1800px) {
 	.container {
 	    width: 1760px;
@@ -169,6 +168,14 @@ left: 0;
 @media screen and (min-width: 1600px) {
   .sidebar {
     flex-grow: 2; } }
+
+#studentLink {
+	color: #999999;
+}
+
+#workLink {
+	color: black;
+}
 .filterMain {
   margin-left: 2em;
   display: block;
@@ -199,7 +206,7 @@ left: 0;
   flex-direction: column;
   justify-content: flex-end; }
 
- 
+�
   .takeoverName .name{
     margin-left:1em;
 
