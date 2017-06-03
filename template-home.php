@@ -239,13 +239,13 @@
 
         <div class="container">
             <div class="col-md-4 floorArea">
-                <div class="yellowBox"></div><p>Student Work</p>
+                <p><span class="bignumber" >1</span>Students</p>
             </div>
             <div class="col-md-4 floorArea">
-                <div class="blueBox"></div><p>Gallery</p>
+                <p><span class="bignumber" >2</span>Gallery</p>
             </div>
             <div class="col-md-4 floorArea">
-                <div class="orangeBox" ></div><p>Video / AR / VR</p>
+                <p><span class="bignumber" >3</span>Video | VR</p>
             </div>
         </div>
 

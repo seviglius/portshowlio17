@@ -17,13 +17,29 @@ display: inline-block;
 }
 
 .search {
-    background-color: rgba(255, 255, 255, 0.7);
-padding: 15px;
+background-color: rgba(255, 255, 255, 0.7);
+padding: 9px;
 font-size: 1.3em;
 font-weight: bold;
 margin: 5px;
 display: none;
 }
+
+.quicksearch{
+    border:2px black solid !important;
+    border-radius:0px !important;
+}
+
+:focus {
+    outline: -webkit-focus-ring-color auto 0px !important;
+}
+
+input[type="text"]{
+    padding: 4px;
+    padding-left: 8px;
+    padding-bottom: 3px;
+}
+
 
 .filterContainer {
     position: fixed;
