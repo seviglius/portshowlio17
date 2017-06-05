@@ -9331,6 +9331,7 @@ object {
   color: black; }
 
 #workLink {
+  cursor: default;
   color: #999999; }
 
 .filterMain {

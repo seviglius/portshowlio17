@@ -29,12 +29,13 @@
 
 
     <div class="workstudents">
+		<span id='workLink' class='filterMain'>
+            <?php the_field('work_link'); ?>
+        </span>
         <span id='studentLink' class='filterMain'>
             <?php the_field('student_link'); ?>
         </span>
-        <span id='workLink' class='filterMain'>
-            <?php the_field('work_link'); ?>
-        </span>
+
     </div>
 
 
@@ -619,6 +620,9 @@
 		$('.sidebar').removeClass('sidebarBlackout');
 		$('body').css('background','white');
 
+		$('#workLink').css('cursor','pointer');
+		$('#studentLink').css('cursor','default');
+
 		$('#studentLink').css('color','#999999');
 		$('#workLink').css('color','black');
 
@@ -627,6 +631,8 @@
 	})
 
 	$('#workLink').click(function() {
+		$('#studentLink').css('cursor','pointer');
+		$('#workLink').css('cursor','default');
 
 		$('#workLink').css('color','#999999');
 		$('#studentLink').css('color','black');
@@ -1261,6 +1267,8 @@
 					$('.filterContainer').css('display','initial');
 					$('.sidebar').removeClass('sidebarBlackout');
 					$('body').css('background','white');
+						$('#workLink').css('cursor','default');
+							$('#studentLink').css('cursor','pointer');
 					$('#workLink').css('color','#999999');
 					$('#studentLink').css('color','black');
 				} else {
@@ -1270,6 +1278,8 @@
 						$('.closePage').css('display','flex');
 					}
 					$('#workLink').css('color','white');
+					$('#studentLink').css('cursor','pointer');
+					$('#workLink').css('cursor','pointer');
 					$('#studentLink').css('color','white');
 					$('.workSection').css('display','none');
 					$('.studentSection').css('display','none');
