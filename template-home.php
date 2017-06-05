@@ -342,7 +342,7 @@
 		</span>
 	</div>
 	<span class='search'><input type="text" class="quicksearch" placeholder="Search" /></span>
-	<span class='searchButton'>?</span>
+	<span class='searchButton'><span class='icon-search'></span></span>
 	<span class='filterButton'>FILTER</span>
 </div>
 
