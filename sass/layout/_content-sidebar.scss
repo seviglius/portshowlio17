@@ -156,6 +156,10 @@ left: 0;
   cursor:pointer;
 }
 
+.showMobile {
+	display:none;
+}
+
 
 
 @media (min-width: 1800px) {
@@ -367,4 +371,16 @@ left: 0;
 
   .socialLinks {
     display: none; }
+}
+
+@media screen and (max-width: 450px) {
+	.hideMobile {
+		display: none;
+	}
+	.showMobile {
+		display: block;
+    	margin-top: 35px !important;
+		width: 40px !important;
+		font-size:2em;
+	}
 }

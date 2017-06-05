@@ -62,7 +62,8 @@
            <!-- nothing found -->
         <?php endif; ?>
 
-        <span class='eventLink'>Event Details<span class='icon-arrow'></span></span>
+		<span class='eventLink showMobile'><span class='icon-info'></span></span>
+        <span class='eventLink hideMobile'>Event Details<span class='icon-arrow'></span></span>
 
     </div>
 

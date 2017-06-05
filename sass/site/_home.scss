@@ -100,4 +100,24 @@ input[type="text"]{
         right:40px;
         bottom: 20px;
     }
+
+    @media screen and (max-width: 500px) {
+        .filterButton {
+            padding:5px;
+            font-size:.85em;
+        }
+        .searchButton {
+            padding:5px;
+            font-size:.85em;
+        }
+        .filterChoiceMain {
+            padding:5px;
+            font-size:.85em;
+        }
+        .filterChoice {
+            padding: 5px;
+            font-size: .9em;
+        }
+    }
+
 }
