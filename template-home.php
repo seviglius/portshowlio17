@@ -238,13 +238,13 @@
         <?php endif; ?>
 
         <div class="container">
-            <div class="col-md-4 floorArea">
+            <div class="col-lg-4 floorArea">
                 <p><span class="bignumber" >1</span>Students</p>
             </div>
-            <div class="col-md-4 floorArea">
+            <div class="col-lg-4 floorArea">
                 <p><span class="bignumber" >2</span>Gallery</p>
             </div>
-            <div class="col-md-4 floorArea">
+            <div class="col-lg-4 floorArea">
                 <p><span class="bignumber" >3</span>Video | VR</p>
             </div>
         </div>

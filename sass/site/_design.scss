@@ -154,7 +154,9 @@ body{
   text-decoration: none;
 }
 
-
+.getDirections:link{
+  color:white;
+}
 
 
 
@@ -171,6 +173,14 @@ body{
   float:left;
     font-weight: 700;
     font-size: 2em;
+  text-align:center;
+}
+
+
+@media screen and (max-width: 992px) {
+.floorArea{
+  text-align:left;
+}
 }
 
 
