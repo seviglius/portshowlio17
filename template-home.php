@@ -619,8 +619,8 @@
 		$('.sidebar').removeClass('sidebarBlackout');
 		$('body').css('background','white');
 
-		$('#studentLink').css('color','black');
-		$('#workLink').css('color','#999999');
+		$('#studentLink').css('color','#999999');
+		$('#workLink').css('color','black');
 
 		var $filtersJoin = $filters.join(', ');
 		$grid.isotope({ filter: $filtersJoin });
@@ -628,8 +628,8 @@
 
 	$('#workLink').click(function() {
 
-		$('#workLink').css('color','black');
-		$('#studentLink').css('color','#999999');
+		$('#workLink').css('color','#999999');
+		$('#studentLink').css('color','black');
 
 		$('.workSection').css('display','flex');
 		$('.studentSection').css('display','none');
@@ -1261,16 +1261,16 @@
 					$('.filterContainer').css('display','initial');
 					$('.sidebar').removeClass('sidebarBlackout');
 					$('body').css('background','white');
-					$('#workLink').css('color','black');
-					$('#studentLink').css('color','#999999');
+					$('#workLink').css('color','#999999');
+					$('#studentLink').css('color','black');
 				} else {
 					if($('#logoSmall').css('display')==='block') {
 						$('.closePage').css('display','none');
 					} else {
 						$('.closePage').css('display','flex');
 					}
-					$('#workLink').css('color','#999999');
-					$('#studentLink').css('color','#999999');
+					$('#workLink').css('color','white');
+					$('#studentLink').css('color','white');
 					$('.workSection').css('display','none');
 					$('.studentSection').css('display','none');
 					$('.eventSection').css('display','flex');

@@ -9328,10 +9328,10 @@ object {
   .sidebar {
     flex-grow: 2; } }
 #studentLink {
-  color: #999999; }
+  color: black; }
 
 #workLink {
-  color: black; }
+  color: #999999; }
 
 .filterMain {
   margin-left: 2em;
