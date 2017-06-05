@@ -1263,6 +1263,11 @@
 					$('#workLink').css('color','black');
 					$('#studentLink').css('color','#999999');
 				} else {
+					if($('#logoSmall').css('display')==='block') {
+						$('.closePage').css('display','none');
+					} else {
+						$('.closePage').css('display','flex');
+					}
 					$('#workLink').css('color','#999999');
 					$('#studentLink').css('color','#999999');
 					$('.workSection').css('display','none');
