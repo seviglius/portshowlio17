@@ -223,7 +223,7 @@
         <?php endif; ?>
 
         <span class="directions"><?php the_field('directions'); ?></span>
-        <p class="getDirections">Get Directions</p>
+        <a target='_blank' href='https://www.google.com/maps/place/Seattle+Central+College/@47.6162684,-122.3237729,17z/data=!3m1!4b1!4m5!3m4!1s0x54906accc351c149:0xdc1a5c338dd4395c!8m2!3d47.6162684!4d-122.3215842' class="getDirections">Get Directions</a>
         <p class="eventMap"><?php the_field('event_map'); ?></p>
         <p><?php the_field('floor'); ?></p>
 
@@ -1260,11 +1260,16 @@
 					$('.filterContainer').css('display','initial');
 					$('.sidebar').removeClass('sidebarBlackout');
 					$('body').css('background','white');
+					$('#workLink').css('color','black');
+					$('#studentLink').css('color','#999999');
 				} else {
+					$('#workLink').css('color','#999999');
+					$('#studentLink').css('color','#999999');
 					$('.workSection').css('display','none');
 					$('.studentSection').css('display','none');
 					$('.eventSection').css('display','flex');
 					google.maps.event.trigger(map, 'resize');
+					center_map( map );
 					$('.filterContainer').css('display','none');
 					$('.sidebar').addClass('sidebarBlackout');
 					$('body').css('background','black');
