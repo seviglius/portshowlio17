@@ -148,7 +148,9 @@
 <div class="container mainArea studentSection">
 	<div class='row'>
 	<div class='col-md-12'>
+		<a href='<?php the_field(videoLink) ?>'>
 		<img src='<?php the_field('360_video'); ?>'>
+	</a>
 	</div>
 </div>
 	<?php
@@ -208,7 +210,7 @@
 
         <span class='closePage'><span class='icon-x'></span></span>
 
-        
+
 
 
 
