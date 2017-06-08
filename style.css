@@ -8510,13 +8510,35 @@ a {
   font-family: "Neue";
   font-weight: Bold;
   src: url("fonts/neue_haas/neueHeavy.otf") format("truetype"); }
-a
 body {
   background: white;
   color: black;
   overflow: hidden;
   font-size: .8rem;
   font-family: "Neue", sans-serif; }
+
+.mobileDates {
+  margin-bottom: 1em;
+  margin-top: 1em;
+  flex-grow: 2;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-end; }
+  .mobileDates .oneNight .nightType {
+    font-size: 1.5em;
+    font-weight: bold;
+    display: block; }
+  .mobileDates .oneNight .date {
+    font-size: 1.25em;
+    font-weight: normal;
+    display: block;
+    font-family: "NeueLight", sans-serif; }
+  .mobileDates .oneNight .time {
+    font-size: .9em;
+    font-weight: normal;
+    display: block; }
+  .mobileDates .oneNight:last-of-type {
+    flex-grow: 1; }
 
 .homePage {
   display: flex;
@@ -8576,6 +8598,16 @@ body {
       .mainArea .scca-homepage-item .contentCenter {
         display: flex;
         flex-direction: column; } }
+@media screen and (max-width: 768px) {
+  .mobileDates {
+    display: flex; }
+
+  .mobilehr {
+    margin-bottom: 2em;
+    margin-top: 2em;
+    border-bottom-color: #ffffff;
+    border-bottom-style: solid;
+    border-bottom-width: .1em; } }
 .eventSection {
   background: black;
   display: none; }
