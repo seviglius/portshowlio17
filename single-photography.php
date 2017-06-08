@@ -7,8 +7,22 @@
 				return array($first_name, $last_name);
 } ?>
 
+<?php  function removeBadStuff($object) {
+				return str_replace(",", "",str_replace(".", "",str_replace(":", "",str_replace("&", "",str_replace("+", "",str_replace("'", "",str_replace('/','_', str_replace(' ', '-', strtolower($object)))))))));
+} ?>
 
 <div class="studentPage">
+	<div class='projectSelector'>
+		<?php if( have_rows('projects') ): ?>
+			<?php while ( have_rows('projects') ) : the_row(); ?>
+				<?php if( get_row_layout() == 'project' ): ?>
+					<span id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>' class='projectSelectorName'>
+						<?php the_sub_field('project_title'); ?>
+					</span>
+				<?php endif; ?>
+			<?php endwhile; ?>
+		<?php endif; ?>
+	</div>
 <div class="sidebar">
 
 	<div id='logoBig' class='Logo'>
@@ -25,7 +39,7 @@
 		<span class='nameContainer'>
 			<span class='name'><?php echo split_name(get_the_title())[0]; ?></span>
 			<span class='name'><?php echo split_name(get_the_title())[1]; ?></span>
-			<span class='clickArrow'><span class='icon-arrow'></span></span>
+			<span class='clickArrow'>INFO</span></span>
 		</span>
 		<div class='fakeBottom'></div>
 
@@ -76,9 +90,9 @@
 </div>
 
 
-<div class="mainArea">
+<div class="container mainArea">
 
-<div class="container">
+<div class="container marginFix">
 <div class="row">
 
 				<?php if( have_rows('projects') ): ?>
@@ -90,9 +104,9 @@
 
 							<?php $i++ ?>
 							<?php if($i==1): ?>
-		        				<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle firstProject"><?php the_sub_field('project_title'); ?></h3>
+		        				<h3 id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>Location' class="projectTitle firstProject"><?php the_sub_field('project_title'); ?></h3>
 							<?php else: ?>
-								<h3 id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location' class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
+								<h3 id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>Location' class="projectTitle"><?php the_sub_field('project_title'); ?></h3>
 							<?php endif; ?>
 									<!-- Figure out how to output project types with commas -->
 		        			<p class="category"><?php the_sub_field('project_type'); ?></p>
@@ -218,34 +232,35 @@
         	<?php elseif( get_row_layout() == 'download' ): ?>
 
         	<?php endif; ?>
-				<span id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height' > </span>
+				<span id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>Height' > </span>
     		<?php endwhile; ?>
 
 			<?php else : ?>
    		<!-- nothing found -->
 			<?php endif; ?>
+			<div class='hr'></div>
 
-	</div>
-</div>
-
-<div class='projectSelector'>
-	<?php if( have_rows('projects') ): ?>
-		<?php while ( have_rows('projects') ) : the_row(); ?>
-			<?php if( get_row_layout() == 'project' ): ?>
-				<span id='<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>' class='projectSelectorName'>
-					<?php the_sub_field('project_title'); ?>
+			<div class='row' style='width:100%;'>
+				<span class='nextStudent'>
+					<?php next_post_link() ?>
 				</span>
-			<?php endif; ?>
-		<?php endwhile; ?>
-	<?php endif; ?>
+				<span class='previousStudent'>
+
+					<?php previous_post_link() ?>
+
+				</span>
+			</div>
+	</div>
+
 </div>
+
 
 
 </div>
 
 <script>
 	$(window).resize(function() {
-		if( $(window).width() > '768' && $(window).height() > 650) {
+		if( $(window).width() > '768' && $(window).height() > 600) {
 			$('.headshot').css('display','block');
 			$('.website').css('display','block');
 			$('.focus').css('display','block');
@@ -265,7 +280,7 @@
 			$('.socialSection').css('display','none');
 			$('.sidebar').css('height','86');
 			$('.clickArrow').css('display','block');
-		} else if( $(window).width() > '768' && $(window).height() <= 650) {
+		} else if( $(window).width() > '768' && $(window).height() <= 600) {
 			$('.headshot').css('display','none');
 			$('.website').css('display','none');
 			$('.focus').css('display','none');
@@ -301,7 +316,7 @@
 		$('.socialIcon').removeClass('socialBlackout');
 		$('.clickArrow').removeClass('rotateBack');
 		$('.fakeBottom').css('display','none');
-	} else if ( $(window).height() <= '650' &&  $('.sidebar').height() >= 100 ) {
+	} else if ( $(window).height() <= '600' &&  $('.sidebar').height() >= 100 ) {
 		$('.sidebar').css('height','86px');
 		$('.headshot').css('display','none');
 		$('.website').css('display','none');
@@ -313,7 +328,7 @@
 		$('.socialIcon').removeClass('socialBlackout');
 		$('.clickArrow').removeClass('rotateBack');
 		$('.fakeBottom').css('display','none');
-	} else if ( $(window).height() <= '650' &&  $('.sidebar').height() <= 100 ) {
+	} else if ( $(window).height() <= '600' &&  $('.sidebar').height() <= 100 ) {
 		$('.headshot').css('display','block');
 		$('.website').css('display','block');
 		$('.focus').css('display','block');
@@ -340,14 +355,14 @@
 				$(".mainArea").scroll(function() {
 					$scroll = $(".mainArea").scrollTop();
 
-					$startHeight = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location').offset().top + $(".mainArea").scrollTop() - 50;
-					$endHeight = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height').offset().top + $(".mainArea").scrollTop() + $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Height').height();
+					$startHeight = $('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>Location').offset().top + $(".mainArea").scrollTop() - 50;
+					$endHeight = $('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>Height').offset().top + $(".mainArea").scrollTop() + $('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>Height').height();
 					console.log($scroll, $startHeight,$endHeight);
 
 					if($scroll >= $startHeight  && $scroll < $endHeight) {
-						$('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').css("text-decoration","underline")
+						$('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>').css("text-decoration","underline")
 					} else {
-						$('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').css("text-decoration","none")
+						$('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>').css("text-decoration","none")
 					}
 
 
@@ -362,9 +377,9 @@
 		<?php while ( have_rows('projects') ) : the_row(); ?>
 			<?php if( get_row_layout() == 'project' ): ?>
 
-				$('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>').click(function() {
+				$('#<?php echo removeBadStuff(get_sub_field('project_title')); ?>').click(function() {
 
-					$scrollto = $('#<?php echo str_replace(' ', '-', strtolower(get_sub_field('project_title'))); ?>Location').offset().top + $(".mainArea").scrollTop() - 15;
+					$scrollto = $('#<?php echo $FileName = removeBadStuff(get_sub_field('project_title')); ?>Location').offset().top + $(".mainArea").scrollTop() - 15;
 					console.log($scrollto);
 					$('.mainArea').clearQueue();
 				    $(".mainArea").animate({

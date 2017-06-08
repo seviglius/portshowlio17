@@ -8729,6 +8729,7 @@ body {
   margin-bottom: .2rem; }
 
 .projectSelector {
+  z-index: 999999;
   position: fixed;
   right: 17px;
   top: 10px;

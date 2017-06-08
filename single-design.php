@@ -12,6 +12,17 @@
 } ?>
 
 <div class="studentPage">
+	<div class='projectSelector'>
+		<?php if( have_rows('projects') ): ?>
+			<?php while ( have_rows('projects') ) : the_row(); ?>
+				<?php if( get_row_layout() == 'project' ): ?>
+					<span id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>' class='projectSelectorName'>
+						<?php the_sub_field('project_title'); ?>
+					</span>
+				<?php endif; ?>
+			<?php endwhile; ?>
+		<?php endif; ?>
+	</div>
 <div class="sidebar">
 
 	<div id='logoBig' class='Logo'>
@@ -227,20 +238,8 @@
 			<?php else : ?>
    		<!-- nothing found -->
 			<?php endif; ?>
-			<?php
-		        //remove_all_filters('posts_orderby');
-		        $args = array(
-		            'post_type' => array('design', 'photography'),
-		            'posts_per_page' => 100,
-		            'orderby'        => 'title',
-		        );
-		        $query = new WP_Query($args);
-		        $featuredimage = get_field_objects();
-		    ?>
-			<?php
-			  while ($query->have_posts()) : $query->the_post();
-			?>
-			<?php endwhile; ?>
+			<div class='hr'></div>
+
 			<div class='row' style='width:100%;'>
 				<span class='nextStudent'>
 					<?php next_post_link() ?>
@@ -255,17 +254,7 @@
 
 </div>
 
-<div class='projectSelector'>
-	<?php if( have_rows('projects') ): ?>
-		<?php while ( have_rows('projects') ) : the_row(); ?>
-			<?php if( get_row_layout() == 'project' ): ?>
-				<span id='<?php echo removeBadStuff(get_sub_field('project_title')); ?>' class='projectSelectorName'>
-					<?php the_sub_field('project_title'); ?>
-				</span>
-			<?php endif; ?>
-		<?php endwhile; ?>
-	<?php endif; ?>
-</div>
+
 
 </div>
 
