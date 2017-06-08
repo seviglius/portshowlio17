@@ -199,10 +199,43 @@
 
         <span class='closePage'><span class='icon-x'></span></span>
 
+        
+
+
+
         <p class="eventTitle"><?php the_field('scca'); ?></p>
         <p><?php the_field('presents'); ?></p>
         <p class="graduating"><?php the_field('graduating'); ?></p>
         <span class="eventDescription"><?php the_field('about_event'); ?></span>
+
+
+        <!--Show dates for mobile-->
+        <div class='mobilehr'></div>
+        <div class='mobileDates'>
+		        <?php if( have_rows('info') ): ?>
+		            <?php while ( have_rows('info') ) : the_row(); ?>
+		                <?php if( get_row_layout() == 'night_details' ): ?>
+		                    <div class='oneNight'>
+		                        <span class='nightType'>
+		                            <?php the_sub_field('night_type'); ?>
+		                        </span>
+		                        <span class='date'>
+		                            <?php the_sub_field('date'); ?>
+		                        </span>
+		                        <span class='time'>
+		                            <?php the_sub_field('time'); ?>
+		                        </span>
+		                    </div>
+		                <?php elseif( get_row_layout() == 'download' ): ?>
+		                <?php endif; ?>
+		            <?php endwhile; ?>
+		        <?php else : ?>
+		           <!-- nothing found -->
+		        <?php endif; ?>
+    	</div>
+    	<div class='mobilehr' style="margin-bottom: 6em;"></div>
+
+
         <p class="address"><?php the_field('address_line1'); ?></p>
         <p class="address"><?php the_field('address_line2'); ?></p>
 

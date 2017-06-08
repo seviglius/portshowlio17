@@ -75,6 +75,37 @@ body {
 	font-size:.9em;
 }
 
+.mobileDates{
+  margin-bottom: 1em;
+  margin-top: 1em;
+  flex-grow: 2;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-end;
+  .oneNight {
+    
+	.nightType {
+      font-size: 1.5em;
+      font-weight: bold;
+      display: block; }
+    .date {
+      font-size: 1.25em;
+      font-weight: normal;
+      display: block;
+      font-family: "NeueLight", sans-serif; }
+    .time {
+      font-size: .9em;
+      font-weight: normal;
+      display: block; }
+  	&:last-of-type {
+    flex-grow: 1; }
+}
+}
+
+
+
+
+
 
 @media screen and (max-width: 768px) {
     .grid {
@@ -106,6 +137,21 @@ body {
 	  }
 	  }
 	  }
+
+
+.mobileDates{
+	display:flex;}
+
+.mobilehr{
+    margin-bottom: 2em;
+    margin-top: 2em;
+    border-bottom-color: #ffffff;
+    border-bottom-style: solid;
+    border-bottom-width: .1em;
+}
+
+
+
   }
 
 
