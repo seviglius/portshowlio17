@@ -81,7 +81,11 @@
 </div>
 
 <div class="container mainArea workSection">
-
+	<div class='row'>
+	<div class='col-md-12'>
+		<img src='<?php the_field('360_video'); ?>'>
+	</div>
+</div>
     <?php
         //remove_all_filters('posts_orderby');
         $args = array(
@@ -142,6 +146,11 @@
 
 
 <div class="container mainArea studentSection">
+	<div class='row'>
+	<div class='col-md-12'>
+		<img src='<?php the_field('360_video'); ?>'>
+	</div>
+</div>
 	<?php
         //remove_all_filters('posts_orderby');
         $args = array(
@@ -647,7 +656,7 @@
 
 	$('#studentLink').click(function() {
 		$('.workSection').css('display','none');
-		$('.studentSection').css('display','flex');
+		$('.studentSection').css('display','block');
 		$('.eventSection').css('display','none');
 		$('.filterContainer').css('display','initial');
 		$('.sidebar').removeClass('sidebarBlackout');
@@ -670,7 +679,7 @@
 		$('#workLink').css('color','#999999');
 		$('#studentLink').css('color','black');
 
-		$('.workSection').css('display','flex');
+		$('.workSection').css('display','block');
 		$('.studentSection').css('display','none');
 		$('.eventSection').css('display','none');
 		$('.filterContainer').css('display','initial');
@@ -682,7 +691,9 @@
 	})
 
 	$('.closePage').click(function() {
-		$('.workSection').css('display','flex');
+		$('#workLink').css('color','#999999');
+		$('#studentLink').css('color','black');
+		$('.workSection').css('display','block');
 		$('.eventSection').css('display','none');
 		$('.filterContainer').css('display','initial');
 		$('.sidebar').removeClass('sidebarBlackout');
@@ -1294,8 +1305,8 @@
 						$('.acf-map').css('pointer-events','none');});
 
 			$('.eventLink').click(function() {
-				if($('.eventSection').css('display')==='flex') {
-					$('.workSection').css('display','flex');
+				if($('.eventSection').css('display')==='block') {
+					$('.workSection').css('display','block');
 					$('.eventSection').css('display','none');
 					$('.filterContainer').css('display','initial');
 					$('.sidebar').removeClass('sidebarBlackout');
@@ -1316,7 +1327,7 @@
 					$('#studentLink').css('color','white');
 					$('.workSection').css('display','none');
 					$('.studentSection').css('display','none');
-					$('.eventSection').css('display','flex');
+					$('.eventSection').css('display','block');
 					google.maps.event.trigger(map, 'resize');
 					center_map( map );
 					$('.filterContainer').css('display','none');

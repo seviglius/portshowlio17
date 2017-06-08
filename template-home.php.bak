@@ -27,12 +27,17 @@
 
     <div class='hr'></div>
 
-    <span id='studentLink' class='filterMain'>
-        <?php the_field('student_link'); ?>
-    </span>
-    <span id='workLink' class='filterMain'>
-        <?php the_field('work_link'); ?>
-    </span>
+
+    <div class="workstudents">
+		<span id='workLink' class='filterMain'>
+            <?php the_field('work_link'); ?>
+        </span>
+        <span id='studentLink' class='filterMain'>
+            <?php the_field('student_link'); ?>
+        </span>
+
+    </div>
+
 
     <div class='hr'></div>
 
@@ -58,7 +63,8 @@
            <!-- nothing found -->
         <?php endif; ?>
 
-        <span class='eventLink'>Event Details<span class='icon-arrow'></span></span>
+		<span class='eventLink showMobile'><span class='icon-info'></span></span>
+        <span class='eventLink hideMobile'>Event Details<span class='icon-arrow'></span></span>
 
     </div>
 
@@ -134,6 +140,7 @@
 
 </div>
 
+
 <div class="container mainArea studentSection">
 	<?php
         //remove_all_filters('posts_orderby');
@@ -192,10 +199,43 @@
 
         <span class='closePage'><span class='icon-x'></span></span>
 
+        
+
+
+
         <p class="eventTitle"><?php the_field('scca'); ?></p>
         <p><?php the_field('presents'); ?></p>
         <p class="graduating"><?php the_field('graduating'); ?></p>
         <span class="eventDescription"><?php the_field('about_event'); ?></span>
+
+
+        <!--Show dates for mobile-->
+        <div class='mobilehr'></div>
+        <div class='mobileDates'>
+		        <?php if( have_rows('info') ): ?>
+		            <?php while ( have_rows('info') ) : the_row(); ?>
+		                <?php if( get_row_layout() == 'night_details' ): ?>
+		                    <div class='oneNight'>
+		                        <span class='nightType'>
+		                            <?php the_sub_field('night_type'); ?>
+		                        </span>
+		                        <span class='date'>
+		                            <?php the_sub_field('date'); ?>
+		                        </span>
+		                        <span class='time'>
+		                            <?php the_sub_field('time'); ?>
+		                        </span>
+		                    </div>
+		                <?php elseif( get_row_layout() == 'download' ): ?>
+		                <?php endif; ?>
+		            <?php endwhile; ?>
+		        <?php else : ?>
+		           <!-- nothing found -->
+		        <?php endif; ?>
+    	</div>
+    	<div class='mobilehr' style="margin-bottom: 6em;"></div>
+
+
         <p class="address"><?php the_field('address_line1'); ?></p>
         <p class="address"><?php the_field('address_line2'); ?></p>
 
@@ -218,7 +258,7 @@
         <?php endif; ?>
 
         <span class="directions"><?php the_field('directions'); ?></span>
-        <p class="getDirections">Get Directions</p>
+        <a target='_blank' href='https://www.google.com/maps/place/Seattle+Central+College/@47.6162684,-122.3237729,17z/data=!3m1!4b1!4m5!3m4!1s0x54906accc351c149:0xdc1a5c338dd4395c!8m2!3d47.6162684!4d-122.3215842' class="getDirections">Get Directions</a>
         <p class="eventMap"><?php the_field('event_map'); ?></p>
         <p><?php the_field('floor'); ?></p>
 
@@ -233,14 +273,14 @@
         <?php endif; ?>
 
         <div class="container">
-            <div class="col-md-4 floorArea">
-                <div class="yellowBox"></div><p>Student Work</p>
+            <div class="col-lg-4 floorArea">
+                <p><span class="bignumber" >1</span>Students</p>
             </div>
-            <div class="col-md-4 floorArea">
-                <div class="blueBox"></div><p>Gallery</p>
+            <div class="col-lg-4 floorArea">
+                <p><span class="bignumber" >2</span>Gallery</p>
             </div>
-            <div class="col-md-4 floorArea">
-                <div class="orangeBox" ></div><p>Video / AR / VR</p>
+            <div class="col-lg-4 floorArea">
+                <p><span class="bignumber" >3</span>Video | VR</p>
             </div>
         </div>
 
@@ -337,9 +377,11 @@
 		</span>
 	</div>
 	<span class='search'><input type="text" class="quicksearch" placeholder="Search" /></span>
-	<span class='searchButton'>?</span>
+	<span class='searchButton'><span class='icon-search'></span></span>
 	<span class='filterButton'>FILTER</span>
 </div>
+
+
 
 
 </div>
@@ -405,12 +447,20 @@
 
 			if ( $('.photoButton').data('selected') === 1) {
 				$('.photoButtonFilters').css('display','inline-block');
-				width = $('.mainArea').outerWidth();
+				$('.mainArea').each( function() {
+					if( $(this).css('display') === 'flex' ) {
+						width = $(this).outerWidth();
+					}
+				})
 				$('.photoButtonFilters').css('width',width);
 			}
 			if ( $('.designButton').data('selected') === 1) {
 				$('.designButtonFilters').css('display','inline-block');
-				width = $('.mainArea').outerWidth();
+				$('.mainArea').each( function() {
+					if( $(this).css('display') === 'flex' ) {
+						width = $(this).outerWidth();
+					}
+				})
 				$('.designButtonFilters').css('width',width);
 			}
 
@@ -603,17 +653,22 @@
 		$('.sidebar').removeClass('sidebarBlackout');
 		$('body').css('background','white');
 
-		$('#studentLink').css('color','black');
-		$('#workLink').css('color','#999999');
+		$('#workLink').css('cursor','pointer');
+		$('#studentLink').css('cursor','default');
+
+		$('#studentLink').css('color','#999999');
+		$('#workLink').css('color','black');
 
 		var $filtersJoin = $filters.join(', ');
 		$grid.isotope({ filter: $filtersJoin });
 	})
 
 	$('#workLink').click(function() {
+		$('#studentLink').css('cursor','pointer');
+		$('#workLink').css('cursor','default');
 
-		$('#workLink').css('color','black');
-		$('#studentLink').css('color','#999999');
+		$('#workLink').css('color','#999999');
+		$('#studentLink').css('color','black');
 
 		$('.workSection').css('display','flex');
 		$('.studentSection').css('display','none');
@@ -679,7 +734,11 @@
 				$(this).data('selected', 1);
 
 				$('.photoButtonFilters').css('display','inline-block');
-				width = $('.mainArea').outerWidth();
+				$('.mainArea').each( function() {
+					if( $(this).css('display') === 'flex' ) {
+						width = $(this).outerWidth();
+					}
+				})
 				console.log(width);
 				$(this).css('transform','rotateY(30deg) translateZ(10px)');
 				$('.photoButtonFilters').css('width',width);
@@ -735,7 +794,11 @@
 			$('.filterChoice').data('selected', 0);
 
 				$('.designButtonFilters').css('display','inline-block');
-				width = $('.mainArea').outerWidth();
+				$('.mainArea').each( function() {
+					if( $(this).css('display') === 'flex' ) {
+						width = $(this).outerWidth();
+					}
+				})
 				$(this).css('transform','rotateY(30deg) translateZ(10px)');
 				$('.designButtonFilters').css('width',width);
 				$(this).css('background-color','orange');
@@ -1237,11 +1300,25 @@
 					$('.filterContainer').css('display','initial');
 					$('.sidebar').removeClass('sidebarBlackout');
 					$('body').css('background','white');
+						$('#workLink').css('cursor','default');
+							$('#studentLink').css('cursor','pointer');
+					$('#workLink').css('color','#999999');
+					$('#studentLink').css('color','black');
 				} else {
+					if($('#logoSmall').css('display')==='block') {
+						$('.closePage').css('display','none');
+					} else {
+						$('.closePage').css('display','flex');
+					}
+					$('#workLink').css('color','white');
+					$('#studentLink').css('cursor','pointer');
+					$('#workLink').css('cursor','pointer');
+					$('#studentLink').css('color','white');
 					$('.workSection').css('display','none');
 					$('.studentSection').css('display','none');
 					$('.eventSection').css('display','flex');
 					google.maps.event.trigger(map, 'resize');
+					center_map( map );
 					$('.filterContainer').css('display','none');
 					$('.sidebar').addClass('sidebarBlackout');
 					$('body').css('background','black');
