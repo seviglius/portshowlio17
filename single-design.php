@@ -227,8 +227,32 @@
 			<?php else : ?>
    		<!-- nothing found -->
 			<?php endif; ?>
+			<?php
+		        //remove_all_filters('posts_orderby');
+		        $args = array(
+		            'post_type' => array('design', 'photography'),
+		            'posts_per_page' => 100,
+		            'orderby'        => 'title',
+		        );
+		        $query = new WP_Query($args);
+		        $featuredimage = get_field_objects();
+		    ?>
+			<?php
+			  while ($query->have_posts()) : $query->the_post();
+			?>
+			<?php endwhile; ?>
+			<div class='row' style='width:100%;'>
+				<span class='nextStudent'>
+					<?php next_post_link() ?>
+				</span>
+				<span class='previousStudent'>
 
+					<?php previous_post_link() ?>
+
+				</span>
+			</div>
 	</div>
+
 </div>
 
 <div class='projectSelector'>
@@ -242,7 +266,6 @@
 		<?php endwhile; ?>
 	<?php endif; ?>
 </div>
-
 
 </div>
 

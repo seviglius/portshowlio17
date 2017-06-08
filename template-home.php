@@ -160,7 +160,7 @@
         $args = array(
             'post_type' => array('design', 'photography'),
             'posts_per_page' => 100,
-            'orderby'        => 'title',
+            'orderby'        => 'rand',
         );
         $query = new WP_Query($args);
         $featuredimage = get_field_objects();
@@ -574,6 +574,31 @@
 			  $('.icon-port-logo_black-nockout-ps-full').css('top',''+newTop+'px');
 			  $('.icon-port-logo_black-nockout-ps-full').css('left',''+newLeft+'px');
 			},refreshRate)
+
+			$('.icon-port-logo_black-nockout-ps-full').css('position','absolute');
+
+			var smallleftMult = 1
+			var smalltopMult = 1
+			var smallstepSize = 2;
+			var smallleftSize = $('.icon-port-logo_black-nockout-ps-full').width();
+			var smalltopSize = $('.icon-port-logo_black-nockout-ps-full').height();
+			var smallrefreshRate = 10;
+
+			setInterval(function() {
+
+			  var smalltopPos=$('.icon-logo_small').position().top;
+			  var smallleftPos=$('.icon-logo_small').position().left;
+
+			  var smallnewLeft= smallleftPos + smallleftMult*smallstepSize;
+			  var smallnewTop= smalltopPos + smalltopMult*smallstepSize;
+			  if(smallnewLeft+smallleftSize > $( window ).width()) {smallleftMult = -1;backgroundYellow();}
+			  if(smallnewTop+smalltopSize> $( window ).height()) {smalltopMult = -1;backgroundBlue();}
+			  if(smallnewLeft < 0) {smallleftMult = 1;backgroundOrange();}
+			  if(smallnewTop < 0) {smalltopMult = 1;backgroundWhite();}
+
+			  $('.icon-logo_small').css('top',''+smallnewTop+'px');
+			  $('.icon-logo_small').css('left',''+smallnewLeft+'px');
+			},smallrefreshRate)
 		}
 	  qsRegex = new RegExp( $quicksearch.val(), 'gi' );
 	  //console.log('keyup');

@@ -8942,8 +8942,8 @@ body {
 .studentSidebar .headshot {
   margin-top: 1.3em;
   width: 30vh;
-  max-width: 300px;
-  max-height: 300px; }
+  max-width: 250px;
+  max-height: 250px; }
 
 .collaboratortitle {
   font-weight: 700;
@@ -8971,6 +8971,52 @@ body {
   width: 30vh;
   max-width: 300px;
   max-height: 300px; }
+
+.nextStudent {
+  color: white;
+  position: absolute;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 15px;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 5px;
+  display: block; }
+  .nextStudent a:hover {
+    color: #666666;
+    text-decoration: none; }
+  .nextStudent a:visited {
+    color: #999999; }
+  .nextStudent a {
+    color: #999999; }
+  .nextStudent a {
+    -webkit-transition-timing-function: ease;
+    -webkit-transition: .5s;
+    /* Safari */
+    transition: .5s; }
+
+.previousStudent {
+  color: white;
+  position: absolute;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 15px;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 5px;
+  display: block; }
+  .previousStudent a:hover {
+    color: #666666;
+    text-decoration: none; }
+  .previousStudent a:visited {
+    color: #999999; }
+  .previousStudent a {
+    color: #999999; }
+  .previousStudent a {
+    -webkit-transition-timing-function: ease;
+    -webkit-transition: .5s;
+    /* Safari */
+    transition: .5s; }
 
 /*Website Link Styling*/
 .website {
