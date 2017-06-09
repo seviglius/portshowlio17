@@ -62,6 +62,12 @@ a:hover {
     display: block;
     font-weight: 700; }
 
+@media screen and (max-width: 1300px) {
+.sidebarTakeover .headshot {
+  max-width: 250px !important;
+} 
+}
+
 /* MEDIA QUERY */
 @media screen and (max-width: 768px) {
   .studentSidebar {
